@@ -6,7 +6,7 @@ import ckan.lib.plugins as lib_plugins
 lib_plugins.reset_package_plugins()
 
 
-class CiatPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(IRoutes, inherit=True)
@@ -18,11 +18,11 @@ class CiatPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'ciat')
+        toolkit.add_resource('fanstatic', 'cadasta')
 
     def before_map(self, map):
 
-        controller = 'ckanext.ciat.controller:Ciat_Controller'
+        controller = 'ckanext.cadasta.controller:Cadasta_Controller'
 
         #new routes to be added
 
@@ -141,7 +141,7 @@ class CiatPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     #adding in new package schema
     def _modify_package_schema(self, schema):
         schema.update({
-            'ciat_id': [toolkit.get_validator('ignore_missing'),
+            'cadasta_id': [toolkit.get_validator('ignore_missing'),
                             toolkit.get_converter('convert_to_extras')]
         })
         # Add our custom_resource_text metadata field to the schema
@@ -151,19 +151,19 @@ class CiatPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return schema
 
     def create_package_schema(self):
-        schema = super(CiatPlugin, self).create_package_schema()
+        schema = super(CadastaPlugin, self).create_package_schema()
         schema = self._modify_package_schema(schema)
         return schema
 
     def update_package_schema(self):
-        schema = super(CiatPlugin, self).update_package_schema()
+        schema = super(CadastaPlugin, self).update_package_schema()
         schema = self._modify_package_schema(schema)
         return schema
 
     def show_package_schema(self):
-        schema = super(CiatPlugin, self).show_package_schema()
+        schema = super(CadastaPlugin, self).show_package_schema()
         schema.update({
-            'ciat_id': [toolkit.get_converter('convert_from_extras'),
+            'cadasta_id': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
         schema['resources'].update({

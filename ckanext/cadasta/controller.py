@@ -66,19 +66,13 @@ def search_url(params, package_type=None):
 
 
 
-class Ciat_Controller(PackageController):
+class Cadasta_Controller(PackageController):
 
 
     def read(self, id):
 
         all_parcels = cadasta_model.get_all_parcels(id)
         activity_list = cadasta_model.get_cadasta_activity(id)
-
-        # print '-------------------'
-        # print activity_list
-        # for key in activity_list:
-        #     print key
-        print '-------------------'
 
         for activity in activity_list['features']:
 
