@@ -9,18 +9,18 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-ciat''',
+    name='''ckanext-cadasta''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''an extension for ciat''',
+    description='''an extension for cadasta''',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com//ckanext-ciat',
+    url='https://github.com//ckanext-cadasta',
 
     # Author details
     author='''sbindman''',
@@ -78,6 +78,6 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        ciat=ckanext.ciat.plugin:CiatPlugin
+        cadasta=ckanext.cadasta.plugin:CadastaPlugin
     ''',
 )
