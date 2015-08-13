@@ -1,0 +1,56 @@
+{% extends "package/read.html" %}
+
+{% import 'macros/form.html' as form %}
+
+{% set logged_in = true if c.userobj else false %}
+
+{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship_id}}"> / {{ c.parcel_id }} / relationship / {{relationship_id}} </a>
+{% endblock %}
+
+{% block content_action %}
+<a href='/project/{{c.id}}/new/person'>New Person</a>
+
+{% endblock %}
+
+{% block content_primary_nav %}
+primary content nav extras
+{% endblock %}
+
+{% block primary_content_inner %}
+
+  {% if new_relationship %}
+
+    <form action="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}" method="POST">
+
+      {{ form.input('relationship-person', label=_('Relationship Person'), id='field-relationship-person', placeholder=_('individual'), value=relationship_person, classes=['control-medium']) }}
+
+      {{ form.input('relationship-parcel', label=_('Relationship Parcel'), id='field-relationship-parcel', placeholder=_('relationship parcel'), value=relationship_parcel, classes=['control-medium']) }}
+      <br><input type="submit" value="Save">
+    </form>
+
+  {% else %}
+
+    <form action="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}" method="POST">
+
+      {{ form.input('relationship-person', label=_('Relationship Person'), id='field-relationship-person', placeholder=_( 'existing data' ), value=relationship_person, classes=['control-medium']) }}
+
+      {{ form.input('relationship-parcel', label=_('Relationship Parcel'), id='field-relationship-parcel', placeholder=_('existing data'), value=relationship_parcel, classes=['control-medium']) }}
+      <br><input type="submit" value="Save">
+    </form>
+
+  {% endif %}
+
+
+  {% block form %}{% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+

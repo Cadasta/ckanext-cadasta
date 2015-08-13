@@ -1,0 +1,21 @@
+import ckan.lib.base as base
+import ckan.lib.helpers as helpers
+from pylons import request
+import requests
+from ckan.controllers.package import PackageController
+render = base.render
+
+class Ciat_Controller(PackageController):
+
+
+    def show_parcel_details(self):
+        return render('package/parcel_details.html')
+
+    def show_map(self):
+	return render('package/map.html')
+
+    def show_parcels(self):
+	return render('package/parcels.html')
+
+    def show_surveys(self):
+	return render('package/surveys.html')

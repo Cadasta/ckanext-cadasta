@@ -1,0 +1,81 @@
+{% extends "package/read.html" %}
+ {% import 'macros/form.html' as form %}
+
+{% set logged_in = true if c.userobj else false %}
+
+{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/person/{{ c.person_id }}"> / {{ c.person_id }}</a>
+
+
+{% if res %}
+  {% endif %}
+{% endblock %}
+
+{% block content_action %}
+{% endblock %}
+
+{% block content_primary_nav %}
+{% endblock %}
+
+{% block primary_content_inner %}
+
+
+  {% if newPerson %}
+
+    <form action="/dataset/{{c.id}}" method="POST">
+
+    {{ form.input('first_name', label=_('First Name'), id='field-person-firstname', placeholder=_('first name'), value=person_firstname, classes=['control-medium']) }}
+
+    {{ form.input('last_name', label=_('Last Name'), id='field-person-lastname', placeholder=_('last name'), value=person_firstname, classes=['control-medium']) }}
+
+    {{ form.input('city', label=_('City'), id='field-person-city', placeholder=_('city'), value=person_city, classes=['control-medium']) }}
+
+    {{ form.input('state', label=_('State'), id='field-person-state', placeholder=_('state'), value=person_state, classes=['control-medium']) }}
+
+    {{ form.input('zip', label=_('Zip'), id='field-person-zip', placeholder=_('zip'), value=person_zip, classes=['control-medium']) }}
+
+    {{ form.input('email', label=_('Email'), id='field-person-email', placeholder=_('email'), value=person_email, classes=['control-medium']) }}
+
+    {{ form.input('martial_status', label=_('Martial Status'), id='field-person-martial_status', placeholder=_('martial_status'), value=person_martial_status, classes=['control-medium']) }}
+
+    {{ form.input('edu_level', label=_('Education Level'), id='field-person-edu_level', placeholder=_('edu_level'), value=person_edu_level, classes=['control-medium']) }}
+
+    <br><input type="submit" value="Save">
+    </form>
+
+  {% else %}
+
+    <form action="/dataset/{{c.id}}/person/{{person_details.id}}" method="POST">
+
+    {{ form.input('first_name', label=_('First Name'), id='field-person-firstname', placeholder=_('existing_data'), value=person_firstname, classes=['control-medium']) }}
+
+    {{ form.input('last_name', label=_('Last Name'), id='field-person-lastname', placeholder=_('existing_data'), value=person_firstname, classes=['control-medium']) }}
+
+    {{ form.input('city', label=_('City'), id='field-person-city', placeholder=_('existing_data'), value=person_city, classes=['control-medium']) }}
+
+    {{ form.input('state', label=_('State'), id='field-person-state', placeholder=_('existing_data'), value=person_state, classes=['control-medium']) }}
+
+    {{ form.input('zip', label=_('Zip'), id='field-person-zip', placeholder=_('existing_data'), value=person_zip, classes=['control-medium']) }}
+
+    {{ form.input('email', label=_('Email'), id='field-person-email', placeholder=_('existing_data'), value=person_email, classes=['control-medium']) }}
+
+    {{ form.input('martial_status', label=_('Martial Status'), id='field-person-martial_status', placeholder=_('existing_data'), value=person_martial_status, classes=['control-medium']) }}
+
+    {{ form.input('edu_level', label=_('Education Level'), id='field-person-edu_level', placeholder=_('existing_data'), value=person_edu_level, classes=['control-medium']) }}
+
+    <br><input type="submit" value="Save">
+    </form>
+
+  {% endif %}
+
+
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}

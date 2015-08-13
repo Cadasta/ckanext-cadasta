@@ -1,0 +1,31 @@
+<!--This file is replacing the existing.  If we used CKAN extend the content would be repeated?-->
+
+<section id="dataset-resources" class="resources">
+  <span class="small-heading">{{ _('PROJECT RESOURCES') }}</span>
+  {% block resource_list %}
+    {% if resources %}
+      <ul class="resource-list">
+
+          {% for res in resources %}
+
+              <li class="resource-block">
+                <a class="heading bold" href="{{ url }}" title="{{ res.name or res.description }}">
+                  <div class="icon-icon_document"></div>
+                  {{ h.resource_display_name(res) | truncate(50) }}
+                  <!--<span class="format-label small-heading" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ res.format }}</span>-->
+                </a>
+                <span>was uploaded</span>
+              </li>
+          {% endfor %}
+
+      </ul>
+    {% else %}
+      {% if h.check_access('resource_create', {'package_id': pkg['id']}) %}
+          {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
+          {% endtrans %}
+      {% else %}
+          <p class="empty">{{ _('This project does not have any resources') }}</p>
+      {% endif %}
+    {% endif %}
+    {% endblock %}
+</section>

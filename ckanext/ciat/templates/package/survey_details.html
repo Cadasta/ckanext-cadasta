@@ -1,0 +1,32 @@
+{% extends "package/read.html" %}
+
+{% set logged_in = true if c.userobj else false %}
+
+{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/survey/{{ c.survey_id }}"> / {{ c.survey_id }}</a>
+{% endblock %}
+
+{% block content_action %}
+block content action
+
+{% endblock %}
+
+{% block content_primary_nav %}
+primary content nav extras
+{% endblock %}
+
+{% block primary_content_inner %}
+Survey Details
+
+  {% block form %}{% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+

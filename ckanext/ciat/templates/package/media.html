@@ -1,0 +1,27 @@
+{% extends "package/read.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/media">/ Media</a>
+{% endblock %}
+
+{% block primary_content_inner %}
+
+  {% block package_resources %}
+
+  <a href="/project/resources/{{c.id}}">/ Add Media</a>
+
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+  {% endblock %}
+
+  {% block package_tags %}
+  {% endblock %}
+
+  {% block package_additional_info %}
+  {% endblock %}
+
+  {% block cadasta_info %}
+  {% endblock %}
+
+
+{% endblock %}

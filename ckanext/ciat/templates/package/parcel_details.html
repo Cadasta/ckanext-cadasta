@@ -1,0 +1,87 @@
+{% extends "package/read.html" %}
+
+{% set logged_in = true if c.userobj else false %}
+
+{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}"> / {{ c.parcel_id }}</a>
+
+{% endblock %}
+
+{% block content_action %}
+block content action
+
+{% endblock %}
+
+{% block content_primary_nav %}
+primary content nav extras
+{% endblock %}
+
+{% block primary_content_inner %}
+
+  <div class='project-block' id="project-extent">
+
+    {% resource 'ciat/customCSS.css' %}
+    {% resource 'ciat/map.js' %}
+
+    <div id='small_map'></div>
+    <meta id="data" data-obj="{{parcel_geom}}">
+  </div>
+
+  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
+
+
+    <table>
+      <tr>
+        <th>Parcel ID</th>
+        <td> 1234 </td>
+      </tr>
+      <tr>
+        <th>Parcel Type</th>
+        <td> parcel </td>
+      </tr>
+        <tr>
+        <th> Area </th>
+        <td> 999999 </td>
+      </tr>
+        <tr>
+        <th> Landuse </th>
+        <td> residential </td>
+      </tr>
+    </table>
+
+    <br>
+    <br>
+    <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
+
+    <table id="parcelRelationshipsTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Relationship ID</th>
+                <th>Person/Group</th>
+                <th>Relationship Type</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for relationship in relationship_list.features %}
+            <tr>
+              <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
+              <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
+              <td> {{ relationship.relationship_type }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+  {% block form %}{% endblock %}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+

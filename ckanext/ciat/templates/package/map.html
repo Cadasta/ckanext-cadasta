@@ -1,0 +1,48 @@
+{% extends "package/read.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/map"> / Map</a>
+{% endblock %}
+
+{% block project_content %}
+
+    <div id='big_map'></div>
+    <meta id="data" data-obj="{{all_parcels | safe }}">
+    <!--<meta id="data2" data-obj="{{all_parcels }}">-->
+
+    {% if new %}
+        <meta id="popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel">
+
+        <div>
+        <form name='new_parcel' action="/project/{{c.id}}/parcels" method="POST">
+            <input type='text' name='parcel_geom' id='parcel_geom'>
+            <br><input type="submit" value="Save">
+        </form>
+        </div>
+
+    {% elif edit %}
+        <meta id="popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/edit_parcel/{{parcel_id}}">
+
+        <div>
+        <form name='new_parcel' action="/project/{{c.id}}/edit_parcel/{{parcel_id}}" method="POST">
+            <input type='text' name='parcel_geom' id='parcel_geom'>
+            <br><input type="submit" value="Save">
+        </form>
+        </div>
+
+    {% else %}
+        <meta id="popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/{{parcel_id}}">
+
+        <div>
+        <form name='new_parcel' action="/project/{{c.id}}/parcel/{{parcel_id}}" method="POST">
+            <input type='text' name='parcel_geom' id='parcel_geom'>
+            <br><input type="submit" value="Save">
+        </form>
+        </div>
+    {% endif %}
+
+    {% resource 'ciat/customCSS.css' %}
+    {% resource 'ciat/big_map.js' %}
+
+{% endblock %}

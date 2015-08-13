@@ -1,0 +1,34 @@
+{% extends "package/read_base.html" %}
+
+{% set pkg = c.pkg_dict %}
+
+
+{% block project_content %}
+
+        <div class='project-block' id="project-activity-summary">
+          <span class="small-heading">LATEST ACTIVITY</span>
+
+          <ul id="activity-list">
+            {% for activity in activity_list.features %}
+
+                {% if activity.properties.activity_type == 'parcel' %}
+                   <li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+               {% elif activity.properties.activity_type == 'party' %}
+                   <li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+                {% elif activity.properties.activity_type == 'relationship' %}
+                   <li class="activity-block block"><span class="bold">Relationship between {{ activity.properties.name }}</span> and <span> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+                {% endif %}
+
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class='project-block' id="project-resource-summary">
+          {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+        </div>
+
+
+{% endblock %}

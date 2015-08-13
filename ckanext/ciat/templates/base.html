@@ -1,0 +1,12 @@
+{% ckan_extends %}
+
+
+{% block styles %}
+  <!--{{ super() }}-->
+  {% resource 'ciat/jquery.tablesorter.js' %}
+  {% resource 'ciat/custom_jquery.js' %}
+  {% resource 'ciat/parse_api_data.js' %}
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+  {% resource 'ciat/style.css' %}
+  {% resource 'ciat/customCSS.css' %}
+{% endblock %}

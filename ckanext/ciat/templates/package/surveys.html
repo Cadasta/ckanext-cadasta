@@ -1,0 +1,41 @@
+{% extends "package/read.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <a href="/dataset/{{c.id}}/surveys"> / Surveys</a>
+{% endblock %}
+
+{% block primary_content_inner %}
+
+    {% block package_resources %}
+    {% endblock %}
+
+    {% block package_tags %}
+    {% endblock %}
+
+    {% block package_additional_info %}
+
+      <h1>List of all of the surveys for a given project </h1>
+       ---------------------------------
+
+        <table id="surveysTable" class="tablesorter">
+            <thead>
+                <tr>
+                  <td>Survey</td>
+                  <td>survey id</td>
+                </tr>
+            </thead>
+            <tbody>
+              {% for survey in survey_list %}
+              <tr>
+                <td><a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/survey/{{survey}}' >{{ survey }}</a></td>
+                <td> {{survey.survey_id}} </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+      </table>
+    {% endblock %}
+
+
+
+{% endblock %}
