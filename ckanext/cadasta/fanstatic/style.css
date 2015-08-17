@@ -81,11 +81,32 @@
 	color:white;
 	font-size:20px;
 }
+
+.icon-icon_info:hover {
+	text-decoration: none;
+}
+
+.icon-icon_info:active {
+	text-decoration: none;
+}
+
+
 .icon-icon_profile:before {
 	content: "\e60d";
 	color:white;
 	font-size:20px;
 }
+
+.icon-icon_profile:hover {
+	text-decoration: none;
+}
+
+
+.icon-icon_profile:active {
+	text-decoration: none;
+}
+
+
 .icon-logo_header:before {
 	content: "\e60e";
 	font-size:22px;
