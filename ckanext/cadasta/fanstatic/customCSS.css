@@ -254,9 +254,6 @@ li {
     color: #3c95c1;
 }
 
-#secondary-nav-bar {
-    padding-left:25px;
-}
 
 .toolbar .breadcrumb a {
     font-size: 10px;
@@ -351,6 +348,10 @@ footer {
     font-weight: bold;
     border-bottom: 2px solid #256c97;
     text-decoration: none;
+}
+
+#secondary-nav-bar {
+    padding-left:25px;
 }
 
 #content {
