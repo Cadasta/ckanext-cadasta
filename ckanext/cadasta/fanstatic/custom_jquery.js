@@ -9,9 +9,9 @@ $(document).ready(function () {
 $('#profile_options').on('click', function () {
     $('#sub-nav').show();
 })
-
-$('#sub-nav').on('mouseout', function () {
-    $('#sub-nav').hide();
-})
+//
+//$('#sub-nav').on('mouseout', function () {
+//    $('#sub-nav').hide();
+//})
 
 
