@@ -76,7 +76,12 @@
             <dd>{{ user.email }}</dd>
           </dl>
         {% endif %}
-        <dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt>{{ _('Contact Information') }} <span class="label" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
+            <dd>{{ user.phone }}</dd>
+          </dl>
+        {% endif %}
           <dt>{{ _('Member Since') }}</dt>
           <dd>{{ h.render_datetime(user.created) }}</dd>
         </dl>
