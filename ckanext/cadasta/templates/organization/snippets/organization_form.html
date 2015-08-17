@@ -19,9 +19,10 @@
 
     {{ form.markdown('description', label=_('Description'), id='field-description', placeholder=_('A little information about my organization...'), value=data.description, error=errors.description) }}
 
-    {{ form.input('contact-info', label=_('Contact Information'), id='org-contact-info', placeholder=_(''), value=data.contactInfo, error=errors.contactInfo, attrs=attrs, is_required=false) }}
+    {{ form.input("Contact", id="field-userContact", label=_("Contact Information"), placeholder=_("userContact"), value=data.Contact, error=errors.Contact, classes=["control-medium"]) }}
 
-    {{ form.input('org-url', label=_('Contact Information'), id='org-URL', placeholder=_('link to organization URL'), value=data.orgURL, error=errors.orgURL, attrs=attrs, is_required=false) }}
+    {{ form.input("OrgURL", id="field-userOrgURL", label=_("URL"), placeholder=_("Organization URL"), value=data.OrgURL, error=errors.OrgURL, classes=["control-medium"]) }}
+
 
     {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
     {% set is_url = data.image_url and data.image_url.startswith('http') %}
