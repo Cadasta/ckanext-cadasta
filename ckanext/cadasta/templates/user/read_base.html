@@ -6,7 +6,7 @@
 
 {% block breadcrumb_content %}
   {{ h.build_nav('user_index', _('Users')) }}
-  {{ h.build_nav('user_projects', user.display_name|truncate(35), id=user.name) }}
+  {{ h.build_nav('user_datasets', user.display_name|truncate(35), id=user.name) }}
 {% endblock %}
 
 {% block content_action %}
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content_primary_nav %}
-  {{ h.build_nav_icon('user_projects', _('Projects'), id=user.name) }}
+  {{ h.build_nav_icon('user_datasets', _('Projects'), id=user.name) }}
   {{ h.build_nav_icon('user_activity_stream', _('Activity Stream'), id=user.name) }}
 {% endblock %}
 
