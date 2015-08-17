@@ -1,3 +1,7 @@
+#secondary-nav-bar {
+    padding-left:25px;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 10px;
@@ -350,9 +354,6 @@ footer {
     text-decoration: none;
 }
 
-#secondary-nav-bar {
-    padding-left:25px;
-}
 
 #content {
     background-color:#eef2f5;
