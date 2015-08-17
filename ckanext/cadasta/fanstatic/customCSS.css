@@ -57,13 +57,15 @@ table {
 
 
 #sub-nav {
-    display:inline-block;
-    position:relative;
-    width:200px;
-    padding: 10px;
-    float:right;
-    background-color:yellow;
+    display: inline-block;
+    position: relative;
+    width: 70px;
+    padding-left: 10px;
+    font-size: 8px;
+    background-color: white;
     z-index: 1000;
+    text-align: left;
+    border: 1px solid #dcdfe1;
 }
 
 .toolbar {
@@ -459,8 +461,9 @@ form .lang-select {
 }
 
 #header-profile-options {
-    padding-right:0;
+    padding-right: 0;
     float: right;
+    max-width: 80px;
 }
 
 #header-profile-options ul li {
