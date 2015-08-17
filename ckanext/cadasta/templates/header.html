@@ -45,19 +45,22 @@
 
 
     <!--</div>-->
+
+          <span id="sub-nav">
+             {% if c.userobj %}
+                <li><a  href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">View Proifle</a></li>
+                <li><a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">Cadasta Settings</a></li>
+                <li>Change Language</li>
+                <li><a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">Log out</a></li>
+             {% else %}
+              <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+              {% if h.check_access('user_create') %}
+                <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+              {% endif %}
+             {% endif %}
+            </span>
+
     </div>
 </header>
 
- <span id="sub-nav">
-     {% if c.userobj %}
-        <li><a  href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">View Proifle</a></li>
-        <li><a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">Cadasta Settings</a></li>
-        <li>Change Language</li>
-        <li><a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">Log out</a></li>
-     {% else %}
-      <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
-      {% if h.check_access('user_create') %}
-        <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
-      {% endif %}
-     {% endif %}
-</span>
+

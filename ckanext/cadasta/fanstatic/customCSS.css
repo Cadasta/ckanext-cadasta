@@ -195,7 +195,7 @@ ul {
 }
 
 header #header-container {
-    width:860px;
+    width:1024px;
     margin: auto;
     height:100%
 
@@ -222,19 +222,6 @@ header #header-container {
     text-decoration: none;
 }
 
-.masthead-header ul li a:hover {
-    color: #fff;
-    font-weight: bold;
-    font-size: 12px;
-    text-decoration: none;
-}
-
-
-.masthead-header ul li a:hover {
-    color: white;
-    font-weight: semi-bold;
-    text-decoration: none;
-}
 
 
 .row {
@@ -423,7 +410,7 @@ form .lang-select {
     vertical-align:center;
     color:black;
     background-color: #eef2f5;
-    width: 860px;
+    width: 1024px;
     margin: auto;
 }
 
@@ -532,18 +519,20 @@ input[type="text"] {
 
 #header-container span ul li {
     padding-right: 0;
-    margin-right: 35px;
+    margin-right: 20px;
     margin-bottom: 10px;
     height: 21px;
 }
 
 #header-container span ul li:hover {
     border-bottom: 2px solid white;
+    font-weight: semi-bold;
     text-decoration: none;
 }
 
 #header-container span ul li:active {
     border-bottom: 2px solid white;
+    font-weight: semi-bold;
     text-decoration: none;
 }
 
