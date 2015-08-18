@@ -6,6 +6,7 @@ import ckan.lib.plugins as lib_plugins
 lib_plugins.reset_package_plugins()
 
 
+
 class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
@@ -170,6 +171,26 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                 'custom_resource_text' : [ toolkit.get_validator('ignore_missing') ]
             })
         return schema
+
+    #user schema update
+    # def _modify_user_schema(self, schema):
+    #     schema.update({
+    #         'phone': [toolkit.get_validator('ignore_missing'),
+    #                         toolkit.get_converter('convert_to_extras')]
+    #     })
+    #     return schema
+    #
+    # def create_user_schema(self):
+    #     schema = super(CadastaPlugin, self).create_user_schema()
+    #     schema = self._modify_user_schema(schema)
+    #     return schema
+    #
+    # def update_user_schema(self):
+    #     schema = super(CadastaPlugin, self).update_user_schema()
+    #     schema = self._modify_user_schema(schema)
+    #     return schema
+    #
+    #
 
 
     def is_fallback(self):
