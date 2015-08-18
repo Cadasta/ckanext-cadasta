@@ -4,6 +4,7 @@ from ckan.plugins import IRoutes
 from routes.mapper import SubMapper
 import ckan.lib.plugins as lib_plugins
 lib_plugins.reset_package_plugins()
+from ckan.lib.plugins import DefaultGroupForm
 
 
 
@@ -205,4 +206,76 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
 
     def get_helpers(self):
-	return { }
+        return { }
+
+
+class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
+
+    plugins.implements(plugins.IGroupForm, inherit=True)
+    plugins.implements(plugins.IConfigurer)
+
+    ## IGroupForm
+
+    def is_fallback(self):
+        return True
+
+    def group_types(self):
+        return ['organization']
+
+    def form_to_db_schema_options(self, options):
+        ''' This allows us to select different schemas for different
+        purpose eg via the web interface or via the api or creation vs
+        updating. It is optional and if not available form_to_db_schema
+        should be used.
+        If a context is provided, and it contains a schema, it will be
+        returned.
+        '''
+        schema = options.get('context', {}).get('schema', None)
+        if schema:
+            return schema
+
+        if options.get('api'):
+            if options.get('type') == 'create':
+                return self.form_to_db_schema_api_create()
+            else:
+                return self.form_to_db_schema_api_update()
+        else:
+            return self.form_to_db_schema()
+
+
+    def form_to_db_schema(self):
+        schema = super(Cadasta_Orgs, self).form_to_db_schema()
+        schema = self._modify_group_schema(schema)
+        return schema
+
+    def _modify_group_schema(self, schema):
+
+        # Import core converters and validators
+        _convert_to_extras = p.toolkit.get_converter('convert_to_extras')
+        _ignore_missing = p.toolkit.get_validator('ignore_missing')
+
+        default_validators = [_ignore_missing, _convert_to_extras, unicode]
+        schema.update({
+            'publisher_source_type': default_validators,
+            'publisher_iati_id': default_validators
+        })
+
+        return schema
+
+    def db_to_form_schema(self):
+
+        # Import core converters and validators
+        _convert_from_extras = plugins.toolkit.get_converter('convert_from_extras')
+        _ignore_missing = plugins.toolkit.get_validator('ignore_missing')
+        _ignore = plugins.toolkit.get_validator('ignore')
+        _not_empty = plugins.toolkit.get_validator('not_empty')
+
+        schema = super(Cadasta_Orgs, self).form_to_db_schema()
+
+        default_validators = [_convert_from_extras, _ignore_missing]
+        schema.update({
+            'publisher_source_type': default_validators,
+            'publisher_iati_id': default_validators
+        })
+
+        return schema

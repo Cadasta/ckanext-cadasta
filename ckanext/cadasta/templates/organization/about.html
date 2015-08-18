@@ -9,6 +9,10 @@
       {{ h.render_markdown(c.group_dict.description) }}
     {% endif %}
 
+            {% for key in group_dict %}
+            <dd> {{key }} </dd>
+            {% endfor %}
+
     {% if c.group_dict.contact %}
       {{ h.render_markdown(c.group_dict.contact) }}
     {% endif %}
