@@ -173,24 +173,24 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return schema
 
     #user schema update
-    # def _modify_user_schema(self, schema):
-    #     schema.update({
-    #         'phone': [toolkit.get_validator('ignore_missing'),
-    #                         toolkit.get_converter('convert_to_extras')]
-    #     })
-    #     return schema
-    #
-    # def create_user_schema(self):
-    #     schema = super(CadastaPlugin, self).create_user_schema()
-    #     schema = self._modify_user_schema(schema)
-    #     return schema
-    #
-    # def update_user_schema(self):
-    #     schema = super(CadastaPlugin, self).update_user_schema()
-    #     schema = self._modify_user_schema(schema)
-    #     return schema
-    #
-    #
+    def _modify_user_schema(self, schema):
+        schema.update({
+            'phone': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+        return schema
+
+    def create_user_schema(self):
+        schema = super(CadastaPlugin, self).create_user_schema()
+        schema = self._modify_user_schema(schema)
+        return schema
+
+    def update_user_schema(self):
+        schema = super(CadastaPlugin, self).update_user_schema()
+        schema = self._modify_user_schema(schema)
+        return schema
+
+
 
 
     def is_fallback(self):

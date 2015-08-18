@@ -552,6 +552,6 @@ dataset-list {
     color: #8b8b8b;
 }
 
-#header-profile-options ul li {
+#header-container #header-profile-options ul li {
     margin-right: 15px;
 }
