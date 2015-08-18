@@ -21,7 +21,7 @@
     <div id="project-nav-bar">
 
       <li><a class="active"  href="#">OVERVIEW</a></li>
-      <li><a href='{% url_for controller="controller", action="read_parcels" %}'>Parcels</a></li>
+      <li><a href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>
       <li><a  href="#">MAP</a></li>
       <li><a  href="#">SURVEYS</a></li>
       <li><a  href="#">RESOURCES</a></li>
@@ -54,6 +54,11 @@
       <div id='project-desc' class="project-block">
          <span class="small-heading">DESCRIPTION</span>
                 {{ c.pkg_notes_formatted }}
+
+                KEYS
+                {% for key in pkg %}
+                  {{ key }}
+                {% endfor %}
       </div>
 
       <div id="project-extent">

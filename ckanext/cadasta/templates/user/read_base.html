@@ -80,10 +80,6 @@
           <dl>
             <dt>{{ _('Contact Information') }} <span class="label" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
             <dd>{{ user.phone }}</dd>
-            <dd> {{ user }}</dd>
-            {% for key in user %}
-            <dd> {{key }} </dd>
-            {% endfor %}
           </dl>
         {% endif %}
           <dt>{{ _('Member Since') }}</dt>
