@@ -4,10 +4,6 @@
   {{ form.input('title', id='field-title', label=_('Title'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}) }}
 {% endblock %}
 
-  PACKAGE INFO
- {{ package.name }}
- {{ package.id }}
-
 
 {% block package_basic_fields_url %}
   {% set prefix = h.url_for(controller='package', action='read', id='') %}
