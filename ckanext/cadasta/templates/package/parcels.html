@@ -27,6 +27,8 @@
             </tr>
         </thead>
         <tbody>
+            {{ parcel_list }}
+
          {% for parcel in parcel_list.features.properties %}
             <tr>
               <td><a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/{{parcel.parcel_id}}' >{{ parcel.parcel_id }}</a></td>
