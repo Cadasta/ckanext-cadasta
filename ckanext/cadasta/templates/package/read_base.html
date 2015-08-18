@@ -55,9 +55,11 @@
          <span class="small-heading">DESCRIPTION</span>
                 {{ c.pkg_notes_formatted }}
 
+                {{ controller }}
+        
                 KEYS
-                {% for key in pkg %}
-                  {{ key }}
+                {% for k,v in pkg %}
+                  {{ k,v }}
                 {% endfor %}
       </div>
 
