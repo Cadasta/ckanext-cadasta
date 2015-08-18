@@ -1,4 +1,4 @@
-#secondary-nav-bar {
+#project-nav-bar {
     padding-left:25px;
 }
 
@@ -324,7 +324,7 @@ footer {
     height:315px;
 }
 
-#secondary-nav-bar li {
+#project-nav-bar li {
     vertical-align:bottom;
     margin-right: 40px;
 }
@@ -333,21 +333,21 @@ footer {
     display: inline;
 }
 
-#secondary-nav-bar li a {
+#project-nav-bar li a {
     color: #2d3644;
     font-weight: semi-bold;
     text-decoration: none;
 
 }
 
-#secondary-nav-bar li a:hover {
+#project-nav-bar li a:hover {
     color: #256c97;
     font-weight: bold;
     border-bottom: 2px solid #256c97;
     text-decoration: none;
 }
 
-#secondary-nav-bar li a:active {
+#project-nav-bar li a:active {
     color: #256c97;
     font-weight: bold;
     border-bottom: 2px solid #256c97;
