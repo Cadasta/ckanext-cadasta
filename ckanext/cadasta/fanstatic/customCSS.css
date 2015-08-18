@@ -466,9 +466,6 @@ form .lang-select {
     max-width: 80px;
 }
 
-#header-profile-options ul li {
-    padding-right:25px;
-}
 
 .toolbar .breadcrumb li:after {
     content: " > ";
