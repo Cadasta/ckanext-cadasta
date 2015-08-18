@@ -173,6 +173,21 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
             })
         return schema
 
+    def is_fallback(self):
+        # Return True to register this plugin as the default handler for
+        # package types not handled by any other IDatasetForm plugin.
+        return True
+
+    def package_types(self):
+        # This plugin doesn't handle any special package types, it just
+        # registers itself as the default (above).
+        return []
+
+
+    def get_helpers(self):
+	return { }
+
+
     # #user schema update
     # def _modify_user_schema(self, schema):
     #     schema.update({
@@ -193,11 +208,11 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
     #
     #
     #
-    #
-    def is_fallback(self):
-        # Return True to register this plugin as the default handler for
-        # package types not handled by any other IDatasetForm plugin.
-        return True
+    # #
+    # def is_fallback(self):
+    #     # Return True to register this plugin as the default handler for
+    #     # package types not handled by any other IDatasetForm plugin.
+    #     return True
     #
     # def package_types(self):
     #     # This plugin doesn't handle any special package types, it just
