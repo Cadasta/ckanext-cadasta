@@ -221,26 +221,26 @@ class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
 
     def group_types(self):
         return ['organization']
-
-    def form_to_db_schema_options(self, options):
-        ''' This allows us to select different schemas for different
-        purpose eg via the web interface or via the api or creation vs
-        updating. It is optional and if not available form_to_db_schema
-        should be used.
-        If a context is provided, and it contains a schema, it will be
-        returned.
-        '''
-        schema = options.get('context', {}).get('schema', None)
-        if schema:
-            return schema
-
-        if options.get('api'):
-            if options.get('type') == 'create':
-                return self.form_to_db_schema_api_create()
-            else:
-                return self.form_to_db_schema_api_update()
-        else:
-            return self.form_to_db_schema()
+    #
+    # def form_to_db_schema_options(self, options):
+    #     ''' This allows us to select different schemas for different
+    #     purpose eg via the web interface or via the api or creation vs
+    #     updating. It is optional and if not available form_to_db_schema
+    #     should be used.
+    #     If a context is provided, and it contains a schema, it will be
+    #     returned.
+    #     '''
+    #     schema = options.get('context', {}).get('schema', None)
+    #     if schema:
+    #         return schema
+    #
+    #     if options.get('api'):
+    #         if options.get('type') == 'create':
+    #             return self.form_to_db_schema_api_create()
+    #         else:
+    #             return self.form_to_db_schema_api_update()
+    #     else:
+    #         return self.form_to_db_schema()
 
 
     def form_to_db_schema(self):
@@ -251,8 +251,8 @@ class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
     def _modify_group_schema(self, schema):
 
         # Import core converters and validators
-        _convert_to_extras = p.toolkit.get_converter('convert_to_extras')
-        _ignore_missing = p.toolkit.get_validator('ignore_missing')
+        _convert_to_extras = plugins.toolkit.get_converter('convert_to_extras')
+        _ignore_missing = plugins.toolkit.get_validator('ignore_missing')
 
         default_validators = [_ignore_missing, _convert_to_extras, unicode]
         schema.update({
