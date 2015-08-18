@@ -118,6 +118,16 @@ class Cadasta_Controller(PackageController):
 
         parcel_list = cadasta_model.list_parcels(id)
 
+        for parcel in parcel_list['features']:
+
+
+            reformatted_date = parse(parcel['properties']['time_created'])
+            reformatted_date = reformatted_date.strftime("%d/%m/%y")
+
+            parcel['properties']['time_created'] = reformatted_date
+
+
+
         ctype, format = self._content_type_from_accept()
 
         response.headers['Content-Type'] = ctype

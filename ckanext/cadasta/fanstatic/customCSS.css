@@ -508,6 +508,33 @@ input[type="text"] {
     background-color: white;
 }
 
+.table {
+    margin:auto;
+    width:820px;
+    padding: 20px;
+}
+
+
+.table tr th {
+    font-size: 12px;
+    color: black;
+    background-color: white;
+    font-wieght: bold;
+}
+
+
+.table tr {
+    border: 1px solid #dcdfe1;
+}
+
+.table tr td {
+    font-size: 10px;
+    color: black;
+    background-color: white;
+}
+
+
+
 #project-result-text {
     padding-left:20px;
     font-size: 14px;

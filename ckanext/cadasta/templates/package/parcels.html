@@ -5,31 +5,34 @@
   <a href="/dataset/{{c.id}}/parcels"> / Parcels</a>
 {% endblock %}
 
+  {% block primary_content_inner %}
+  <!-- Empty so the description and map does not come up on this page-->
+  {% endblock %}
+
 {% block project_content %}
-    <div>
+    <div class="full-width-box">
 
     <a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel'> New Parcel </a>
 
         <h1>List of all of the parcels for a given project </h1>
 
-        New Point : {{geom}}
-
      <br>
-        <table id="parcelsTable" class="tablesorter">
+        <table id="parcelsTable" class="tablesorter table">
         <thead>
             <tr>
-                <th>Parcel</th>
                 <th>Parcel ID</th>
-                <th>Landuse</th>
+                <th>Area</th>
+                <th>Time Created</th>
 
             </tr>
         </thead>
         <tbody>
-         {% for parcel in parcel_list.parcels %}
+         {% for parcel in parcel_list.features.properties %}
             <tr>
               <td><a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/{{parcel.parcel_id}}' >{{ parcel.parcel_id }}</a></td>
-              <td> {{ parcel.parcel_id }} </td>
-              <td> {{ parcel.landuse }} </td>
+              <td> {{ parcel.id }} </td>
+              <td> {{ parcel.area }} </td>
+              <td> {{ parcel.time_created }} </td>
             </tr>
           {% endfor %}
         </tbody>

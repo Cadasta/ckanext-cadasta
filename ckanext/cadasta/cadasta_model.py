@@ -95,16 +95,11 @@ def get_all_surveys(id):
 
 def list_parcels(id):
 
-    parcels_json = {
-      "parcels":[{
-           "parcel_id": "12345",
-           "landuse": "residential"
-       }, {
-           "parcel_id": "67890",
-           "landuse": "commercial"
-       }]
-    }
-    return parcels_json
+      api ='http://54.69.121.180:3000/parcel'
+
+      r = requests.get(api)
+
+      return r.json()
 
 
 
@@ -180,26 +175,10 @@ def get_relationship_details(relationship_id):
 
 
 def get_cadasta_activity(project_id):
-      # activity_json = {
-      # "activities":[{
-      #      "activity_type": "added a new parcel",
-      #      "date": "3/3/33",
-      #      "user_id": "person1"
-      #  }, {
-      #      "activity_type": "modified an existing relationship",
-      #      "date": "2/2/22",
-      #      "user_id": "person2"
-      #  }, {
-      #      "activity_type": "deleted a user",
-      #      "date": "1/1/11",
-      #      "user_id": "person3"
-      #  }]
-      # }
 
       api ='http://54.69.121.180:3000/activity'
 
       r = requests.get(api)
-
 
       return r.json()
 
