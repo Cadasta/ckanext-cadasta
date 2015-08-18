@@ -8,7 +8,7 @@ from ckan.lib.plugins import DefaultGroupForm
 
 
 
-class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, DefaultGroupForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(IRoutes, inherit=True)
@@ -218,25 +218,25 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def group_types(self):
         return ['organization']
     #
-    # def form_to_db_schema_options(self, options):
-    #     ''' This allows us to select different schemas for different
-    #     purpose eg via the web interface or via the api or creation vs
-    #     updating. It is optional and if not available form_to_db_schema
-    #     should be used.
-    #     If a context is provided, and it contains a schema, it will be
-    #     returned.
-    #     '''
-    #     schema = options.get('context', {}).get('schema', None)
-    #     if schema:
-    #         return schema
-    #
-    #     if options.get('api'):
-    #         if options.get('type') == 'create':
-    #             return self.form_to_db_schema_api_create()
-    #         else:
-    #             return self.form_to_db_schema_api_update()
-    #     else:
-    #         return self.form_to_db_schema()
+    def form_to_db_schema_options(self, options):
+        ''' This allows us to select different schemas for different
+        purpose eg via the web interface or via the api or creation vs
+        updating. It is optional and if not available form_to_db_schema
+        should be used.
+        If a context is provided, and it contains a schema, it will be
+        returned.
+        '''
+        schema = options.get('context', {}).get('schema', None)
+        if schema:
+            return schema
+
+        if options.get('api'):
+            if options.get('type') == 'create':
+                return self.form_to_db_schema_api_create()
+            else:
+                return self.form_to_db_schema_api_update()
+        else:
+            return self.form_to_db_schema()
 
 
     def form_to_db_schema(self):
