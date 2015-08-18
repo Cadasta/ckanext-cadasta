@@ -523,7 +523,7 @@ input[type="text"] {
 
 #header-container span ul li {
     padding-right: 0;
-    margin-right: 15px;
+    margin-right: 35px;
     margin-bottom: 10px;
     height: 21px;
 }
@@ -551,4 +551,8 @@ dataset-list {
 .toolbar .breadcrumb .active a, .toolbar .breadcrumb a.active {
     font-weight: bold;
     color: #8b8b8b;
+}
+
+#header-profile-options ul li {
+    margin-right: 15px;
 }
