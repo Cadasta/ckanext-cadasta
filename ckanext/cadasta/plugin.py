@@ -209,15 +209,11 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return { }
 
 
-class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
-
     plugins.implements(plugins.IGroupForm, inherit=True)
     plugins.implements(plugins.IConfigurer)
 
     ## IGroupForm
 
-    def is_fallback(self):
-        return True
 
     def group_types(self):
         return ['organization']
@@ -244,7 +240,7 @@ class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
 
 
     def form_to_db_schema(self):
-        schema = super(Cadasta_Orgs, self).form_to_db_schema()
+        schema = super(CadastaPlugin, self).form_to_db_schema()
         schema = self._modify_group_schema(schema)
         return schema
 
@@ -270,7 +266,7 @@ class Cadasta_Orgs(plugins.SingletonPlugin, DefaultGroupForm):
         _ignore = plugins.toolkit.get_validator('ignore')
         _not_empty = plugins.toolkit.get_validator('not_empty')
 
-        schema = super(Cadasta_Orgs, self).form_to_db_schema()
+        schema = super(CadastaPlugin, self).form_to_db_schema()
 
         default_validators = [_convert_from_extras, _ignore_missing]
         schema.update({
