@@ -200,7 +200,7 @@ ul {
     text-align: center;
 }
 
-header #header-container {
+header .header-container {
     width:1024px;
     margin: auto;
     height:100%
@@ -520,20 +520,20 @@ input[type="text"] {
     padding-top: 16px;
 }
 
-#header-container span ul li {
+.header-container span ul li {
     padding-right: 0;
     margin-right: 35px;
     margin-bottom: 10px;
     height: 21px;
 }
 
-#header-container span ul li:hover {
+.header-container span ul li:hover {
     border-bottom: 2px solid white;
     font-weight: semi-bold;
     text-decoration: none;
 }
 
-#header-container span ul li:active {
+.header-container span ul li:active {
     border-bottom: 2px solid white;
     font-weight: semi-bold;
     text-decoration: none;
@@ -552,7 +552,7 @@ dataset-list {
     color: #8b8b8b;
 }
 
-#header-profile-options {
+#profile_options {
     margin-right: 15px;
 }
 
