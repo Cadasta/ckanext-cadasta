@@ -5,18 +5,7 @@
   <a href="/dataset/{{c.id}}/parcels"> / Parcels</a>
 {% endblock %}
 
-{% block primary_content_inner %}
-
-  {% block package_resources %}
-  {% endblock %}
-
-  {% block package_tags %}
-  {% endblock %}
-
-  {% block package_additional_info %}
-  {% endblock %}
-
-  {% block cadasta_info %}
+{% block project_content %}
     <div>
 
     <a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel'> New Parcel </a>
@@ -24,7 +13,6 @@
         <h1>List of all of the parcels for a given project </h1>
 
         New Point : {{geom}}
-
 
      <br>
         <table id="parcelsTable" class="tablesorter">
@@ -48,5 +36,4 @@
       </table>
     </div>
 
-  {% endblock %}
 {% endblock %}
