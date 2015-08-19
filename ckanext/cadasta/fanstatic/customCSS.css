@@ -469,7 +469,7 @@ form .lang-select {
 
 
 .toolbar .breadcrumb li:after {
-    content: " > ";
+    content: "";
     padding: 0;
     margin: 0;
     font-size: 8px;
