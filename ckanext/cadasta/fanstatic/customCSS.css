@@ -176,8 +176,7 @@ subtab {
 }
 
 #project-title {
-    border-left: 1px solid #dcdfe1;
-    border-right: 1px solid #dcdfe1;
+    border: 1px solid #dcdfe1;
 }
 
 .span3 {
@@ -277,7 +276,9 @@ li {
 
 .toolbar {
     padding:0;
-    border: 1px solid #eef2f5;
+    border-top: 1px solid #dcdfe1;
+    border-left: 1px solid #dcdfe1;
+    border-right: 1px solid #dcdfe1;
 }
 
 
@@ -591,4 +592,11 @@ dataset-list {
     font-weight: bold;
     border-bottom: 2px solid #256c97;
     text-decoration: none;
+}
+
+#add-parcel {
+    position:fixed;
+    top: 100px;
+    right:10px;
+    font-size:40px;
 }
