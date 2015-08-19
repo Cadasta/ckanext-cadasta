@@ -23,7 +23,7 @@
       <!--<li><a class="active"  href="#">OVERVIEW</a></li>-->
       <li><a href='{% url_for controller="package", action="dataset_read", id=pkg.name %}'>OVERVIEW</a></li>
       <li><a href='{% url_for  action="project_parcels", id=pkg.name %}'>PARCELS</a></li>
-      <li><a href='{% url_for  action="project_map", id=pkg.name %}'>MAP</a></li>
+      <li><a href='{% url_for  action="show_map", id=pkg.name %}'>MAP</a></li>
       <li><a href='{% url_for  action="project_surveys", id=pkg.name %}'>SURVEYS</a></li>
       <li><a href='{% url_for controller="package", action="dataset_resources", id=pkg.name %}'>RESOURCES</a></li>
       <li><a href='{% url_for controller="package", action="dataset_read", id=pkg.name %}'>ACTIVITY STREAM</a></li>
