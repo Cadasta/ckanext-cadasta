@@ -20,21 +20,21 @@
   {% block primary_nav_tabs %}
     <div id="project-nav-bar">
 
-      <li><a class="active"  href="#">OVERVIEW</a></li>
-      <li><a href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>
-      <li><a  href="#">MAP</a></li>
-      <li><a  href="#">SURVEYS</a></li>
-      <li><a  href="#">RESOURCES</a></li>
-      <li><a  href="#">ACTIVITY STREAM</a></li>
+      <!--<li><a class="active"  href="#">OVERVIEW</a></li>-->
+      <!--<li><a href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>-->
+      <!--<li><a  href="#">MAP</a></li>-->
+      <!--<li><a  href="#">SURVEYS</a></li>-->
+      <!--<li><a  href="#">RESOURCES</a></li>-->
+      <!--<li><a  href="#">ACTIVITY STREAM</a></li>-->
     {% endblock %}
 
 
-      <!--{{ h.build_nav_icon('dataset_read', _('  Overview  '), id=pkg.name ) }}-->
-      <!--{{ h.build_nav_icon('project_parcels', _('  Parcels  '), id=pkg.name) }}-->
-      <!--{{ h.build_nav_icon('project_map', _('  Map  '), id=pkg.name) }}-->
-      <!--{{ h.build_nav_icon('project_surveys', _('  Surveys  '), id=pkg.name) }}-->
-      <!--{{ h.build_nav_icon('dataset_resources', _('  Resources  '), id=pkg.name) }}-->
-      <!--{{ h.build_nav_icon('dataset_activity', _('  Activity Stream  '), id=pkg.name) }}-->
+      {{ h.build_nav_icon('project_read', _('  Overview  '), id=pkg.name ) }}
+      {{ h.build_nav_icon('project_parcels', _('  Parcels  '), id=pkg.name) }}
+      {{ h.build_nav_icon('project_map', _('  Map  '), id=pkg.name) }}
+      {{ h.build_nav_icon('project_surveys', _('  Surveys  '), id=pkg.name) }}
+      {{ h.build_nav_icon('dataset_resources', _('  Resources  '), id=pkg.name) }}
+      {{ h.build_nav_icon('dataset_activity', _('  Activity Stream  '), id=pkg.name) }}
       <li>
         <div class="search-field" action="{% url_for controller='package', action='search' %}" method="get">
           <div class="search-box-field">
