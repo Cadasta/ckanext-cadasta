@@ -25,17 +25,12 @@
         <div class="filter-box">
             Filter By: <input class="filter_by" type="text" name="q" placeholder="{{ _('Date') }}" />
             Sort By: <input class="sort_by" type="text" name="q" placeholder="{{ _('Name Ascending') }}" />
-            <div class="search-field" action="{% url_for controller='package', action='search' %}" method="get">
-              <div class="search-box-field">
-                <!--<label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>-->
-                <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />
-                <div class="icon-icon_search_loop"></div>
-              </div>
-            </div>
+            <input class="sort_by" type="text" name="q" placeholder="{{ _('Search') }}" />
+
             <a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel'> New Parcel </a>
         </div>
 
-        <div id="add-parcel" class="icon-icon_add_on"></div>
+        <div id="add-parcel" class="icon-icon_add_parcel"></div>
 
         <table id="parcelsTable" class="tablesorter table">
         <thead>
