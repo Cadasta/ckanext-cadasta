@@ -182,7 +182,7 @@ class Cadasta_Controller(PackageController):
         self._setup_template_variables(context, {'id': id},
                                        package_type=package_type)
 
-        return render('package/parcels.html',
+        return render('package/form_data_upload.html',
                       extra_vars={'dataset_type': package_type})
 
 
