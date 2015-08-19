@@ -157,7 +157,7 @@ class Cadasta_Controller(PackageController):
 
 
 
- def form_data_upload(self, id):
+    def form_data_upload(self, id):
 
         ctype, format = self._content_type_from_accept()
 
