@@ -17,24 +17,21 @@
           <div class="icon-icon_add"></div>
         </span>
 
-  {% block primary_nav_tabs %}
-    <div id="project-nav-bar">
 
-      <!--<li><a class="active"  href="#">OVERVIEW</a></li>-->
-      <li><a href='{% url_for controller="package", action="dataset_read", id=pkg.name %}'>OVERVIEW</a></li>
-      <li><a href='{% url_for  action="project_parcels", id=pkg.name %}'>PARCELS</a></li>
-      <li><a href='{% url_for  action="show_map", id=pkg.name %}'>MAP</a></li>
-      <li><a href='{% url_for  action="project_surveys", id=pkg.name %}'>SURVEYS</a></li>
-      <li><a href='{% url_for controller="package", action="dataset_resources", id=pkg.name %}'>RESOURCES</a></li>
-      <li><a href='{% url_for controller="package", action="dataset_read", id=pkg.name %}'>ACTIVITY STREAM</a></li>
-      <!--<li><a  href="#">MAP</a></li>-->
-      <!--<li><a  href="#">SURVEYS</a></li>-->
-      <!--<li><a  href="#">RESOURCES</a></li>-->
-      <!--<li><a  href="#">ACTIVITY STREAM</a></li>-->
+      <div id="project-nav-bar">
+
+  {% block primary_nav_tabs %}
+
+      <li><a class="sub_nav_active"  href="#">OVERVIEW</a></li>
+      <li><a href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>
+      <li><a  href="#">MAP</a></li>
+      <li><a  href="#">SURVEYS</a></li>
+      <li><a  href="#">RESOURCES</a></li>
+      <li><a  href="#">ACTIVITY STREAM</a></li>
     {% endblock %}
 
 
-      <!--{{ h.build_nav_icon('dataset_read', _('  Overview  '), id=pkg.name ) }}-->
+      <!--{{ h.build_nav_icon('project_read', _('  Overview  '), id=pkg.name ) }}-->
       <!--{{ h.build_nav_icon('project_parcels', _('  Parcels  '), id=pkg.name) }}-->
       <!--{{ h.build_nav_icon('project_map', _('  Map  '), id=pkg.name) }}-->
       <!--{{ h.build_nav_icon('project_surveys', _('  Surveys  '), id=pkg.name) }}-->

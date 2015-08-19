@@ -6,6 +6,16 @@
   <a class='active' href="/dataset/{{c.id}}/parcels"> / Parcels</a>
 {% endblock %}
 
+   {% block primary_nav_tabs %}
+
+      <li><a  href="#">OVERVIEW</a></li>
+      <li><a class="sub_nav_active" href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>
+      <li><a  href="#">MAP</a></li>
+      <li><a  href="#">SURVEYS</a></li>
+      <li><a  href="#">RESOURCES</a></li>
+      <li><a  href="#">ACTIVITY STREAM</a></li>
+    {% endblock %}
+
   {% block primary_content_inner %}
   <!-- Empty so the description and map does not come up on this page-->
   {% endblock %}
