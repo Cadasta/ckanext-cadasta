@@ -17,7 +17,7 @@
           <div class="icon-icon_add"></div>
         </span>
 
-
+  {% block primary_nav_tabs %}
     <div id="project-nav-bar">
 
       <li><a class="active"  href="#">OVERVIEW</a></li>
@@ -26,6 +26,8 @@
       <li><a  href="#">SURVEYS</a></li>
       <li><a  href="#">RESOURCES</a></li>
       <li><a  href="#">ACTIVITY STREAM</a></li>
+    {% endblock %}
+
 
       <!--{{ h.build_nav_icon('dataset_read', _('  Overview  '), id=pkg.name ) }}-->
       <!--{{ h.build_nav_icon('project_parcels', _('  Parcels  '), id=pkg.name) }}-->
