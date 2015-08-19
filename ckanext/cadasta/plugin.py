@@ -3,8 +3,8 @@ import ckan.plugins.toolkit as toolkit
 from ckan.plugins import IRoutes
 from routes.mapper import SubMapper
 import ckan.lib.plugins as lib_plugins
-lib_plugins.reset_package_plugins()
 from ckan.lib.plugins import DefaultGroupForm
+
 
 
 
