@@ -1,0 +1,20 @@
+{% extends "package/read.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a class='active' href="/dataset/{{c.id}}/upload_form_data"> / Form Data Upload</a>
+{% endblock %}
+
+  {% block primary_content_inner %}
+  <!-- Empty so the description and map does not come up on this page-->
+  {% endblock %}
+
+{% block project_content %}
+   <form action="http://54.69.121.180:3000/providers/csv/load" method="POST" enctype="multipart/form-data">
+    <input type="file" name="csvupload">
+    <input type="hidden" name="format" value="csv">
+    <button type="submit" class="btn">Submit</button>
+    </form>
+
+{% endblock %}

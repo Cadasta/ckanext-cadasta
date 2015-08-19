@@ -157,6 +157,36 @@ class Cadasta_Controller(PackageController):
 
 
 
+ def form_data_upload(self, id):
+
+        ctype, format = self._content_type_from_accept()
+
+        response.headers['Content-Type'] = ctype
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'for_view': True,
+                   'auth_user_obj': c.userobj}
+        data_dict = {'id': id, 'include_tracking': True}
+
+
+        # check if package exists
+        try:
+            c.pkg_dict = get_action('package_show')(context, data_dict)
+            c.pkg = context['package']
+        except NotFound:
+            abort(404, _('Dataset not found'))
+        except NotAuthorized:
+            abort(401, _('Unauthorized to read package %s') % id)
+
+        package_type = c.pkg_dict['type'] or 'dataset'
+        self._setup_template_variables(context, {'id': id},
+                                       package_type=package_type)
+
+        return render('package/parcels.html',
+                      extra_vars={'dataset_type': package_type})
+
+
+
     def new_parcel(self, id):
 
         new_parcel = True
