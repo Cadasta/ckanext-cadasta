@@ -7,7 +7,7 @@ def get_all_parcels(project_id):
 # this would make an api request using the project id and get back geo_json
 
     #api = 'http://api.tiles.mapbox.com/v3/examples.map-zr0njcqy/markers.geojson'
-    api = 'http://54.69.121.180:3000/parcel'
+    api = 'http://54.69.121.180:3000/parcels'
 
     try:
         r = requests.get(api)
@@ -20,6 +20,25 @@ def get_all_parcels(project_id):
 
 
     return data
+
+
+#
+# def get_parcel_list(project_id):
+# # used for parcels page
+#
+#     api = 'http://54.69.121.180:3000/custom/get_parcels_list'
+#
+#     try:
+#         r = requests.get(api)
+#         data = r.text
+#     except requests.exceptions.ConnectionError:
+#         print '------------------------'
+#         print 'error'
+#         print '------------------------'
+#         data = None
+#
+#
+#     return data
 
 
 
@@ -103,7 +122,7 @@ def get_all_surveys(id):
 
 def list_parcels(id):
 
-      api ='http://54.69.121.180:3000/parcel'
+      api ='http://54.69.121.180:3000/custom/get_parcels_list'
 
       r = requests.get(api)
 
