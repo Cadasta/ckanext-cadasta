@@ -11,7 +11,12 @@ def get_all_parcels(project_id):
 
     r = requests.get(api)
 
-    return r.text
+    try:
+        data = r.text
+    except ValueError:
+        data = None
+
+    return data
 
 
 
@@ -180,6 +185,11 @@ def get_cadasta_activity(project_id):
 
       r = requests.get(api)
 
-      return r.json()
+      try:
+        data = r.json()
+      except ValueError:
+        data = None
+
+      return data
 
 
