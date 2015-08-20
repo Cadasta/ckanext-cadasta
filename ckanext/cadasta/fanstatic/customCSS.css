@@ -183,7 +183,7 @@ subtab {
     width: 100%;
     margin:0;
     margin-top: 13px;
-    min-height:220px;
+    /* min-height:220px; */
     margin-bottom:50px;
 }
 
@@ -648,7 +648,7 @@ a {
     width: 370px;
     margin: 15px auto;
     height: 50px;
-    border-color: 1px solid grey;
+    border: 1px solid #DBDBDA;
 
 }
 
@@ -657,13 +657,18 @@ a {
 }
 
 .loginMaskInput {
-    width: 320px;
+    width: 300px;
+    padding-left:20px;
     position: relative;
     z-index: 2;
     border-style: solid;
     border-radius: 0;
     float: right;
     height: 40px;
+}
+
+.loginMaskInput:focus {
+    border: none;
 }
 
 .loginMaskRow:hover {
@@ -676,7 +681,7 @@ a {
 
 
 .add-account-button {
-    padding-top:25px;
+    padding-top:18px;
 }
 
 .cadasta-button {
@@ -713,3 +718,10 @@ input[type="text"], input[type="password"], input[type="datetime"], input[type="
     border-radius: 0;
     border: none;
 }
+
+
+input[type=checkbox] {
+    position: relative;
+    top: 0;
+    padding: 0;
+    margin: 0;
