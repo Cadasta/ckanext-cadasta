@@ -17,15 +17,15 @@ Example:
 <form action="{{ action }}" method="post" class="form-horizontal">
   {{ form.errors(errors=error_summary) }}
 
-    <div class="loginMaskRow">
-        <div class="icon-icon_profile"></div>
-        <div class="login-separator"></div>
-        <input  id="loginUserName" type="text" class="loginMaskInput" autofocus/>
-    </div>
+    <!--<div class="loginMaskRow">-->
+        <!--<div class="icon-icon_profile"></div>-->
+        <!--<div class="login-separator"></div>-->
+        <!--<input  id="loginUserName" type="text" class="loginMaskInput" autofocus/>-->
+    <!--</div>-->
 
-  <div class="icon-icon_profile"></div> {{ form.input('login', label=_(''), id='field-login', value="", error=username_error, classes=["control-medium"]) }}
+  TEST SPOT {{ form.input('login', label=_(''), id='field-login', value="", error=username_error, classes=[]) }}
 
-  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium", 'icon-icon_profile']) }}
+  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=[]) }}
 
   {{ form.checkbox('remember', label=_("Remember me"), id='field-remember', checked=true, value="63072000") }}
 
