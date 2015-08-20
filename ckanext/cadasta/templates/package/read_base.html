@@ -21,13 +21,12 @@
       <div id="project-nav-bar">
 
   {% block primary_nav_tabs %}
-
-      <li><a class="active"  href="#">OVERVIEW</a></li>
+      <li><a class="active"  href="{{ pkg.name }}">OVERVIEW</a></li>
       <li><a href='{{ pkg.name }}/parcels'>PARCELS</a></li>
-      <li><a  href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>MAP</a></li>
-      <li><a  href="#">SURVEYS</a></li>
-      <li><a  href="#">RESOURCES</a></li>
-      <li><a  href="#">ACTIVITY STREAM</a></li>
+      <li><a  href='{{ pkg.name }}/map'>MAP</a></li>
+      <li><a  href='{{ pkg.name }}/surveys'>SURVEYS</a></li>
+      <li><a  href='{{ pkg.name }}/resources'>RESOURCES</a></li>
+      <li><a  href='{{ pkg.name }}/activity_stream'>ACTIVITY STREAM</a></li>
     {% endblock %}
 
 
