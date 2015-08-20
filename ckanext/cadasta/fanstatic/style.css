@@ -45,6 +45,7 @@
 .icon-icon_add_parcel:before {
 	content: "\e603";
 	font-size:40px;
+	color: #256c97;
 }
 
 .icon-icon_export:before {

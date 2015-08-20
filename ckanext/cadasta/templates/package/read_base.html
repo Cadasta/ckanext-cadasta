@@ -22,9 +22,9 @@
 
   {% block primary_nav_tabs %}
 
-      <li><a class="sub_nav_active"  href="#">OVERVIEW</a></li>
-      <li><a href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>Parcels</a></li>
-      <li><a  href="#">MAP</a></li>
+      <li><a class="active"  href="#">OVERVIEW</a></li>
+      <li><a href='project/{id}/parcels'>PARCELS</a></li>
+      <li><a  href='{% url_for controller="controller", action="read_parcels", id=pkg.name %}'>MAP</a></li>
       <li><a  href="#">SURVEYS</a></li>
       <li><a  href="#">RESOURCES</a></li>
       <li><a  href="#">ACTIVITY STREAM</a></li>

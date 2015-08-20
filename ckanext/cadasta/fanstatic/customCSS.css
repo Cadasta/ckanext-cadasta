@@ -603,4 +603,6 @@ dataset-list {
 .filter-box {
     border: 1px solid #dcdfe1;
     background-color: white;
+    background-color: white;
+    padding: 20px;
 }
