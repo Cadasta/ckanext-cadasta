@@ -25,7 +25,8 @@
         <div class="filter-box">
             Filter By:<select>
                           <option>Parcel ID</option>
-                          <option>Number of Active Relationships</option>
+                          <option>Area</option>
+                          <option>Number of Active Parties</option>
                           <option>Date Created</option>
                      </select>
                      <select>
@@ -45,6 +46,7 @@
         <thead>
             <tr>
                 <th>Parcel ID</th>
+                <th>Area</th>
                 <th>Number of Active Relationships</th>
                 <th>Date Created</th>
 
@@ -55,6 +57,7 @@
             <tr>
               <td><a href='http://50.112.108.132:5000/project/{{ pkg.name }}/parcel/{{ parcel.properties.id }}' >{{ parcel.properties.id }}</a></td>
               <td> {{ parcel.properties.area }} </td>
+              <td> {{ parcel.properties.active_relationships }} </td>
               <td> {{ parcel.properties.time_created }} </td>
             </tr>
           {% endfor %}
