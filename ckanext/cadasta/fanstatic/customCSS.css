@@ -50,7 +50,7 @@ body {
 
 table {
     text-align:center;
-    border: 1px solid grey;
+    border: 1px solid #dcdfe1;
     width:90%
 }
 
@@ -624,4 +624,14 @@ a:active {
 
 .search {
     float:right;
+}
+
+.login-block {
+    border: 1px solid #dcdfe1;
+}
+
+.secondary-login-block {
+    background-color: white;
+    border: 1px solid #dcdfe1;
+    height: 50px;
 }
