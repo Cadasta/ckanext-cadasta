@@ -746,3 +746,14 @@ input[type=checkbox] {
     border-bottom: 2px solid #256c97;
     text-decoration: none;
 }
+
+
+.register-input {
+    width: 356px;
+    height: 40px;
+    border: none;
+}
+
+*:focus {
+    outline: 0;
+}
