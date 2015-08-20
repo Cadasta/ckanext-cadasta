@@ -16,6 +16,8 @@ def get_all_parcels(project_id):
     except ValueError:
         data = None
 
+    print data
+
     return data
 
 
