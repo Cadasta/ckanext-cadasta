@@ -18,9 +18,6 @@ def get_all_parcels(project_id):
         print '------------------------'
         data = None
 
-    print '------------------------'
-    print data
-    print '------------------------'
 
     return data
 
