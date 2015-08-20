@@ -669,6 +669,7 @@ a {
 
 .loginMaskInput:focus {
     border: none;
+    outline:0;
 }
 
 .loginMaskRow:hover {
