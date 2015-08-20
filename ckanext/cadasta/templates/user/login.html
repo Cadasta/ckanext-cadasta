@@ -3,7 +3,8 @@
 {% block subtitle %}{{ _('Login') }}{% endblock %}
 
 {% block breadcrumb_content %}
-  <!--<li class="active">{{ h.nav_link(_('Login'), controller='user', action='login') }}</li>-->
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <li class="active">{{ h.nav_link(_('Login'), controller='user', action='login') }}</li>
 {% endblock %}
 
 <h1 class="page-heading">{% block page_heading %}{{ _('LOGIN') }}{% endblock %}</h1>
@@ -19,9 +20,13 @@
 {% endblock %}
 
 {% block secondary_content %}
+  <!-- left blank so there isn't a large div included for project info-->
+{% endblock %}
+
+ {% block tertiary_content %}
   {% if h.check_access('user_create') %}
-     <div>
-      Need an account? <a class="secondary-login-block" href="{{ h.url_for(controller='user', action='register') }}">Sign Up</a>
+     <div class="secondary-login-block">
+      Need an account? <a href="{{ h.url_for(controller='user', action='register') }}">Sign Up</a>
      </div>
   {% endif %}
 {% endblock %}
