@@ -648,7 +648,7 @@ a {
     width: 370px;
     margin: 15px auto;
     height: 50px;
-    border-color: #black;
+    border-color: 1px solid grey;
 
 }
 
@@ -657,7 +657,7 @@ a {
 }
 
 .loginMaskInput {
-    width: 330px;
+    width: 320px;
     position: relative;
     z-index: 2;
     border-style: solid;
