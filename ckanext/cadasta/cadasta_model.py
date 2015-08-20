@@ -12,7 +12,7 @@ def get_all_parcels(project_id):
     try:
         r = requests.get(api)
         data = r.text
-    except requests.exceptions:
+    except requests.exceptions.ConnectionError:
         print '------------------------'
         print 'error'
         print '------------------------'
