@@ -648,6 +648,7 @@ a {
     width: 370px;
     margin: 15px auto;
     height: 50px;
+    border-color: #DBDBDA;
 
 }
 
@@ -660,13 +661,13 @@ a {
     position: relative;
     z-index: 2;
     border-style: solid;
-    border-color: #DBDBDA;
     border-radius: 0;
     float: right;
+    height: 40px;
 }
 
 .loginMaskRow:hover {
-    border-color: #256C97;
+    border: 1px solid #256C97;
 }
 
 .add-account-button {
