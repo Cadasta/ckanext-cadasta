@@ -9,7 +9,10 @@
   {{ form.input("password1", id="field-password", label=_("Password"), type="password", placeholder="••••••••", value=data.password1, error=errors.password1, classes=["control-medium"]) }}
   {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", placeholder="••••••••", value=data.password2, error=errors.password1, classes=["control-medium"]) }}
 
-
+    <div class="loginMaskRow">
+        <div class="icon-icon_profile_login"></div>
+        <input type="text" class="loginMaskInput" id="field-login" placeholder="username"/>
+    </div>
 
   {% if g.recaptcha_publickey %}
     {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
