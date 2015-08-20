@@ -656,7 +656,7 @@ a {
 }
 
 .loginMaskInput {
-    width: 350px;
+    width: 330px;
     position: relative;
     z-index: 2;
     border-style: solid;
@@ -665,7 +665,7 @@ a {
     float: right;
 }
 
-.loginMaskRow:active{
+.loginMaskRow:hover {
     border-color: #256C97;
 }
 
