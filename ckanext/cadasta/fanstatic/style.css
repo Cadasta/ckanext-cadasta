@@ -107,7 +107,9 @@
 .icon-icon_profile_login:before {
 	content: "\e60d";
 	color:#256C97;
-	font-size:23px;
+	font-size:28px;
+	position: relative;
+    top: 15px;
 }
 
 

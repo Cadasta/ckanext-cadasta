@@ -648,7 +648,7 @@ a {
     width: 370px;
     margin: 15px auto;
     height: 50px;
-    border-color: #DBDBDA;
+    border-color: #black;
 
 }
 
@@ -669,6 +669,11 @@ a {
 .loginMaskRow:hover {
     border: 1px solid #256C97;
 }
+
+.loginMaskRow:active {
+    border: 1px solid #256C97;
+}
+
 
 .add-account-button {
     padding-top:25px;
@@ -699,4 +704,12 @@ input[type="text"], input[type="password"], input[type="datetime"], input[type="
 
 #field-password {
     height: 40px;
+    border-radius: 0;
+    border: none;
+}
+
+#field-login {
+    height: 40px;
+    border-radius: 0;
+    border: none;
 }
