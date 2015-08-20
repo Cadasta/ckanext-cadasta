@@ -667,7 +667,7 @@ a {
     height: 40px;
 }
 
-.loginMaskInput:focus {
+.loginMaskInput input:focus {
     border: none;
     outline:0;
 }
