@@ -739,7 +739,7 @@ input[type=checkbox] {
 }
 
 
-.active-nav {
+#project-nav-bar li a .active-nav {
     color: #256c97;
     font-weight: bold;
     border-bottom: 2px solid #256c97;
