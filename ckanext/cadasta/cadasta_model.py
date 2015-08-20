@@ -183,7 +183,7 @@ def get_relationship_details(relationship_id):
 
 def get_cadasta_activity(project_id):
 
-      api ='http://54.69.121.180:3000/activity'
+      api ='http://54.69.121.180:3000/activities'
 
       r = requests.get(api)
 
