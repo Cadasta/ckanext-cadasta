@@ -114,17 +114,17 @@ class Cadasta_Controller(PackageController):
     def read_parcels(self, id):
 
         # todo this is uniocde, what format does this need to be in to push it back to db
-        geom = request.params.get('parcel_geom')
+        # geom = request.params.get('parcel_geom')
 
         parcel_list = cadasta_model.list_parcels(id)
 
-        for parcel in parcel_list['features']:
+        if parcel_list:
+            for parcel in parcel_list['features']:
 
+                reformatted_date = parse(parcel['properties']['time_created'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
 
-            reformatted_date = parse(parcel['properties']['time_created'])
-            reformatted_date = reformatted_date.strftime("%d/%m/%y")
-
-            parcel['properties']['time_created'] = reformatted_date
+                parcel['properties']['time_created'] = reformatted_date
 
 
 
@@ -152,7 +152,7 @@ class Cadasta_Controller(PackageController):
                                        package_type=package_type)
 
         return render('package/parcels.html',
-                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list, 'geom': geom})
+                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list})
 
 
 
