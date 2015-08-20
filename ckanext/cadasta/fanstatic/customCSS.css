@@ -672,3 +672,11 @@ a {
 .add-account-button {
     padding-top:25px;
 }
+
+.cadasta-button {
+    background-color: #256C97;
+    border: none;
+    color: white;
+    padding: 10px 30px 10px 30px;
+    margin-top: 20px;
+}

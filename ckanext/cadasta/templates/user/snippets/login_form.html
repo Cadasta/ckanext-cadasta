@@ -19,15 +19,15 @@ Example:
 
     <div class="loginMaskRow">
         <div class="icon-icon_profile_login"></div>
-        <input  id="loginUserName" type="text" class="loginMaskInput" autofocus/>
+        <input type="text" class="loginMaskInput" id="field-login" placeholder="username"/>
     </div>
 
     <div class="loginMaskRow">
         <div class="icon-icon_profile_login"></div>
-        <input  id="loginUserPassword" type="text" class="loginMaskInput" autofocus/>
+        <input   type="password" id="field-password" type="text" class="loginMaskInput" autofocus/>
     </div>
 
-    <input  id="loginRememberUser" type="checkbox" class="remember-user" autofocus/>
+    <input  id="loginRememberUser" type="checkbox" class="remember-user" autofocus/> Remember Me
 
   <!-- {{ form.input('login888', label=_('labellll'), id='field-login', value="", error=username_error, classes=[]) }}-->
 
@@ -37,7 +37,7 @@ Example:
 
   <div>
     {% block login_button %}
-    <button class="" type="submit">{{ _('Login') }}</button>
+    <button class="cadasta-button" type="submit">{{ _('LOGIN') }}</button>
     {% endblock %}
   </div>
 </form>
