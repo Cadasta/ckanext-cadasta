@@ -104,7 +104,7 @@
 	font-size:20px;
 }
 
-.icon-icon_profile_login:before {
+.icon-icon_profile_login {
 	content: "\e60d";
 	color:#256C97;
 	font-size:28px;

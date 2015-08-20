@@ -718,6 +718,11 @@ input[type="text"], input[type="password"], input[type="datetime"], input[type="
     height: 40px;
     border-radius: 0;
     border: none;
+    position: relative;
+    z-index: 2;
+    padding: 0;
+    width: 350px;
+}
 }
 
 
