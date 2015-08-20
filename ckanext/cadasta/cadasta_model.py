@@ -9,11 +9,13 @@ def get_all_parcels(project_id):
     #api = 'http://api.tiles.mapbox.com/v3/examples.map-zr0njcqy/markers.geojson'
     api = 'http://54.69.121.180:3000/parcel'
 
-    r = requests.get(api)
-
     try:
+        r = requests.get(api)
         data = r.text
-    except ValueError:
+    except:
+        print '------------------------'
+        print 'error'
+        print '------------------------'
         data = None
 
     print '------------------------'
