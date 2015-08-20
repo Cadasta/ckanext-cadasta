@@ -644,46 +644,6 @@ a {
 }
 
 
-.loginMaskRow {
-    width: 325px;
-    margin: 15px auto;
-    height: 50px;
-}
-
-.loginMaskLabel {
-    font-size:16px;
-}
-
-.loginMaskInput {
-    width: 326px;
-    font-size: 21px;
-    height: 48px;
-    color: rgb(153, 153, 153);
-    position: relative;
-    padding: 0px 10px 0px 56px;
-    z-index: 2;
-    bottom: 47px;
-    border-style: solid;
-    border-color: #e4e4e4;
-    border-radius: 3px;
-}
-
-.maskActionButton {
-    height: 52px;
-    line-height: 50px;
-    background: #fc8123;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-    width: 154px;
-    margin: 30px auto;
-    font-size: 19px;
-}
-
-.maskActionButton:hover{
-    background: rgb(239, 160, 27);
-}
-
 .add-account-button {
     padding-top:25px;
 }
