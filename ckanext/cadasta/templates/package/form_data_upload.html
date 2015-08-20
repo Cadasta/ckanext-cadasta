@@ -11,10 +11,28 @@
   {% endblock %}
 
 {% block project_content %}
-   <form action="http://54.69.121.180:3000/providers/csv/load" method="POST" enctype="multipart/form-data">
-    <input type="file" name="file_upload">
-    <input type="hidden" name="format" value="csv">
-    <button type="submit" class="btn">Submit</button>
+<div>
+    <span>CSV Test</span>
+    <form action="http://54.69.121.180:3000/providers/csv/load" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
     </form>
 
+</div>
+    
+<div>
+    <span>GeoJSON Test</span>
+    <form action="http://54.69.121.180:3000/providers/geojson/load" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+<div>
+    <span>ONA Test</span>
+    <form action="http://54.69.121.180:3000/providers/ona/load" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
 {% endblock %}
