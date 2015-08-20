@@ -23,8 +23,17 @@
 {% block project_content %}
     <div>
         <div class="filter-box">
-            Filter By: <input class="filter_by" type="text" name="q" placeholder="{{ _('Date') }}" />
-            Sort By: <input class="sort_by" type="text" name="q" placeholder="{{ _('Name Ascending') }}" />
+            Filter By:<select>
+                          <option>Parcel ID</option>
+                          <option>Number of Active Relationships</option>
+                          <option>Date Created</option>
+                     </select>
+                     <select>
+                        Sort By
+                          <option>Parcel ID</option>
+                          <option>Number of Active Relationships</option>
+                          <option>Date Created</option>
+                     </select>
             <input class="sort_by" type="text" name="q" placeholder="{{ _('Search') }}" />
 
 

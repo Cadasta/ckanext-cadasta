@@ -606,3 +606,11 @@ dataset-list {
     background-color: white;
     padding: 20px;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
