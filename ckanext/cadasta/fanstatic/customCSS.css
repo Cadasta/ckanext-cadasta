@@ -726,3 +726,9 @@ input[type=checkbox] {
     top: 0;
     padding: 0;
     margin: 0;
+    }
+
+#field-password input:focus {
+    border: none;
+    outline: 0;
+}
