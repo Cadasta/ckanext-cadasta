@@ -23,7 +23,9 @@
   <!-- left blank so there isn't a large div included for project info-->
   {% if h.check_access('user_create') %}
      <div class="secondary-login-block">
-      Need an account? <a href="{{ h.url_for(controller='user', action='register') }}">Sign Up</a>
+         <div class="add-account-button">
+            Need an account? <a href="{{ h.url_for(controller='user', action='register') }}">Sign Up</a>
+         </div>
      </div>
   {% endif %}
 {% endblock %}

@@ -632,6 +632,8 @@ a {
 
 .login-block {
     border: 1px solid #dcdfe1;
+    padding-bottom:40px;
+    text-align:center;
 }
 
 .secondary-login-block {
@@ -680,4 +682,8 @@ a {
 
 .maskActionButton:hover{
     background: rgb(239, 160, 27);
+}
+
+.add-account-button {
+    padding-top:25px;
 }
