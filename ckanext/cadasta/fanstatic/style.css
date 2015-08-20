@@ -104,6 +104,13 @@
 	font-size:20px;
 }
 
+.icon-icon_profile_login:before {
+	content: "\e60d";
+	color:#256C97;
+	font-size:23px;
+}
+
+
 .icon-icon_profile:hover {
 	text-decoration: none;
 }

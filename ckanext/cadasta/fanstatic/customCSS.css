@@ -644,6 +644,31 @@ a {
 }
 
 
+.loginMaskRow {
+    width: 370px;
+    margin: 15px auto;
+    height: 50px;
+
+}
+
+.loginMaskLabel {
+    font-size:16px;
+}
+
+.loginMaskInput {
+    width: 350px;
+    position: relative;
+    z-index: 2;
+    border-style: solid;
+    border-color: #DBDBDA;
+    border-radius: 0;
+    float: right;
+}
+
+.loginMaskRow:active{
+    border-color: #256C97;
+}
+
 .add-account-button {
     padding-top:25px;
 }
