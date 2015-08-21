@@ -74,13 +74,15 @@ class Cadasta_Controller(PackageController):
         all_parcels = cadasta_model.get_all_parcels(id)
         activity_list = cadasta_model.get_cadasta_activity(id)
 
-        for activity in activity_list['features']:
+
+        if activity_list:
+            for activity in activity_list['features']:
 
 
-            reformatted_date = parse(activity['properties']['time_created'])
-            reformatted_date = reformatted_date.strftime("%d/%m/%y")
+                reformatted_date = parse(activity['properties']['time_created'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
 
-            activity['properties']['time_created'] = reformatted_date
+                activity['properties']['time_created'] = reformatted_date
 
 
         ctype, format = self._content_type_from_accept()

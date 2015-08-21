@@ -754,3 +754,13 @@ input[type=checkbox] {
     border: 1px solid #DBDBDA;
 
 }
+
+input[type="text"].register-input {
+    width: 356px;
+    height: 40px;
+    border: none;
+}
+
+input[type="text"].register-input :focus {
+    outline: 0;
+}

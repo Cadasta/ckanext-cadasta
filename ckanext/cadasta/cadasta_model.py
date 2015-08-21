@@ -22,26 +22,6 @@ def get_all_parcels(project_id):
     return data
 
 
-#
-# def get_parcel_list(project_id):
-# # used for parcels page
-#
-#     api = 'http://54.69.121.180:3000/custom/get_parcels_list'
-#
-#     try:
-#         r = requests.get(api)
-#         data = r.text
-#     except requests.exceptions.ConnectionError:
-#         print '------------------------'
-#         print 'error'
-#         print '------------------------'
-#         data = None
-#
-#
-#     return data
-
-
-
 def get_parcel_geom(project_id):
     example_geom = {
       "type": "FeatureCollection",
@@ -203,7 +183,7 @@ def get_relationship_details(relationship_id):
 
 def get_cadasta_activity(project_id):
 
-      api ='http://54.69.121.180:3000/activity'
+      api ='http://54.69.121.180:3000/activities'
 
       r = requests.get(api)
 
