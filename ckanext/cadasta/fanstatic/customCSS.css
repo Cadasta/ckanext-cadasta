@@ -746,3 +746,11 @@ input[type=checkbox] {
     border-bottom: 2px solid #256c97;
     text-decoration: none;
 }
+
+#project-content .project_content_inner_wrapper{
+
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #DBDBDA;
+
+}
