@@ -146,6 +146,8 @@ subtab {
     border: 1px solid #dcdfe1;
 }
 
+/* RW - commenting this out for now.  Make the CSS selector more specific so that only #project-content in a certain parent div gets 100% width.
+
 .module-content {
     margin:0;
     width:100%;
@@ -154,10 +156,17 @@ subtab {
 
 
 
+/*#project-content {*/
+    /*margin:0;*/
+    /*padding:0;*/
+    /*height:100%;*/
+    /*background-color: #eef2f5;*/
+/*}
+*/
+
 #project-content {
     margin:0;
     padding:0;
-    height:100%;
     background-color: #eef2f5;
 }
 
@@ -240,7 +249,7 @@ header .header-container {
 /*}*/
 
 .row {
-  margin-left: -20px;
+margin-left: -20px;
 }
 
 #content {
@@ -699,20 +708,19 @@ a {
     margin-top: 20px;
 }
 
-
-input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    -webkit-box-shadow: none;
-    border-radius: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
-
-}
+/* RW - Commenting this out for now.  Let's make the CSS selector more specific, so that we're only making the inputs on the Login Page (for example) this size.   */
+/*input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {*/
+    /*background-color: #ffffff;*/
+    /*border: 1px solid #cccccc;*/
+    /*-webkit-box-shadow: none;*/
+    /*border-radius: none;*/
+    /*-moz-box-shadow: none;*/
+    /*box-shadow: none;*/
+    /*-webkit-transition: none;*/
+    /*-moz-transition: none;*/
+    /*-o-transition: none;*/
+    /*transition: none;*/
+/*}*/
 
 #field-password {
     height: 40px;
