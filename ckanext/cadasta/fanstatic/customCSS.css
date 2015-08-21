@@ -230,13 +230,17 @@ header .header-container {
 }
 
 
+/* Sarah's row modification.  Putting it back to default to we don't throw of the default CKAN look and feel. */
+/*.row {*/
+    /*height:0;*/
+    /*border:none;*/
+    /*background-color: #eef2f5;*/
+    /*width:860px;*/
+    /*border: none;*/
+/*}*/
 
 .row {
-    height:0;
-    border:none;
-    background-color: #eef2f5;
-    width:860px;
-    border: none;
+  margin-left: -20px;
 }
 
 #content {
