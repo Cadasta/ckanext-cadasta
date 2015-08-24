@@ -103,8 +103,8 @@ def get_all_surveys(id):
 def list_parcels(id,filter=None,sort=None):
 
       if (filter is not None):
-          print 'found filter parameter. ', options['filter']
-          api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + options[filter]
+          print 'found filter parameter. ', filter
+          api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + filter
 
       else:
           print 'executing parcel lookup with no filter'
