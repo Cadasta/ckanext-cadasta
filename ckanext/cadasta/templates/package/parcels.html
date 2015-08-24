@@ -22,11 +22,13 @@
 {% block project_content %}
     <div>
         <div class="filter-box">
-                    <select class="sort-box">
+            <form method="post">
+
+                     <select name="filter" class="sort-box">
                           <option>Show Only:</option>
-                          <option>Leased Parcels</option>
-                          <option>Occupied Parcels</option>
-                          <option>Informally Occupied Parcels</option>
+                          <option value="lease">Leased Parcels</option>
+                          <option value="own">Occupied Parcels</option>
+                          <option value="occupy">Informally Occupied Parcels</option>
                      </select>
                      <select class="sort-box">
                           <option>Sort By:</option>
@@ -34,7 +36,11 @@
                           <option>Number of Active Relationships</option>
                           <option>Date Created</option>
                      </select>
-            <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
+
+                <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
+
+            </form>
+
 
 
         </div>
