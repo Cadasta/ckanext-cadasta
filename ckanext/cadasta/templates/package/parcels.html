@@ -8,7 +8,7 @@
 
    {% block primary_nav_tabs %}
       <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
-      <li><a  class="active-nav" href=''/'>PARCELS</a></li>
+      <li><a  class="active-nav" href='/'>PARCELS</a></li>
       <li><a  href='{{ pkg.name }}/map'>MAP</a></li>
       <li><a  href='{{ pkg.name }}/surveys'>SURVEYS</a></li>
       <li><a  href='{{ pkg.name }}/resources'>RESOURCES</a></li>
@@ -23,11 +23,10 @@
     <div>
         <div class="filter-box">
                     <select class="sort-box">
-                          <option>Filter By:</option>
-                          <option>Parcel ID</option>
-                          <option>Area</option>
-                          <option>Number of Active Parties</option>
-                          <option>Date Created</option>
+                          <option>Show Only:</option>
+                          <option>Leased Parcels</option>
+                          <option>Occupied Parcels</option>
+                          <option>Informally Occupied Parcels</option>
                      </select>
                      <select class="sort-box">
                           <option>Sort By:</option>
@@ -55,7 +54,7 @@
         <tbody>
          {% for parcel in parcel_list.features %}
             <tr>
-              <td><a href='http://50.112.108.132:5000/project/{{ pkg.name }}/parcel/{{ parcel.properties.id }}' >{{ parcel.properties.id }}</a></td>
+              <td><a href='http://50.112.108.132:5000/project/{{ pkg.name }}/parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
               <td> {{ parcel.properties.area }} </td>
               <td> {{ parcel.properties.num_relationships }} </td>
               <td> {{ parcel.properties.time_created }} </td>
