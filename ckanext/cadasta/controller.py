@@ -119,10 +119,10 @@ class Cadasta_Controller(PackageController):
         # geom = request.params.get('parcel_geom')
 
         #get filter params
-        filters = request.params.get('filter')
+        filterArg = request.params.get('filter')
 
         #if filters exist, ask API to filter parcels and respond
-        parcel_list = cadasta_model.list_parcels(id, filters)
+        parcel_list = cadasta_model.list_parcels(id, filter=filterArg)
 
         if parcel_list:
             for parcel in parcel_list['features']:

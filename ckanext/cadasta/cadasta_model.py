@@ -99,10 +99,10 @@ def get_all_surveys(id):
   return survey_json
 
 
-#**options is an arg that is optional.  For example sort="Id" or filter="lease"
-def list_parcels(id,**options):
+#For example sort="Id" or filter="lease"
+def list_parcels(id,filter=None,sort=None):
 
-      if ('filter' in options):
+      if (filter is not None):
           print 'found filter parameter. ', options['filter']
           api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + options[filter]
 
