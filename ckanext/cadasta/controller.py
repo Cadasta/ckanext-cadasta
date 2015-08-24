@@ -158,7 +158,7 @@ class Cadasta_Controller(PackageController):
                                        package_type=package_type)
 
         return render('package/parcels.html',
-                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list})
+                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list, 'filter': request.params.get('filter')})
 
 
 
