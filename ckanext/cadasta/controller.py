@@ -121,8 +121,11 @@ class Cadasta_Controller(PackageController):
         #get filter params
         filterArg = request.params.get('filter')
 
+        #get sort params
+        sortArg = request.params.get('sort')
+
         #if filters exist, ask API to filter parcels and respond
-        parcel_list = cadasta_model.list_parcels(id, filter=filterArg)
+        parcel_list = cadasta_model.list_parcels(id, filter=filterArg, sort=sortArg)
 
         if parcel_list:
             for parcel in parcel_list['features']:
@@ -158,7 +161,7 @@ class Cadasta_Controller(PackageController):
                                        package_type=package_type)
 
         return render('package/parcels.html',
-                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list, 'filter': request.params.get('filter')})
+                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list, 'filter': request.params.get('filter'), 'sort': request.params.get('sort')})
 
 
 

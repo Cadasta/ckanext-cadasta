@@ -102,13 +102,18 @@ def get_all_surveys(id):
 #For example sort="Id" or filter="lease"
 def list_parcels(id,filter=None,sort=None):
 
+      qs = ""
+
       if (filter is not None):
           print 'found filter parameter. ', filter
-          api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + filter
+          qs = qs + 'tenure_type=' + filter
+
+      elif (sort is not None):
+          qs = qs + 'sort_by=' + sort
 
       else:
           print 'executing parcel lookup with no filter'
-          api ='http://54.69.121.180:3000/custom/get_parcels_list'
+          api ='http://54.69.121.180:3000/custom/get_parcels_list?' + qs
 
       r = requests.get(api)
 
