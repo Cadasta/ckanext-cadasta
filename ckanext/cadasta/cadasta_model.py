@@ -99,10 +99,16 @@ def get_all_surveys(id):
   return survey_json
 
 
+#**options is an arg that is optional.  For example sort="Id" or filter="lease"
+def list_parcels(id,**options):
 
-def list_parcels(id):
+      if ('filter' in options):
+          print 'found filter parameter. ', options['filter']
+          api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + options[filter]
 
-      api ='http://54.69.121.180:3000/custom/get_parcels_list'
+      else
+          print 'executing parcel lookup with no filter'
+          api ='http://54.69.121.180:3000/custom/get_parcels_list'
 
       r = requests.get(api)
 

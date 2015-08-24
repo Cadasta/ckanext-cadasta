@@ -117,10 +117,12 @@ class Cadasta_Controller(PackageController):
 
         # todo this is uniocde, what format does this need to be in to push it back to db
         # geom = request.params.get('parcel_geom')
-        filters = request.params.get('filter')
-        print filters
 
-        parcel_list = cadasta_model.list_parcels(id)
+        #get filter params
+        filters = request.params.get('filter')
+
+        #if filters exist, ask API to filter parcels and respond
+        parcel_list = cadasta_model.list_parcels(id, filters)
 
         if parcel_list:
             for parcel in parcel_list['features']:
