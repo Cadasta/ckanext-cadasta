@@ -113,7 +113,8 @@ def list_parcels(id,filter=None,sort=None):
 
       else:
           print 'executing parcel lookup with no filter'
-          api ='http://54.69.121.180:3000/custom/get_parcels_list?' + qs
+
+      api = 'http://54.69.121.180:3000/custom/get_parcels_list?' + qs
 
       r = requests.get(api)
 
