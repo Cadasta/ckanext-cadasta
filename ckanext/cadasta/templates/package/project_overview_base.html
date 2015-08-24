@@ -1,0 +1,87 @@
+{% ckan_extends %}
+
+
+  {% block content_action %}
+  {% endblock %}
+
+  {% block content_primary_nav %}
+
+      <div id='project-title'>
+         <span class="project-title">{{ pkg.name }} </span>
+        <span class="project-control-buttons-right">
+          <div class="icon-icon_edit"></div>
+          <div class="icon-icon_export"></div>
+          <!--{% if h.check_access('package_update', {'id':pkg.id }) %}-->
+                <!--{% link_for _(''), controller='package', action='edit', id=pkg.name, class_='button', icon='wrench' %}-->
+          <!--{% endif %}-->
+          <a href="/project/{{ pkg.name }}/form_data_upload"><div class="icon-icon_add"></div></a>
+        </span>
+
+
+      <div id="project-nav-bar">
+
+  {% block primary_nav_tabs %}
+      <li><a class="active-nav"  href="{{ pkg.name }}">OVERVIEW</a></li>
+      <li><a href='{{ pkg.name }}/parcels'>PARCELS</a></li>
+      <li><a  href='{{ pkg.name }}/map'>MAP</a></li>
+      <li><a  href='{{ pkg.name }}/surveys'>SURVEYS</a></li>
+      <li><a  href='{{ pkg.name }}/resources'>RESOURCES</a></li>
+      <li><a  href='{{ pkg.name }}/activity_stream'>ACTIVITY STREAM</a></li>
+    {% endblock %}
+
+
+      <!--{{ h.build_nav_icon('dataset_read', _('  Overview  '), id=pkg.name ) }}-->
+      <!--{{ h.build_nav_icon('project_parcels', _('  Parcels  '), id=pkg.name) }}-->
+      <!--{{ h.build_nav_icon('project_map', _('  Map  '), id=pkg.name) }}-->
+      <!--{{ h.build_nav_icon('project_surveys', _('  Surveys  '), id=pkg.name) }}-->
+      <!--{{ h.build_nav_icon('dataset_resources', _('  Resources  '), id=pkg.name) }}-->
+      <!--{{ h.build_nav_icon('dataset_activity', _('  Activity Stream  '), id=pkg.name) }}-->
+      <!--<li>-->
+        <!--<div class="search-field" action="{% url_for controller='package', action='search' %}" method="get">-->
+          <!--<div class="search-box-field">-->
+            <!--&lt;!&ndash;<label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>&ndash;&gt;-->
+            <!--<input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />-->
+            <!--<div class="icon-icon_search_loop"></div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</li>-->
+
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block primary_content_inner %}
+
+    <div id="project-header">
+
+      <div id='project-desc' class="project-block">
+         <span class="small-heading">DESCRIPTION</span>
+                {{ c.pkg_notes_formatted }}
+      </div>
+
+      <div id="project-extent">
+
+        {% resource 'cadasta/customCSS.css' %}
+        {% resource 'cadasta/map.js' %}
+
+
+        <div id='small_map'></div>
+        <meta id="small_map_data" data-obj="{{all_parcels}}">
+        <meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">
+
+    </div>
+  {% endblock %}
+
+  {% block secondary_content %}
+
+    <div id="project-content">
+      {% block project_content %} {% endblock %}
+    </div>
+
+  {% endblock %}
+
+
+
+
+  {% block links %}
+  {% endblock %}

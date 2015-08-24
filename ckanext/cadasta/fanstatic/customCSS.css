@@ -303,12 +303,11 @@ li {
     width: 450px;
 }
 
+/* RW - removed fixed height so activity feed will push down without an internal scrollbar */
 #project-activity-summary {
     width:510px;
-    height:200px;
     padding-top:12px;
     padding-left:25px;
-    text-size:10px;
     float:left;
     border: 1px solid #dcdfe1;
 
