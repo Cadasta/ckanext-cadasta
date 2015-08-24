@@ -106,7 +106,7 @@ def list_parcels(id,**options):
           print 'found filter parameter. ', options['filter']
           api ='http://54.69.121.180:3000/custom/get_parcels_list?tenure_type=' + options[filter]
 
-      else
+      else:
           print 'executing parcel lookup with no filter'
           api ='http://54.69.121.180:3000/custom/get_parcels_list'
 
