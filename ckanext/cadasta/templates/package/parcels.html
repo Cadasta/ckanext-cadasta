@@ -24,7 +24,7 @@
         <div class="filter-box">
             <form method="post">
 
-                     <select name="filter" class="sort-box">
+                     <select name="filter" class="sort-box" onchange="this.form.submit()">
                           <option>Show Only:</option>
                           <option value="lease">Leased Parcels</option>
                           <option value="own">Occupied Parcels</option>
@@ -37,8 +37,8 @@
                           <option>Date Created</option>
                      </select>
 
-                <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
-
+                    <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
+                    <noscript><input type="submit" value="Submit"></noscript>
             </form>
 
 
