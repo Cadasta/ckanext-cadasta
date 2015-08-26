@@ -713,6 +713,8 @@ a {
     color: white;
     padding: 10px 30px 10px 30px;
     margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* RW - Commenting this out for now.  Let's make the CSS selector more specific, so that we're only making the inputs on the Login Page (for example) this size.   */
@@ -807,6 +809,7 @@ input[type="text"].register-input :focus {
 .login-block select, .login-block textarea, .login-block input[type="text"], .login-block input[type="password"], .login-block input[type="datetime"], .login-block input[type="datetime-local"], .login-block input[type="date"], .login-block input[type="month"], .login-block input[type="time"], .login-block input[type="week"], .login-block input[type="number"], .login-block input[type="email"], .login-block input[type="url"], .login-block input[type="search"], .login-block input[type="tel"], .login-block input[type="color"], .login-block .uneditable-input {
     height: 40px;
     line-height: 40px;
+    border-radius: 1px;
 }
 
 .login-block .form-horizontal .control-group {
@@ -819,4 +822,12 @@ input[type="text"].register-input :focus {
 
 .login-block .form-horizontal .control-label {
     display: none;
+}
+
+.login-block .page-heading {
+    margin-top: 0;
+    color: #256C97;
+    text-transform: uppercase;
+    font-size: 24pt;
+    font-weight: 400;
 }
