@@ -10,6 +10,18 @@ body {
     background-color:#eef2f5;
 }
 
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
 
 .wrapper {
     box-shadow:none;
@@ -633,10 +645,7 @@ a {
 }
 
 .sort-box {
-    width: 100px;
-    padding: 0;
     margin-right: 20px;
-    float: left;
 }
 
 .search {
@@ -777,4 +786,8 @@ input[type="text"].register-input :focus {
 
 .filter-box .filter-group{
     float: left;
+}
+
+.filter-group label, .filter-group select {
+    display: inline;
 }
