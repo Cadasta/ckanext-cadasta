@@ -618,7 +618,6 @@ dataset-list {
     background-color: white;
     background-color: white;
     padding: 20px;
-    height: 30px;
 }
 
 a:hover {
@@ -774,4 +773,8 @@ input[type="text"].register-input {
 
 input[type="text"].register-input :focus {
     outline: 0;
+}
+
+.filter-box .filter-group{
+    float: left;
 }
