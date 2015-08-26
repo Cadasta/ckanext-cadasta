@@ -2,15 +2,16 @@
 
 {% block subtitle %}{{ _('Register') }}{% endblock %}
 
+<h1 class="page-heading">
+{% block page_heading %}{{ _('Register for an Account') }}{% endblock %}
+</h1>
+
 {% block breadcrumb_content %}
   <li class="active">{{ h.nav_link(_('Registration'), controller='user', action='register') }}</li>
 {% endblock %}
 
 {% block primary_content %}
     <div class="login-block">
-      <h1 class="page-heading">
-        {% block page_heading %}{{ _('Register for an Account') }}{% endblock %}
-      </h1>
       {{ c.form | safe }}
     </div>
 {% endblock %}
