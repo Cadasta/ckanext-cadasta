@@ -785,9 +785,17 @@ input[type="text"].register-input :focus {
 }
 
 .filter-box .filter-group{
-    float: left;
+    
 }
 
 .filter-group label, .filter-group select {
     display: inline;
+}
+
+.filter-box .left{
+    float:left;
+}
+
+.filter-box .right{
+    float:right;
 }

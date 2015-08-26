@@ -23,24 +23,27 @@
     <div>
         <div class="filter-box clearfix">
             <form method="get">
-            <div class="filter-group">
-                     <label for="filter">Show Only</label>
-                     <select name="filter" class="sort-box" onchange="this.form.submit()">
-                          <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
-                          <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Occupied Parcels</option>
-                          <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
-                     </select>
+                <div class="left">
+                                <div class="filter-group">
+                         <label for="filter">Show Only</label>
+                         <select name="filter" class="sort-box" onchange="this.form.submit()">
+                              <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
+                              <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Occupied Parcels</option>
+                              <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
+                         </select>
+                </div>
+                <div class="filter-group">
+                         <label for="sort">Sort By</label>
+                         <select name="sort" class="sort-box" onchange="this.form.submit()">
+                              <option>None</option>
+                              <option>Parcel ID</option>
+                              <option>Number of Active Relationships</option>
+                              <option>Date Created</option>
+                         </select>
+                </div>
             </div>
-            <div class="filter-group">
-                     <label for="sort">Sort By</label>
-                     <select name="sort" class="sort-box" onchange="this.form.submit()">
-                          <option>None</option>
-                          <option>Parcel ID</option>
-                          <option>Number of Active Relationships</option>
-                          <option>Date Created</option>
-                     </select>
-            </div>
-            <div class="filter-group">
+
+            <div class="right">
                     <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
                     <noscript><input type="submit" value="Submit"></noscript>
             </div>
