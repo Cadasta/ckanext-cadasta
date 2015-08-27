@@ -127,7 +127,7 @@ class Cadasta_Controller(PackageController):
         #if filters exist, ask API to filter parcels and respond
         parcel_list = cadasta_model.list_parcels(id, filter=filterArg, sort=sortArg)
 
-        if parcel_list is not None and parcel_list['features'] is not None:
+        if parcel_list is not None and parcel_list.get("features", None) is not None:
             for parcel in parcel_list['features']:
 
                 reformatted_date = parse(parcel['properties']['time_created'])
