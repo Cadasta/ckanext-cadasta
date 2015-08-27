@@ -31,6 +31,7 @@
   Working on getting these sample files posted and linked to from here.
 </div>
 
+
 <div>
     <span>CSV Test</span>
     <form id="CSV_Form" action="." method="POST" enctype="multipart/form-data">
@@ -67,7 +68,8 @@
                     type: 'POST',
                     data: new FormData(this),
                     processData: false,
-                    contentType: false
+                    contentType: false,
+                    success: handlePOSTResult
                 });
                 e.preventDefault();
             });
@@ -79,7 +81,8 @@
                     type: 'POST',
                     data: new FormData(this),
                     processData: false,
-                    contentType: false
+                    contentType: false,
+                    success: handlePOSTResult
                 });
                 e.preventDefault();
             });
@@ -91,12 +94,48 @@
                     type: 'POST',
                     data: new FormData(this),
                     processData: false,
-                    contentType: false
+                    contentType: false,
+                    success: handlePOSTResult
                 });
                 e.preventDefault();
             });
 
         });
+
+
+
+        function handlePOSTResult(data) {
+
+            if (data && data.status) {
+                if (data.status == 'Data Loaded.') {
+                    //Show message
+                    showStatusMessage("Data upload successful.", "success");
+
+                    setTimeout(function(){
+                        //...and redirect to parcels list after 3 seconds
+                        window.location = "parcels";
+                    }, 3000)
+
+                }
+            }
+            else {
+                //Show err message
+                showStatusMessage("Houston, we've had a problem here.", "err");
+            }
+        }
+
+        /***
+         *
+         * @param message
+         * @param status - string.  success, warning, err
+         */
+        function showStatusMessage (message, status) {
+            //Show message on screen
+            $(".flash-messages")[0].html(message).addClass(status).show();
+        }
+
+
+
 
 </script>
 
