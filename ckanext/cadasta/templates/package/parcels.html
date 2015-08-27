@@ -29,8 +29,9 @@
                          <select name="filter" class="sort-box" onchange="this.form.submit()">
                               <option value="" {% if filter=='None' %} selected="selected"{% endif %}>All Types</option>
                               <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
-                              <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Occupied Parcels</option>
+                              <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Owned Parcels</option>
                               <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
+                              <option value="informal occupy" {% if filter=='informal occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
                          </select>
                     </div>
                     <div class="filter-group">
