@@ -24,15 +24,16 @@
         <div class="filter-box clearfix">
             <form method="get">
                 <div class="left">
-                                <div class="filter-group">
-                         <label for="filter">Show Only</label>
+                    <div class="filter-group">
+                         <label for="filter">Tenure Type:</label>
                          <select name="filter" class="sort-box" onchange="this.form.submit()">
+                              <option value="None" {% if filter=='None' %} selected="selected"{% endif %}>All Types</option>
                               <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
                               <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Occupied Parcels</option>
                               <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
                          </select>
-                </div>
-                <div class="filter-group">
+                    </div>
+                    <div class="filter-group">
                          <label for="sort">Sort By</label>
                          <select name="sort" class="sort-box" onchange="this.form.submit()">
                               <option>None</option>
@@ -40,8 +41,8 @@
                               <option>Number of Active Relationships</option>
                               <option>Date Created</option>
                          </select>
+                    </div>
                 </div>
-            </div>
 
             <div class="right">
                     <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
