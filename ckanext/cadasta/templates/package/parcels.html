@@ -64,7 +64,8 @@
             </tr>
         </thead>
         <tbody>
-         {% for parcel in parcel_list.features %}
+        {% if parcel_list.features is not None %}
+          {% for parcel in parcel_list.features %}
             <tr>
               <td><a href='http://50.112.108.132:5000/project/{{ pkg.name }}/parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
               <td> {{ parcel.properties.area }} </td>
@@ -72,6 +73,12 @@
               <td> {{ parcel.properties.time_created }} </td>
             </tr>
           {% endfor %}
+
+        {% else %}
+            <tr>
+              <td colspan="4">No parcels found.</td>
+            </tr>
+        {% endif %}
         </tbody>
       </table>
     </div>

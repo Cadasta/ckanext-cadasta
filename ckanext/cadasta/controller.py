@@ -135,7 +135,7 @@ class Cadasta_Controller(PackageController):
 
                 parcel['properties']['time_created'] = reformatted_date
 
-            
+
 
         ctype, format = self._content_type_from_accept()
 
