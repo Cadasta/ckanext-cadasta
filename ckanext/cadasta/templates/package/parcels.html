@@ -25,7 +25,7 @@
             <form method="get">
                 <div class="left">
                     <div class="filter-group">
-                         <label for="filter">Tenure Type:</label>
+                         <label for="filter">Tenure Type</label>
                          <select name="filter" class="sort-box" onchange="this.form.submit()">
                               <option value="" {% if filter=='None' %} selected="selected"{% endif %}>All Types</option>
                               <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>

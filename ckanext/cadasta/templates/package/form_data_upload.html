@@ -6,6 +6,15 @@
   <a class='active' href="/dataset/{{c.id}}/upload_form_data"> Form Data Upload</a>
 {% endblock %}
 
+{% block primary_nav_tabs %}
+      <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
+      <li><a  href='parcels'>PARCELS</a></li>
+      <li><a  href='map'>MAP</a></li>
+      <li><a  href='surveys'>SURVEYS</a></li>
+      <li><a  href='resources'>RESOURCES</a></li>
+      <li><a  href='activity_stream'>ACTIVITY STREAM</a></li>
+{% endblock %}
+
   {% block primary_content_inner %}
   <!-- Empty so the description and map does not come up on this page-->
   {% endblock %}
@@ -22,33 +31,74 @@
   Working on getting these sample files posted and linked to from here.
 </div>
 
-    <div>
-        <span>CSV Test</span>
-        <form action="http://54.69.121.180:3000/providers/csv/load" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="redirect" value="http://www.opera.com" />
-            <input type="file" name="file_upload">
-            <button type="submit" class="btn">Submit</button>
-        </form>
+<div>
+    <span>CSV Test</span>
+    <form id="CSV_Form" action="." method="POST" enctype="multipart/form-data">
+        <input type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
+    </form>
 
-    </div>
+</div>
 
-    <div>
-        <span>GeoJSON Test</span>
-        <form action="http://54.69.121.180:3000/providers/geojson/load" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="redirect" value="http://www.opera.com" />
-            <input type="file" name="file_upload">
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
+<div>
+    <span>GeoJSON Test</span>
+    <form id="GEOJSON_Form" action="." method="POST" enctype="multipart/form-data">
+        <input type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
 
-    <div>
-        <span>ONA Test</span>
-        <form action="http://54.69.121.180:3000/providers/ona/load" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="redirect" value="http://www.opera.com" />
-            <input type="file" name="file_upload">
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
+<div>
+    <span>ONA Test</span>
+    <form action="." method="POST" enctype="multipart/form-data">
+        <input id="ONA_Form" type="file" name="file_upload">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $('#CSV_Form').submit(function (e) {
+                $.ajax({
+                    url: 'http://54.69.121.180:3000/providers/csv/load',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false
+                });
+                e.preventDefault();
+            });
+
+
+            $('#GEOJSON_Form').submit(function (e) {
+                $.ajax({
+                    url: 'http://54.69.121.180:3000/providers/geojson/load',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false
+                });
+                e.preventDefault();
+            });
+
+
+            $('#ONA_Form').submit(function (e) {
+                $.ajax({
+                    url: 'http://54.69.121.180:3000/providers/ona/load',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false
+                });
+                e.preventDefault();
+            });
+
+        });
+
+</script>
 
 </div>
 
