@@ -25,6 +25,7 @@
     <div>
         <span>CSV Test</span>
         <form action="http://54.69.121.180:3000/providers/csv/load" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="redirect" value="http://www.opera.com" />
             <input type="file" name="file_upload">
             <button type="submit" class="btn">Submit</button>
         </form>
@@ -34,6 +35,7 @@
     <div>
         <span>GeoJSON Test</span>
         <form action="http://54.69.121.180:3000/providers/geojson/load" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="redirect" value="http://www.opera.com" />
             <input type="file" name="file_upload">
             <button type="submit" class="btn">Submit</button>
         </form>
@@ -42,6 +44,7 @@
     <div>
         <span>ONA Test</span>
         <form action="http://54.69.121.180:3000/providers/ona/load" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="redirect" value="http://www.opera.com" />
             <input type="file" name="file_upload">
             <button type="submit" class="btn">Submit</button>
         </form>
