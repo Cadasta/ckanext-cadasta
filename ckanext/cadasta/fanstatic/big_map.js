@@ -61,8 +61,12 @@ function displayParcels (map) {
 
 }
 
-//move this to the jquery, on document load run this function
+$(document).ready(function(){
+    //move this to the jquery, on document load run this function
 displayParcels (map);
+})
+
+
 
 
 function addParcel() {
