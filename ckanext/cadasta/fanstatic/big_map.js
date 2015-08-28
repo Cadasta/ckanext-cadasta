@@ -55,18 +55,19 @@ $(document).ready(function() {
 
 
     function displayParcels(map) {
-//    converts string data into a geojson object that can be mapped
+        //converts string data into a geojson object that can be mapped
 
         var parcelCollection = $('#data').data();
         var popupURL = $('#popup_url').data().obj;
 
-        var parcel_string = JSON.stringify(parcelCollection);
-        parcel_string = parcel_string.replace('{"obj":', '');
-        parcel_string = parcel_string.replace('}}]}}', '}}]}');
+        //parcelCollection is already an object.  Just pull out the obj property.
+        //var parcel_string = JSON.stringify(parcelCollection);
+        //parcel_string = parcel_string.replace('{"obj":', '');
+        //parcel_string = parcel_string.replace('}}]}}', '}}]}');
+        //
+        //var parcel_geoJSON = JSON.parse(parcel_string);
 
-        var parcel_geoJSON = JSON.parse(parcel_string);
-
-        parcel_layer = L.geoJson(parcel_geoJSON, {
+        parcel_layer = L.geoJson(parcelCollection.obj, {
             style: function (feature) {
                 return {color: 'green'};
             },
@@ -81,7 +82,7 @@ $(document).ready(function() {
         });
 
         parcel_layer.addTo(parcelsFeatureGroup);
-        //map.fitBounds(parcelsFeatureGroup.getBounds());
+        map.fitBounds(parcelsFeatureGroup.getBounds());
 
     }
 
