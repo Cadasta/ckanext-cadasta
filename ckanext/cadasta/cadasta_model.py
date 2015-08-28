@@ -7,7 +7,7 @@ def get_all_parcels(project_id):
 # this would make an api request using the project id and get back geo_json
 
     #api = 'http://api.tiles.mapbox.com/v3/examples.map-zr0njcqy/markers.geojson'
-    api = 'http://54.69.121.180:3000/parcels'
+    api = 'http://54.69.121.180:3000/parcels?returnGeometry=true'
 
     try:
         r = requests.get(api)
