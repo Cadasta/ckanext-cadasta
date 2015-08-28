@@ -81,7 +81,7 @@ $(document).ready(function() {
         });
 
         parcel_layer.addTo(parcelsFeatureGroup);
-        map.fitBounds(parcelsFeatureGroup.getBounds());
+        //map.fitBounds(parcelsFeatureGroup.getBounds());
 
     }
 
