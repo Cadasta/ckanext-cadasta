@@ -17,6 +17,10 @@ $(document).ready(function() {
         featureGroup = L.featureGroup().addTo(map);
         parcelsFeatureGroup = L.featureGroup().addTo(map);
 
+        featureGroup.on("load", function () {
+           displayParcels(map);
+        })
+
         drawControl = new L.Control.Draw({
             edit: {
                 featureGroup: featureGroup
@@ -42,9 +46,7 @@ $(document).ready(function() {
         addParcel();
     });
 
-    featureGroup.on("load", function () {
-        displayParcels(map);
-    })
+
 
 
     function addParcel() {
