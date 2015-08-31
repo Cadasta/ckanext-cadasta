@@ -10,3 +10,9 @@ ckanext_cadasta.egg-info/top_level.txt
 github-csv.py
 spatialdev-apt-web-issues.csv
 *.pyc
+.idea/.name
+.idea/ckanext-cadasta.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
