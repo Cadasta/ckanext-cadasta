@@ -1,7 +1,5 @@
 # helper functions to get data in and out of database using api
 import requests
-import json
-import yaml
 
 def get_all_parcels(project_id):
 # this would make an api request using the project id and get back geo_json

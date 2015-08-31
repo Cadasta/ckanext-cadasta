@@ -1,4 +1,4 @@
-{% extends "package/read.html" %}
+{% extends "package/read_base.html" %}
 
 {% block breadcrumb_content %}
   {{ super() }}
@@ -16,10 +16,7 @@
     {% endblock %}
 
   {% block primary_content_inner %}
-  <!-- Empty so the description and map does not come up on this page-->
-  {% endblock %}
-
-{% block project_content %}
+  <div id="project-content">
     <div>
         <div class="filter-box clearfix">
             <form method="get">
@@ -69,7 +66,7 @@
         {% if parcel_list.features %}
           {% for parcel in parcel_list.features %}
             <tr>
-              <td><a href='http://50.112.108.132:5000/project/{{ pkg.name }}/parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
+              <td><a href='parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
               <td> {{ parcel.properties.area }} </td>
               <td> {{ parcel.properties.num_relationships }} </td>
               <td> {{ parcel.properties.time_created }} </td>
@@ -84,5 +81,5 @@
         </tbody>
       </table>
     </div>
-
-{% endblock %}
+  </div>
+  {% endblock %}
