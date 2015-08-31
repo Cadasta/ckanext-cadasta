@@ -1,36 +1,16 @@
-{% extends "package/read.html" %}
+{% extends "package/read_base.html" %}
 
 {% set logged_in = true if c.userobj else false %}
 
-{% block breadcrumb_content_selected %} class="active" {% endblock %}
+
 {% block breadcrumb_content %}
   {{ super() }}
-  <a href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}"> / {{ c.parcel_id }}</a>
-
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a class='active' href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}"> {{ c.parcel_id }}</a>
 {% endblock %}
 
-{% block content_action %}
-block content action
-
-{% endblock %}
-
-{% block content_primary_nav %}
-primary content nav extras
-{% endblock %}
 
 {% block primary_content_inner %}
-
-  <div class='project-block' id="project-extent">
-
-    {% resource 'cadasta/customCSS.css' %}
-    {% resource 'cadasta/map.js' %}
-
-    <div id='small_map'></div>
-    <meta id="data" data-obj="{{parcel_geom}}">
-  </div>
-
-  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
-
 
     <table>
       <tr>
@@ -51,37 +31,44 @@ primary content nav extras
       </tr>
     </table>
 
-    <br>
-    <br>
-    <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
+  <div class='project-block' id="project-extent">
 
-    <table id="parcelRelationshipsTable" class="tablesorter">
-        <thead>
-            <tr>
-                <th>Relationship ID</th>
-                <th>Person/Group</th>
-                <th>Relationship Type</th>
-            </tr>
-        </thead>
-        <tbody>
-         {% for relationship in relationship_list.features %}
-            <tr>
-              <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
-              <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
-              <td> {{ relationship.relationship_type }} </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    {% resource 'cadasta/customCSS.css' %}
+    {% resource 'cadasta/map.js' %}
 
+    <div id='small_map'></div>
+    <meta id="data" data-obj="{{parcel_geom}}">
+  </div>
 
-  {% block form %}{% endblock %}
+  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
+
 {% endblock %}
 
 {% block secondary_content %}
+    <div id="project-content">
+
+        <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
+
+        <table id="parcelRelationshipsTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Relationship ID</th>
+                    <th>Person/Group</th>
+                    <th>Relationship Type</th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for relationship in relationship_list.features %}
+                <tr>
+                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
+                  <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
+                  <td> {{ relationship.relationship_type }} </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
-{% block scripts %}
-  {{ super() }}
-{% endblock %}
+
 
