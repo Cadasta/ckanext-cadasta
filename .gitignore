@@ -1,0 +1,11 @@
+ckanext/__init__.pyc
+ckanext/cadasta/__init__.pyc
+ckanext/cadasta/plugin.pyc
+ckanext/cadasta/templates/user/snippets/.login_form.html.swp
+ckanext_cadasta.egg-info/PKG-INFO
+ckanext_cadasta.egg-info/SOURCES.txt
+ckanext_cadasta.egg-info/dependency_links.txt
+ckanext_cadasta.egg-info/entry_points.txt
+ckanext_cadasta.egg-info/top_level.txt
+github-csv.py
+spatialdev-apt-web-issues.csv
