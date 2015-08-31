@@ -46,10 +46,8 @@
 
 {% block secondary_content %}
     <div id="project-content">
-
-        <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
-
-        <table id="parcelRelationshipsTable" class="tablesorter">
+        <div class="parcel-details-content">
+        <table id="parcelRelationshipsTable" class="parcel-details-table tablesorter">
             <thead>
                 <tr>
                     <th>Relationship ID</th>
@@ -67,6 +65,30 @@
               {% endfor %}
             </tbody>
         </table>
+        </div>
+
+        <div class="parcel-details-content">
+        <table class="parcel-details-table tablesorter">
+            <thead>
+                <tr>
+                    <th>Relationship ID</th>
+                    <th>Person/Group</th>
+                    <th>Relationship Type</th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for relationship in relationship_list.features %}
+                <tr>
+                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
+                  <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
+                  <td> {{ relationship.relationship_type }} </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
+
     </div>
 {% endblock %}
 
