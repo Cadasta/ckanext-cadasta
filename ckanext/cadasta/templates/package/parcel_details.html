@@ -12,7 +12,27 @@
 
 {% block primary_content_inner %}
 
-    <table>
+
+
+  <div class='project-block' id="project-extent">
+
+    {% resource 'cadasta/customCSS.css' %}
+    {% resource 'cadasta/map.js' %}
+
+    <div id='small_map'></div>
+    <meta id="data" data-obj="{{parcel_geom}}">
+  </div>
+
+  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
+
+
+
+{% endblock %}
+
+{% block secondary_content %}
+    <div id="project-content">
+
+            <table>
       <tr>
         <th>Parcel ID</th>
         <td> 1234 </td>
@@ -30,23 +50,10 @@
         <td> residential </td>
       </tr>
     </table>
-
-  <div class='project-block' id="project-extent">
-
-    {% resource 'cadasta/customCSS.css' %}
-    {% resource 'cadasta/map.js' %}
-
-    <div id='small_map'></div>
-    <meta id="data" data-obj="{{parcel_geom}}">
-  </div>
-
-  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
-
-{% endblock %}
-
-{% block secondary_content %}
-    <div id="project-content">
+        
         <div class="parcel-details-content">
+            Parcel Relationships:
+
         <table id="parcelRelationshipsTable" class="parcel-details-table tablesorter">
             <thead>
                 <tr>
@@ -67,7 +74,9 @@
         </table>
         </div>
 
-        <div class="parcel-details-content">
+        <div class="parcel-details-content right">
+             Parcel Relationship History:
+
         <table class="parcel-details-table tablesorter">
             <thead>
                 <tr>
