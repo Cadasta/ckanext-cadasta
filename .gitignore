@@ -9,3 +9,4 @@ ckanext_cadasta.egg-info/entry_points.txt
 ckanext_cadasta.egg-info/top_level.txt
 github-csv.py
 spatialdev-apt-web-issues.csv
+*.pyc
