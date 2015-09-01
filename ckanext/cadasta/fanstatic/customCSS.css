@@ -543,8 +543,8 @@ input[type="text"] {
 .table tr th {
     font-size: 12px;
     color: white;
-    background-color: grey;
-    font-weight: bold;
+    background-color: #51617A;
+    font-weight: '400';
     text-align: center;
 
 }
@@ -897,4 +897,10 @@ display: inline-block;
 
 .right {
     float: right;
+}
+
+.project-primary-block{
+    border: 1px solid #dcdfe1;
+    background-color: white;
+    padding: 20px;
 }

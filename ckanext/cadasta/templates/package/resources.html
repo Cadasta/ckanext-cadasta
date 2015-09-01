@@ -1,0 +1,28 @@
+{% extends "package/read_base.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a href="/dataset/{{c.id}}/surveys" class="active"> Surveys</a>
+{% endblock %}
+
+{% block primary_nav_tabs %}
+      <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
+      <li><a  href='parcels'>PARCELS</a></li>
+      <li><a  href='map'>MAP</a></li>
+      <li><a  href='surveys'>SURVEYS</a></li>
+      <li  class="active-nav">RESOURCES</li>
+      <li><a  href='activity_stream'>ACTIVITY STREAM</a></li>
+{% endblock %}
+
+
+{% block primary_content_inner %}
+<div id="project-content">
+    <div class="project-primary-block">
+        <a href="/project/resources/{{c.id}}"> Add Resources</a>
+
+        {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+    </div>
+
+</div>
+{% endblock %}

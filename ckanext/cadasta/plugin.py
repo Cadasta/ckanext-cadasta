@@ -32,7 +32,8 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.connect('project_overview', '/project/{id}', controller=controller, action='read')
         map.connect('project_surveys', '/project/{id}/surveys', controller=controller, action='show_surveys')
         map.connect('project_parcels', '/project/{id}/parcels', controller=controller, action='read_parcels')
-        # map.connect('project_media', '/project/{id}/media', controller=controller, action='read_media')
+        map.connect('project_resources', '/project/{id}/resources', controller=controller, action='read_resources')
+        map.connect('project_activity_stream', '/project/{id}/activity_stream', controller=controller, action='read_activity_stream')
         map.connect('project_survey_template', '/project/{id}/survey_template', controller=controller, action='read_survey_template')
         map.connect('project_form_data_upload', '/project/{id}/form_data_upload', controller=controller, action='form_data_upload')
 

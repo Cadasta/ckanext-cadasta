@@ -1,0 +1,42 @@
+{% extends "package/read_base.html" %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a href="/dataset/{{c.id}}/surveys" class="active"> Surveys</a>
+{% endblock %}
+
+{% block primary_nav_tabs %}
+      <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
+      <li><a  href='parcels'>PARCELS</a></li>
+      <li><a  href='map'>MAP</a></li>
+      <li><a  href='surveys'>SURVEYS</a></li>
+      <li><a  href='resources'>RESOURCES</a></li>
+      <li class="active-nav">ACTIVITY STREAM</li>
+{% endblock %}
+
+
+{% block primary_content_inner %}
+<div id="project-content">
+  <div class="project-primary-block">
+
+    <ul id="activity-list">
+            {% for activity in activity_list.features %}
+
+                {% if activity.properties.activity_type == 'parcel' %}
+                   <li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+               {% elif activity.properties.activity_type == 'party' %}
+                   <li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+                {% elif activity.properties.activity_type == 'relationship' %}
+                   <li class="activity-block block"><span class="bold">Relationship between {{ activity.properties.name }}</span> and <span> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+
+                {% endif %}
+
+            {% endfor %}
+    </ul>
+  </div>
+
+</div>
+{% endblock %}

@@ -682,36 +682,80 @@ class Cadasta_Controller(PackageController):
                           extra_vars={'dataset_type': package_type})
 
 
-    #
-    # def read_media(self, id):
-    #
-    #     ctype, format = self._content_type_from_accept()
-    #
-    #     response.headers['Content-Type'] = ctype
-    #
-    #     context = {'model': model, 'session': model.Session,
-    #                'user': c.user or c.author, 'for_view': True,
-    #                'auth_user_obj': c.userobj}
-    #     data_dict = {'id': id, 'include_tracking': True}
-    #
-    #
-    #     # check if package exists
-    #     try:
-    #         c.pkg_dict = get_action('package_show')(context, data_dict)
-    #         c.pkg = context['package']
-    #     except NotFound:
-    #         abort(404, _('Dataset not found'))
-    #     except NotAuthorized:
-    #         abort(401, _('Unauthorized to read package %s') % id)
-    #
-    #     package_type = c.pkg_dict['type'] or 'dataset'
-    #
-    #     self._setup_template_variables(context, {'id': id},
-    #                                    package_type=package_type)
-    #
-    #     return render('package/media.html',
-    #                       extra_vars={'dataset_type': package_type})
-    #
+
+    def read_resources(self, id):
+
+        ctype, format = self._content_type_from_accept()
+
+        response.headers['Content-Type'] = ctype
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'for_view': True,
+                   'auth_user_obj': c.userobj}
+        data_dict = {'id': id, 'include_tracking': True}
+
+
+        # check if package exists
+        try:
+            c.pkg_dict = get_action('package_show')(context, data_dict)
+            c.pkg = context['package']
+        except NotFound:
+            abort(404, _('Dataset not found'))
+        except NotAuthorized:
+            abort(401, _('Unauthorized to read package %s') % id)
+
+        package_type = c.pkg_dict['type'] or 'dataset'
+
+        self._setup_template_variables(context, {'id': id},
+                                       package_type=package_type)
+
+        return render('package/resources.html',
+                          extra_vars={'dataset_type': package_type})
+
+
+    def read_activity_stream(self, id):
+
+        ctype, format = self._content_type_from_accept()
+
+        activity_list = cadasta_model.get_cadasta_activity(id)
+
+
+        if activity_list:
+            for activity in activity_list['features']:
+
+
+                reformatted_date = parse(activity['properties']['time_created'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+
+                activity['properties']['time_created'] = reformatted_date
+
+
+        response.headers['Content-Type'] = ctype
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'for_view': True,
+                   'auth_user_obj': c.userobj}
+        data_dict = {'id': id, 'include_tracking': True}
+
+
+        # check if package exists
+        try:
+            c.pkg_dict = get_action('package_show')(context, data_dict)
+            c.pkg = context['package']
+        except NotFound:
+            abort(404, _('Dataset not found'))
+        except NotAuthorized:
+            abort(401, _('Unauthorized to read package %s') % id)
+
+        package_type = c.pkg_dict['type'] or 'dataset'
+
+        self._setup_template_variables(context, {'id': id},
+                                       package_type=package_type)
+
+        return render('package/activity_stream.html',
+                          extra_vars={'dataset_type': package_type, 'activity_list': activity_list})
+
+
 
 
 

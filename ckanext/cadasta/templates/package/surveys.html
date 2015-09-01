@@ -1,28 +1,60 @@
-{% extends "package/read.html" %}
+{% extends "package/read_base.html" %}
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <a href="/dataset/{{c.id}}/surveys"> / Surveys</a>
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a href="/dataset/{{c.id}}/surveys" class="active"> Surveys</a>
 {% endblock %}
 
+{% block primary_nav_tabs %}
+      <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
+      <li><a  href='parcels'>PARCELS</a></li>
+      <li><a  href='map'>MAP</a></li>
+      <li class="active-nav">SURVEYS</li>
+      <li><a  href='resources'>RESOURCES</a></li>
+      <li><a  href='activity_stream'>ACTIVITY STREAM</a></li>
+{% endblock %}
+
+
 {% block primary_content_inner %}
+<div id="project-content">
+        <div class="filter-box clearfix">
+            <form method="get">
+                <div class="left">
+                    <div class="filter-group">
+                         <label for="filter">Tenure Type</label>
+                         <select name="filter" class="sort-box" onchange="this.form.submit()">
+                              <option value="" {% if filter=='None' %} selected="selected"{% endif %}>All Types</option>
+                              <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
+                              <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Owned Parcels</option>
+                              <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Occupied Parcels</option>
+                              <option value="informal occupy" {% if filter=='informal occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
+                         </select>
+                    </div>
+                    <div class="filter-group">
+                         <label for="sort">Sort By</label>
+                         <select name="sort" class="sort-box" onchange="this.form.submit()">
+                              <option value="">None</option>
+                              <option>Parcel ID</option>
+                              <option>Number of Active Relationships</option>
+                              <option>Date Created</option>
+                         </select>
+                    </div>
+                </div>
 
-    {% block package_resources %}
-    {% endblock %}
+            <div class="right">
+                    <input class="search" type="text" name="q" placeholder="{{ _('Search') }}" />
+                    <noscript><input type="submit" value="Submit"></noscript>
+            </div>
+            </form>
 
-    {% block package_tags %}
-    {% endblock %}
+        </div>
 
-    {% block package_additional_info %}
-
-      <h1>List of all of the surveys for a given project </h1>
-       ---------------------------------
-
-        <table id="surveysTable" class="tablesorter">
+        <table id="surveysTable" class="tablesorter table">
             <thead>
                 <tr>
-                  <td>Survey</td>
-                  <td>survey id</td>
+                  <th>Survey</th>
+                  <th>survey id</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +66,5 @@
               {% endfor %}
             </tbody>
       </table>
-    {% endblock %}
-
-
-
+    </div>
 {% endblock %}
