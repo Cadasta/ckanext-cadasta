@@ -50,7 +50,7 @@
         <td> residential </td>
       </tr>
     </table>
-        
+
         <div class="parcel-details-content">
             Parcel Relationships:
 
@@ -86,11 +86,11 @@
                 </tr>
             </thead>
             <tbody>
-             {% for relationship in relationship_list.features %}
+             {% for parcel in parcel_details %}
                 <tr>
-                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
-                  <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
-                  <td> {{ relationship.relationship_type }} </td>
+                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}}}' > {{ parcel }} </a></td>
+                  <td><a href='/project/{{c.id}}/person }}' > {{ parcel }} </a></td>
+                  <td> {{ parcel }} </td>
                 </tr>
               {% endfor %}
             </tbody>

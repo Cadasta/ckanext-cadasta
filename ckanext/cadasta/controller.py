@@ -232,6 +232,7 @@ class Cadasta_Controller(PackageController):
 
         parcel_geom = cadasta_model.get_parcel_geom(id)
         relationship_list = cadasta_model.list_relationships(id)
+        parcel_details = cadasta_model.get_parcel_details(parcel_id)
 
         ctype, format = self._content_type_from_accept()
 
@@ -257,7 +258,7 @@ class Cadasta_Controller(PackageController):
                                        package_type=package_type)
 
         return render('package/parcel_details.html',
-                          extra_vars={'dataset_type': package_type, 'parcel_geom': parcel_geom, 'relationship_list':relationship_list})
+                          extra_vars={'dataset_type': package_type, 'parcel_geom': parcel_geom, 'relationship_list':relationship_list, 'parcel_details': parcel_details})
 
 
 

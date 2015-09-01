@@ -122,8 +122,6 @@ def list_parcels(id,filter=None,sort=None):
 
 def list_relationships(id):
 
-    # relationship_list = ['relationship1', 'relationship2', 'relationship3']
-
     relationship_list = {
        "features": [{
            "relationship_id": "1234",
@@ -175,6 +173,12 @@ def get_parcel_details(parcel_id):
       "landuse" : "residential",
       "parcel_id" : "1234"
     }
+
+
+    api ='http://54.69.121.180:3000/activities'
+
+    parcel_json = requests.get(api)
+
     return parcel_json
 
 
