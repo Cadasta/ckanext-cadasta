@@ -2,7 +2,8 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <a href="/dataset/{{c.id}}/map"> / Map</a>
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a class='active' href="/dataset/{{c.id}}/map">Map</a>
 {% endblock %}
 
 {% block primary_nav_tabs %}
@@ -50,7 +51,6 @@
         </div>
     {% endif %}
 
-    {% resource 'cadasta/customCSS.css' %}
     {% resource 'cadasta/big_map.css' %}
     {% resource 'cadasta/big_map.js' %}
 

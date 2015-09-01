@@ -16,8 +16,9 @@
 {% endblock %}
 
   {% block primary_content_inner %}
+    <a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel'><div class="add-project-element icon-icon_add_parcel"></div></a>
+
   <div id="project-content">
-    <div>
         <div class="filter-box clearfix">
             <form method="get">
                 <div class="left">
@@ -50,8 +51,6 @@
 
         </div>
 
-        <a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/parcel'><div id="add-parcel" class="icon-icon_add_parcel"></div></a>
-
         <table id="parcelsTable" class="tablesorter table">
         <thead>
             <tr>
@@ -80,6 +79,5 @@
         {% endif %}
         </tbody>
       </table>
-    </div>
   </div>
   {% endblock %}
