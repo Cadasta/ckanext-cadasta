@@ -106,13 +106,13 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
 
             m.connect('/new/project', action='new')
             # m.connect('/project/{id}', action='read')
-            m.connect('/project/{id}.{format}', action='read')
+            # m.connect('/project/{id}.{format}', action='read')
 
             m.connect('/project', action='search')
 
             m.connect('/project/edit/{id}', action='edit')
 
-            m.connect('/project/activity/{id}', action='activity')
+            # m.connect('/project/activity/{id}', action='activity')
 
             m.connect('/project/resources/{id}', action='resources')
 
@@ -121,22 +121,22 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
             m.connect('/project/{id}/resource_edit/{resource_id}', action='resource_edit')
             m.connect('/project/{id}/resource/{resource_id}/download', action='resource_download')
             m.connect('/project/{id}/resource/{resource_id}/download/{filename}', action='resource_download')
-            m.connect('/project/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer')
-            m.connect('/project/{id}/resource/{resource_id}/preview/{preview_type}', action='resource_datapreview')
+            # m.connect('/project/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer')
+            # m.connect('/project/{id}/resource/{resource_id}/preview/{preview_type}', action='resource_datapreview')
 
 
             m.connect('/project/{action}/{id}',
                       requirements=dict(action='|'.join([
                           'new_resource',
-                          'history',
+                          # 'history',
                           'read_ajax',
                           'history_ajax',
-                          'follow',
+                          # 'follow',
                           'activity',
-                          'groups',
-                          'unfollow',
-                          'delete',
-                          'api_data',
+                          # 'groups',
+                          # 'unfollow',
+                          'delete'
+                          # 'api_data',
                       ])))
 
         return map
