@@ -66,54 +66,19 @@ def search_url(params, package_type=None):
 
 
 
-class Cadasta_Controller(PackageController):
+class Cadasta_Relationship_Controller(PackageController):
 
 
-    def read(self, id):
+    def get_relationship_history(self, id, parcel_id):
 
-        all_parcels = cadasta_model.get_all_parcels(id)
-        activity_list = cadasta_model.get_cadasta_activity(id)
+        relationship_list = cadasta_model.get_relationship_history(id)
 
-
-        if activity_list:
-            for activity in activity_list['features']:
-
-
-                reformatted_date = parse(activity['properties']['time_created'])
+        if relationship_list:
+            for relationship in relationship_list['features']:
+                reformatted_date = parse(relationship['properties']['time_created'])
                 reformatted_date = reformatted_date.strftime("%m/%d/%y")
 
-                activity['properties']['time_created'] = reformatted_date
-
-
-        ctype, format = self._content_type_from_accept()
-
-        response.headers['Content-Type'] = ctype
-
-        context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'for_view': True,
-                   'auth_user_obj': c.userobj}
-        data_dict = {'id': id, 'include_tracking': True}
-
-
-        # check if package exists
-        try:
-            c.pkg_dict = get_action('package_show')(context, data_dict)
-            c.pkg = context['package']
-        except NotFound:
-            abort(404, _('Dataset not found'))
-        except NotAuthorized:
-            abort(401, _('Unauthorized to read package %s') % id)
-
-        package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id},
-                                       package_type=package_type)
-
-        return render('package/read.html',
-                      extra_vars={'dataset_type': package_type, 'all_parcels': all_parcels, 'activity_list': activity_list})
-
-
-
-    def form_data_upload(self, id):
+                relationship['properties']['time_created'] = reformatted_date
 
         ctype, format = self._content_type_from_accept()
 
@@ -135,15 +100,17 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id' : parcel_id},
                                        package_type=package_type)
 
-        return render('package/form_data_upload.html',
-                      extra_vars={'dataset_type': package_type})
+        return render('package/relationship_history.html',
+                          extra_vars={'dataset_type': package_type, 'relationship_list':relationship_list})
 
 
 
-    def read_survey_details(self, id, survey_id):
+    def read_relationship_details(self, id, parcel_id, relationship_id):
+
+        relationship = cadasta_model.get_relationship_details(relationship_id)
 
         ctype, format = self._content_type_from_accept()
 
@@ -165,16 +132,19 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'survey_id' : survey_id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id, 'relationship_id': relationship_id},
                                        package_type=package_type)
 
-        return render('package/survey_details.html',
-                          extra_vars={'dataset_type': package_type})
+        return render('package/relationship_details.html',
+                          extra_vars={'dataset_type': package_type, 'relationship':relationship})
 
 
 
+    def edit_relationship_details(self, id, parcel_id, relationship_id):
 
-    def edit_survey_details(self, id, survey_id):
+        relationship_details = cadasta_model.get_relationship_details(relationship_id)
+
+        new_relationship = False
 
         ctype, format = self._content_type_from_accept()
 
@@ -196,17 +166,17 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'survey_id' : survey_id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id' : parcel_id, 'relationship_id': relationship_id},
                                        package_type=package_type)
 
-        return render('package/edit_survey_details.html',
-                          extra_vars={'dataset_type': package_type})
+        return render('package/edit_relationship_details.html',
+                          extra_vars={'dataset_type': package_type, 'relationship_details': relationship_details, 'new_relationship': new_relationship})
 
 
 
-    def read_person_details(self, id, person_id):
+    def new_relationship(self, id, parcel_id):
 
-        person = cadasta_model.get_person_details(person_id)
+        new_relationship = True
 
         ctype, format = self._content_type_from_accept()
 
@@ -228,19 +198,18 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'person_id' : person_id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id},
                                        package_type=package_type)
 
-        return render('package/person_details.html',
-                          extra_vars={'dataset_type': package_type, 'person':person})
+        return render('package/edit_relationship_details.html',
+                          extra_vars={'dataset_type': package_type, 'new_relationship':new_relationship })
 
 
 
-    def edit_person_details(self, id, person_id):
 
-        newPerson = False
+    def show_relationship_map(self, id, parcel_id, relationship_id):
 
-        person_details = cadasta_model.get_person_details(person_id)
+        relationship = cadasta_model.get_relationship_details(relationship_id)
 
         ctype, format = self._content_type_from_accept()
 
@@ -262,17 +231,18 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'person_id' : person_id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id, 'relationship_id': relationship_id},
                                        package_type=package_type)
 
-        return render('package/edit_person.html',
-                          extra_vars={'dataset_type': package_type, 'newPerson': newPerson, 'person_details': person_details})
+        return render('package/map.html',
+                          extra_vars={'dataset_type': package_type, 'id':id, 'parcel_id': parcel_id, 'relationship':relationship, 'relationship_id':relationship_id})
 
 
 
-    def new_person(self, id):
+    def edit_relationship_map(self, id, parcel_id, relationship_id):
 
-        newPerson = True
+        relationship = cadasta_model.get_relationship_details(relationship_id)
+        edit = True
 
         ctype, format = self._content_type_from_accept()
 
@@ -294,52 +264,18 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id, 'relationship_id': relationship_id},
                                        package_type=package_type)
 
-        return render('package/edit_person.html',
-                          extra_vars={'dataset_type': package_type, 'newPerson': newPerson})
+        return render('package/map.html',
+                          extra_vars={'dataset_type': package_type, 'id':id, 'parcel_id': parcel_id, 'relationship': relationship, 'relationship_id':relationship_id, 'edit':edit})
 
 
 
 
+    def new_relationship_map(self, id, parcel_id):
 
-
-    def show_surveys(self, id):
-
-        ctype, format = self._content_type_from_accept()
-
-        survey_list = cadasta_model.get_all_surveys(id)
-
-        response.headers['Content-Type'] = ctype
-
-        context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'for_view': True,
-                   'auth_user_obj': c.userobj}
-        data_dict = {'id': id, 'include_tracking': True}
-
-
-        # check if package exists
-        try:
-            c.pkg_dict = get_action('package_show')(context, data_dict)
-            c.pkg = context['package']
-        except NotFound:
-            abort(404, _('Dataset not found'))
-        except NotAuthorized:
-            abort(401, _('Unauthorized to read package %s') % id)
-
-        package_type = c.pkg_dict['type'] or 'dataset'
-
-        self._setup_template_variables(context, {'id': id},
-                                       package_type=package_type)
-
-        return render('package/surveys.html',
-                          extra_vars={'dataset_type': package_type, 'survey_list': survey_list})
-
-
-
-
-    def read_survey_templates(self, id):
+        new = True
 
         ctype, format = self._content_type_from_accept()
 
@@ -361,84 +297,8 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-
-        self._setup_template_variables(context, {'id': id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id},
                                        package_type=package_type)
 
-        return render('package/survey_template.html',
-                          extra_vars={'dataset_type': package_type})
-
-
-
-    def read_resources(self, id):
-
-        ctype, format = self._content_type_from_accept()
-
-        response.headers['Content-Type'] = ctype
-
-        context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'for_view': True,
-                   'auth_user_obj': c.userobj}
-        data_dict = {'id': id, 'include_tracking': True}
-
-
-        # check if package exists
-        try:
-            c.pkg_dict = get_action('package_show')(context, data_dict)
-            c.pkg = context['package']
-        except NotFound:
-            abort(404, _('Dataset not found'))
-        except NotAuthorized:
-            abort(401, _('Unauthorized to read package %s') % id)
-
-        package_type = c.pkg_dict['type'] or 'dataset'
-
-        self._setup_template_variables(context, {'id': id},
-                                       package_type=package_type)
-
-        return render('package/resources.html',
-                          extra_vars={'dataset_type': package_type})
-
-
-    def read_activity_stream(self, id):
-
-        ctype, format = self._content_type_from_accept()
-
-        activity_list = cadasta_model.get_cadasta_activity(id)
-
-
-        if activity_list:
-            for activity in activity_list['features']:
-
-
-                reformatted_date = parse(activity['properties']['time_created'])
-                reformatted_date = reformatted_date.strftime("%m/%d/%y")
-
-                activity['properties']['time_created'] = reformatted_date
-
-
-        response.headers['Content-Type'] = ctype
-
-        context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'for_view': True,
-                   'auth_user_obj': c.userobj}
-        data_dict = {'id': id, 'include_tracking': True}
-
-
-        # check if package exists
-        try:
-            c.pkg_dict = get_action('package_show')(context, data_dict)
-            c.pkg = context['package']
-        except NotFound:
-            abort(404, _('Dataset not found'))
-        except NotAuthorized:
-            abort(401, _('Unauthorized to read package %s') % id)
-
-        package_type = c.pkg_dict['type'] or 'dataset'
-
-        self._setup_template_variables(context, {'id': id},
-                                       package_type=package_type)
-
-        return render('package/activity_stream.html',
-                          extra_vars={'dataset_type': package_type, 'activity_list': activity_list})
-
+        return render('package/map.html',
+                          extra_vars={'dataset_type': package_type, 'id':id, 'parcel_id': parcel_id, 'new': new})

@@ -3,6 +3,9 @@
 ### Add extension to your installed CKAN instance (assumes you've installed CKAN already)
 In order to install the ckanext-cadasta extension, clone this repo into the src folder at /usr/lib/ckan/default/src
 
+###Cadasta Roles and Permissions
+[See the permissions matrix for details](Permissions.md)
+
 Then run the following command:
 ```
 cd ckanext-cadasta

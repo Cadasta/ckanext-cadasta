@@ -118,7 +118,26 @@ def list_parcels(id,filter=None,sort=None):
 
       return r.json()
 
+#For example sort="Id" or filter="lease"
+def get_relationship_history(parcel_id,filter=None,sort=None):
 
+      qs = ""
+
+      if (filter is not None):
+          print 'found filter parameter. ', filter
+          qs = qs + 'tenure_type=' + filter
+
+      elif (sort is not None):
+          qs = qs + 'sort_by=' + sort
+
+      else:
+          print 'executing relationship history lookup with no filter'
+
+      api = 'http://54.69.121.180:3000/relationships?' + qs
+
+      r = requests.get(api)
+
+      return r.json()
 
 def list_relationships(id):
 
