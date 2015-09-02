@@ -25,6 +25,7 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
     def before_map(self, map):
 
         controller = 'ckanext.cadasta.controller:Cadasta_Controller'
+        relationship = 'ckanext.cadasta.relationship:Cadasta_Relationship_Controller'
 
         #new routes to be added
 
@@ -44,9 +45,9 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.connect('edit_parcel_map', '/project/{id}/edit_parcel/{parcel_id}/map', controller=controller, action='edit_parcel_map')
         map.connect('new_parcel_map', '/project/{id}/new/parcel/map', controller=controller, action='new_parcel_map')
 
-        map.connect('show_relationship_map', '/project/{id}/parcel/{parcel_id}/relationship/{relationship_id}/map', controller=controller, action='show_relationship_map')
-        map.connect('edit_relationship_map', '/project/{id}/parcel/{parcel_id}/edit_relationship/{relationship_id}/map', controller=controller, action='edit_relationship_map')
-        map.connect('new_relationships_map', '/project/{id}/parcel/{parcel_id}/new/relationship/map', controller=controller, action='new_relationship_map')
+        map.connect('show_relationship_map', '/project/{id}/parcel/{parcel_id}/relationship/{relationship_id}/map', controller=relationship, action='show_relationship_map')
+        map.connect('edit_relationship_map', '/project/{id}/parcel/{parcel_id}/edit_relationship/{relationship_id}/map', controller=relationship, action='edit_relationship_map')
+        map.connect('new_relationships_map', '/project/{id}/parcel/{parcel_id}/new/relationship/map', controller=relationship, action='new_relationship_map')
 
 
 
@@ -60,9 +61,10 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.connect('edit_survey_details', '/project/{id}/edit_survey/{survey_id}', controller=controller, action='edit_survey_details')
 
           #relationship
-        map.connect('relationship_details', '/project/{id}/parcel/{parcel_id}/relationship/{relationship_id}', controller=controller, action='read_relationship_details')
-        map.connect('edit_relationship_details', '/project/{id}/parcel/{parcel_id}/edit_relationship/{relationship_id}', controller=controller, action='edit_relationship_details')
-        map.connect('new_relationship', '/project/{id}/parcel/{parcel_id}/new/relationship', controller=controller, action='new_relationship')
+        map.connect('relationship_details', '/project/{id}/parcel/{parcel_id}/relationship/{relationship_id}', controller=relationship, action='read_relationship_details')
+        map.connect('edit_relationship_details', '/project/{id}/parcel/{parcel_id}/edit_relationship/{relationship_id}', controller=relationship, action='edit_relationship_details')
+        map.connect('new_relationship', '/project/{id}/parcel/{parcel_id}/new/relationship', controller=relationship, action='new_relationship')
+        map.connect('relationship_history', '/project/{id}/parcel/{parcel_id}/relationship_history', controller=relationship, action='get_relationship_history')
 
           #people/groups
         map.connect('person', '/project/{id}/person/{person_id}', controller=controller, action='read_person_details')

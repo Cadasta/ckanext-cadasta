@@ -22,14 +22,14 @@
 <FONT FACE="Helvetica, serif"><FONT SIZE=2><B><FONT FACE="Helvetica, serif">*
 = Restricted (Only certain columns/properties)</FONT></B></FONT></FONT></P>
 <TABLE BORDER=1 BORDERCOLOR="#000001" CELLPADDING=8 CELLSPACING=0 BGCOLOR="#ffffff">
-	<COL >
-	<COL >
-	<COL >
-	<COL >
-	<COL >
-	<COL >
-	<COL >
-	<COL >
+	<COL>
+	<COL>
+	<COL>
+	<COL>
+	<COL>
+	<COL>
+	<COL>
+	<COL>
 	<TR VALIGN=TOP>
 		<TD  HEIGHT=30 BGCOLOR="#ffffff">
 			<P CLASS="western"><BR>
@@ -96,7 +96,7 @@
 		</TD>
 		<TD  BGCOLOR="#ffffff">
 			<P ALIGN=CENTER STYLE="background: #ffffff; font-style: normal; font-weight: normal; page-break-inside: auto; text-decoration: none; page-break-after: auto">
-			<FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT FACE="Trebuchet MS, serif"><FONT SIZE=1 STYLE="font-size: 8pt">R</FONT></FONT></FONT></FONT></P>
+			<FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT FACE="Trebuchet MS, serif"><FONT SIZE=1 STYLE="font-size: 8pt">R U</FONT></FONT></FONT></FONT></P>
 		</TD>
 		<TD  BGCOLOR="#ffffff">
 			<P ALIGN=CENTER STYLE="background: #ffffff; font-style: normal; font-weight: normal; page-break-inside: auto; text-decoration: none; page-break-after: auto">
@@ -112,7 +112,7 @@
 	<TR VALIGN=TOP>
 		<TD  BGCOLOR="#ffffff">
 			<P ALIGN=LEFT STYLE="background: #ffffff; font-style: normal; font-weight: normal; page-break-inside: auto; text-decoration: none; page-break-after: auto">
-			<FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT FACE="Trebuchet MS, serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN LANG="en-US">User</SPAN></FONT></FONT></FONT></FONT></P>
+			<FONT FACE="Calibri, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><FONT FACE="Trebuchet MS, serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN LANG="en-US">(Other) User Setup</SPAN></FONT></FONT></FONT></FONT></P>
 		</TD>
 		<TD  BGCOLOR="#ffffff">
 			<P ALIGN=CENTER STYLE="background: #ffffff; font-style: normal; font-weight: normal; page-break-inside: auto; text-decoration: none; page-break-after: auto">
