@@ -71,9 +71,15 @@ class Cadasta_Relationship_Controller(PackageController):
 
     def get_relationship_history(self, id, parcel_id):
 
-        relationship_list = cadasta_model.get_relationship_history(id)
+        #get relationship_type param
+        relationship_type = request.params.get('relationship_type')
 
-        if relationship_list:
+        #get status param
+        active = request.params.get('active')
+
+        relationship_list = cadasta_model.get_relationship_history(parcel_id, relationship_type, active)
+
+        if relationship_list and relationship_list['features'] is not None:
             for relationship in relationship_list['features']:
                 reformatted_date = parse(relationship['properties']['time_created'])
                 reformatted_date = reformatted_date.strftime("%m/%d/%y")
@@ -100,11 +106,11 @@ class Cadasta_Relationship_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'parcel_id' : parcel_id},
+        self._setup_template_variables(context, {'id': id, 'parcel_id': parcel_id},
                                        package_type=package_type)
 
         return render('package/relationship_history.html',
-                          extra_vars={'dataset_type': package_type, 'relationship_list':relationship_list})
+                          extra_vars={'dataset_type': package_type, 'relationship_list':relationship_list, 'relationship_type': relationship_type, 'active': active})
 
 
 
