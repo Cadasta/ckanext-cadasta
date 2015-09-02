@@ -9,6 +9,8 @@
   <a class='active' href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}"> {{ c.parcel_id }}</a>
 {% endblock %}
 
+
+
   {% block content_primary_nav %}
 
   <div id='project-title'>
@@ -25,12 +27,12 @@
     <div id="project-nav-bar">
 
     {% block primary_nav_tabs %}
-        <li>OVERVIEW</li>
-        <li class="active-nav"> PARCELS </li>
-        <li><a  href='{{ pkg.name }}/map'>MAP</a></li>
-        <li><a  href='{{ pkg.name }}/surveys'>SURVEYS</a></li>
-        <li><a  href='{{ pkg.name }}/resources'>RESOURCES</a></li>
-        <li><a  href='{{ pkg.name }}/activity_stream'>ACTIVITY STREAM</a></li>
+          <li><a  href="/project/{{ pkg.name }}">OVERVIEW</a></li>
+          <li class="active-nav">PARCELS</li>
+          <li><a href='../map'>MAP</a></li>
+          <li><a  href='../surveys'>SURVEYS</a></li>
+          <li><a  href='../resources'>RESOURCES</a></li>
+          <li><a  href='../activity_stream'>ACTIVITY STREAM</a></li>
     {% endblock %}
     </div>
 
@@ -128,7 +130,7 @@
         </div>
 
         <div class="parcel-details-content right">
-             Parcel Relationship History:
+             <a href="{{ c.parcel_id }}/relationship_history">Parcel Relationship History:</a>
 
          <table id="parcelRelationshipsTable" class="parcel-details-table tablesorter">
             <thead>
