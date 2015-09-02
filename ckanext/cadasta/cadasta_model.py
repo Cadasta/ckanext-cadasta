@@ -125,7 +125,7 @@ def get_relationship_history(parcel_id,filter=None,sort=None):
 
       if (filter is not None):
           print 'found filter parameter. ', filter
-          qs = qs + 'tenure_type=' + filter
+          qs = qs + 'relationship_type=' + filter
 
       elif (sort is not None):
           qs = qs + 'sort_by=' + sort
@@ -133,7 +133,8 @@ def get_relationship_history(parcel_id,filter=None,sort=None):
       else:
           print 'executing relationship history lookup with no filter'
 
-      api = 'http://54.69.121.180:3000/relationships?' + qs
+      api = 'http://54.69.121.180:3000/parcels/' + parcel_id + '/show_relationship_history?' + qs
+      #relationship_type=own&active=true
 
       r = requests.get(api)
 

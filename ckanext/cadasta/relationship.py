@@ -71,7 +71,7 @@ class Cadasta_Relationship_Controller(PackageController):
 
     def get_relationship_history(self, id, parcel_id):
 
-        relationship_list = cadasta_model.get_relationship_history(id)
+        relationship_list = cadasta_model.get_relationship_history(parcel_id)
 
         if relationship_list:
             for relationship in relationship_list['features']:

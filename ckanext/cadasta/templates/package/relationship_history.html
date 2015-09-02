@@ -32,11 +32,20 @@
                          </select>
                     </div>
                     <div class="filter-group">
+                         <label for="active">Status</label>
+                         <select name="active" class="sort-box" onchange="this.form.submit()">
+                              <option value="" {% if filter=='None' %} selected="selected"{% endif %}>All</option>
+                              <option value="true" {% if active=='true' %} selected="selected"{% endif %}>Active/Current</option>
+                              <option value="false" {% if active=='false' %} selected="selected"{% endif %}>Inactive/Historical</option>
+                         </select>
+                    </div>
+                    <div class="filter-group">
                          <label for="sort">Sort By</label>
                          <select name="sort" class="sort-box" onchange="this.form.submit()">
                               <option value="">None</option>
                               <option>Parcel ID</option>
-                              <option>Number of Active Relationships</option>
+                              <option>Party/Name</option>
+                              <option>Relationship Type</option>
                               <option>Date Created</option>
                          </select>
                     </div>
