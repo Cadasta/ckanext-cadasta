@@ -118,6 +118,26 @@ class Parcel_Controller(PackageController):
         relationship_list = cadasta_model.list_relationships(id)
         parcel_details = cadasta_model.get_parcel_details(parcel_id)
 
+        if parcel_details:
+            reformatted_date = parse(parcel_details['features'][0]['properties']['time_created'])
+            reformatted_date = reformatted_date.strftime("%m/%d/%y")
+            parcel_details['features'][0]['properties']['time_created'] = reformatted_date
+
+            reformatted_time_updated = parse(parcel_details['features'][0]['properties']['time_updated'])
+            reformatted_time_updated = reformatted_time_updated.strftime("%m/%d/%y")
+            parcel_details['features'][0]['properties']['time_updated'] = reformatted_time_updated
+
+            for relationship in parcel_details['features'][0]['properties']['relationships']:
+                reformatted_date = parse(relationship['time_created'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+                relationship['time_created'] = reformatted_date
+
+                reformatted_date = parse(relationship['time_updated'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+                relationship['time_updated'] = reformatted_date
+
+
+
         ctype, format = self._content_type_from_accept()
 
         response.headers['Content-Type'] = ctype

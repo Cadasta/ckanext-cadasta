@@ -187,18 +187,11 @@ def get_person_details(person_id):
 
 def get_parcel_details(parcel_id):
 
-    parcel_json = {
-      "parcel_type" : "individual",
-      "landuse" : "residential",
-      "parcel_id" : "1234"
-    }
+    api ='http://54.69.121.180:3000/custom/get_parcel_details/' + parcel_id
 
+    parcel_details = requests.get(api)
 
-    api ='http://54.69.121.180:3000/activities'
-
-    parcel_json = requests.get(api)
-
-    return parcel_json
+    return parcel_details.json()
 
 
 def get_relationship_details(relationship_id):

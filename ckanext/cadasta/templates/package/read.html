@@ -48,10 +48,10 @@
           {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
         </div>
     </div>
+
+      {% resource 'cadasta/map.js' %}
+
 {% endblock %}
 
-{% block styles %}
-  {% resource 'cadasta/map.js' %}
-  {{ super() }}
-{% endblock %}
+
 

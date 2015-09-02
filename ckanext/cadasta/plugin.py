@@ -70,9 +70,9 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.connect('relationship_history', '/project/{id}/parcel/{parcel_id}/relationship_history', controller=relationship, action='get_relationship_history')
 
           #people/parties
-        map.connect('person', '/project/{id}/person/{person_id}', controller=controller, action='read_person_details')
-        map.connect('edit_person_details', '/project/{id}/edit_person/{person_id}', controller=controller, action='edit_person_details')
-        map.connect('new_person', '/project/{id}/new/person', controller=controller, action='new_person')
+        map.connect('party', '/project/{id}/party/{party_id}', controller=controller, action='read_party_details')
+        map.connect('edit_party_details', '/project/{id}/edit_party/{party_id}', controller=controller, action='edit_party_details')
+        map.connect('new_party', '/project/{id}/new/party', controller=controller, action='new_party')
 
 
         #remapping routes from dataset to project
@@ -92,6 +92,7 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.redirect('/group', '/organization',
                      _redirect_code='301 Moved Permanently')
         map.redirect('/groups/{url:.*}', '/organization/{url}',
+
                      _redirect_code='301 Moved Permanently')
         map.redirect('/groups', '/organization',
                      _redirect_code='301 Moved Permanently')
@@ -99,9 +100,9 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
 
 
 
-        # package_controller = 'ckan.controllers.package:PackageController'
+        package_controller = 'ckan.controllers.package:PackageController'
 
-        with SubMapper(map, controller='package') as m:
+        with SubMapper(map, controller=package_controller) as m:
             #define what is happening at each route using the package controller and the given action
 
             m.connect('/new/project', action='new')
