@@ -1,4 +1,4 @@
-{% extends "package/read.html" %}
+{% extends "package/read_base.html" %}
 
 {% block breadcrumb_content %}
   {{ super() }}
@@ -19,7 +19,7 @@
   <!-- Empty so the description and map does not come up on this page-->
   {% endblock %}
 
-{% block project_content %}
+{% block secondary_content %}
 <div class="project_content_inner_wrapper">
 
 <div class="small-heading">
