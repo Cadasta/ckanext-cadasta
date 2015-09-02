@@ -3,7 +3,7 @@
 {% block breadcrumb_content %}
   {{ super() }}
   <li><div class="icon-lnr-chevron-right"></div></li>
-  <a href="/dataset/{{c.id}}/surveys" class="active"> Surveys</a>
+  <a href="/dataset/{{c.id}}/surveys" class="active"> Activity Stream</a>
 {% endblock %}
 
 {% block primary_nav_tabs %}
@@ -30,12 +30,12 @@
                    <li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
 
                 {% elif activity.properties.activity_type == 'relationship' %}
-                   <li class="activity-block block"><span class="bold">Relationship between {{ activity.properties.name }}</span> and <span> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+                   <li class="activity-block block">Relationship between <span class="bold"> {{ activity.properties.name }}</span> and <span class="bold"> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
 
                 {% endif %}
 
             {% endfor %}
-    </ul>
+          </ul>
   </div>
 
 </div>

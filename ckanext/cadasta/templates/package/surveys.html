@@ -54,14 +54,14 @@
             <thead>
                 <tr>
                   <th>Survey</th>
-                  <th>survey id</th>
+                  <th>Survey Information</th>
                 </tr>
             </thead>
             <tbody>
               {% for survey in survey_list %}
               <tr>
-                <td><a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/survey/{{survey}}' >{{ survey }}</a></td>
-                <td> {{survey.survey_id}} </td>
+                <td><a href='/project/example-project/surveys/{{survey}}' >{{ survey }}</a></td>
+                <td> Additional survey information </td>
               </tr>
               {% endfor %}
             </tbody>

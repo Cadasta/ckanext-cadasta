@@ -511,29 +511,6 @@ input[type="text"] {
     padding-left: 40px;
 }
 
-#projectTable {
-    margin:auto;
-    width:820px;
-    padding: 20px;
-}
-
-#projectTable tr th {
-    font-size: 12px;
-    color: black;
-    background-color: white;
-    font-wieght: bold;
-
-}
-
-#projectTable tr {
-    border: 1px solid #dcdfe1;
-}
-
-#projectTable tr td {
-    font-size: 10px;
-    color: black;
-    background-color: white;
-}
 
 .table {
     margin:auto;

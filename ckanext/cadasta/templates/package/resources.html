@@ -3,7 +3,7 @@
 {% block breadcrumb_content %}
   {{ super() }}
   <li><div class="icon-lnr-chevron-right"></div></li>
-  <a href="/dataset/{{c.id}}/surveys" class="active"> Surveys</a>
+  <a href="/dataset/{{c.id}}/surveys" class="active"> Resources</a>
 {% endblock %}
 
 {% block primary_nav_tabs %}
@@ -17,12 +17,10 @@
 
 
 {% block primary_content_inner %}
-<a href='http://50.112.108.132:5000/dataset/{{ pkg.name }}/new/resource'><div class="add-project-element icon-icon_add_parcel"></div></a>
+<a href='/project/new_resource/{{ pkg.name }}'><div class="add-project-element icon-icon_add_parcel"></div></a>
 
 <div id="project-content">
     <div class="project-primary-block">
-        <a href="/project/resources/{{c.id}}"> Add Resources</a>
-
         {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
     </div>
 
