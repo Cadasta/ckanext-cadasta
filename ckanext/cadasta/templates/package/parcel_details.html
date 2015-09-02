@@ -40,24 +40,37 @@
 
 {% block primary_content_inner %}
 
+
   <div id='project-desc' class="project-block">
          <span class="small-heading">PARCEL DETAILS</span>
             <table>
               <tr>
                 <th>Parcel ID</th>
-                <td> 1234 </td>
+                <td> {{ parcel_details.features[0].properties.id }} </td>
               </tr>
               <tr>
-                <th>Parcel Type</th>
-                <td> parcel </td>
-              </tr>
-                <tr>
                 <th> Area </th>
-                <td> 999999 </td>
+                <td> {{ parcel_details.features[0].properties.area }} </td>
               </tr>
-                <tr>
+              <tr>
                 <th> Landuse </th>
-                <td> residential </td>
+                <td> {{ parcel_details.features[0].properties.land_use }} </td>
+              </tr>
+              <tr>
+                <th> Government ID </th>
+                <td> {{ parcel_details.features[0].properties.gov_pin }} </td>
+              </tr>
+              <tr>
+                <th>Date Created</th>
+                <td> {{ parcel_details.features[0].properties.time_created }} </td>
+              </tr>
+              <tr>
+                <th>Date Updated</th>
+                <td> {{ parcel_details.features[0].properties.time_updated }} </td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td> {{ parcel_details.features[0].properties.active }} </td>
               </tr>
             </table>
   </div>
@@ -68,7 +81,7 @@
     {% resource 'cadasta/map.js' %}
 
     <div id='small_map'></div>
-    <meta id="data" data-obj="{{parcel_geom}}">
+    <meta id="data" data-obj="{{parcel_details.features[0].geometry}}">
   </div>
 
   <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
@@ -87,16 +100,27 @@
             <thead>
                 <tr>
                     <th>Relationship ID</th>
-                    <th>Person/Group</th>
                     <th>Relationship Type</th>
+                    <th>Party ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Time Created</th>
+                    <th>Time Updated</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-             {% for relationship in relationship_list.features %}
+             {% for relationship in parcel_details.features[0].properties.relationships %}
                 <tr>
                   <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
-                  <td><a href='/project/{{c.id}}/person/{{ relationship.relationship_person.id }}' > {{ relationship.relationship_person.firstname }} </a></td>
                   <td> {{ relationship.relationship_type }} </td>
+                  <td><a href='/project/{{c.id}}/party/{{ relationship.party_id }}' > {{ relationship.party_id }} </a></td>
+                  <td> {{ relationship.first_name }} </td>
+                  <td> {{ relationship.last_name }} </td>
+                  <td> {{ relationship.time_created }} </td>
+                  <td> {{ relationship.time_updated }} </td>
+                  <td> {{ relationship.active }} </td>
+
                 </tr>
               {% endfor %}
             </tbody>
@@ -106,28 +130,42 @@
         <div class="parcel-details-content right">
              Parcel Relationship History:
 
-        <table class="parcel-details-table tablesorter">
+         <table id="parcelRelationshipsTable" class="parcel-details-table tablesorter">
             <thead>
                 <tr>
                     <th>Relationship ID</th>
-                    <th>Person/Group</th>
                     <th>Relationship Type</th>
+                    <th>Party ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Time Created</th>
+                    <th>Time Updated</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-             {% for parcel in parcel_details %}
+             {% for relationship in parcel_details.features[0].properties.relationships %}
                 <tr>
-                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}}}' > {{ parcel }} </a></td>
-                  <td><a href='/project/{{c.id}}/person }}' > {{ parcel }} </a></td>
-                  <td> {{ parcel }} </td>
+                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
+                  <td> {{ relationship.relationship_type }} </td>
+                  <td><a href='/project/{{c.id}}/party/{{ relationship.party_id }}' > {{ relationship.party_id }} </a></td>
+                  <td> {{ relationship.first_name }} </td>
+                  <td> {{ relationship.last_name }} </td>
+                  <td> {{ relationship.time_created }} </td>
+                  <td> {{ relationship.time_updated }} </td>
+                  <td> {{ relationship.active }} </td>
+
                 </tr>
               {% endfor %}
             </tbody>
         </table>
+
         </div>
         <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
 
     </div>
+
+    {% resource 'cadasta/map.js' %}
 {% endblock %}
 
 

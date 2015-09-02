@@ -204,9 +204,9 @@ class Cadasta_Controller(PackageController):
 
 
 
-    def read_person_details(self, id, person_id):
+    def read_party_details(self, id, party_id):
 
-        person = cadasta_model.get_person_details(person_id)
+        party = cadasta_model.get_party_details(party_id)
 
         ctype, format = self._content_type_from_accept()
 
@@ -228,19 +228,19 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'person_id' : person_id},
+        self._setup_template_variables(context, {'id': id, 'party_id' : party_id},
                                        package_type=package_type)
 
-        return render('package/person_details.html',
-                          extra_vars={'dataset_type': package_type, 'person':person})
+        return render('package/party_details.html',
+                          extra_vars={'dataset_type': package_type, 'party':party})
 
 
 
-    def edit_person_details(self, id, person_id):
+    def edit_party_details(self, id, party_id):
 
         newPerson = False
 
-        person_details = cadasta_model.get_person_details(person_id)
+        party_details = cadasta_model.get_party_details(party_id)
 
         ctype, format = self._content_type_from_accept()
 
@@ -262,15 +262,15 @@ class Cadasta_Controller(PackageController):
             abort(401, _('Unauthorized to read package %s') % id)
 
         package_type = c.pkg_dict['type'] or 'dataset'
-        self._setup_template_variables(context, {'id': id, 'person_id' : person_id},
+        self._setup_template_variables(context, {'id': id, 'party_id' : party_id},
                                        package_type=package_type)
 
-        return render('package/edit_person.html',
-                          extra_vars={'dataset_type': package_type, 'newPerson': newPerson, 'person_details': person_details})
+        return render('package/edit_party.html',
+                          extra_vars={'dataset_type': package_type, 'newPerson': newPerson, 'party_details': party_details})
 
 
 
-    def new_person(self, id):
+    def new_party(self, id):
 
         newPerson = True
 
@@ -297,7 +297,7 @@ class Cadasta_Controller(PackageController):
         self._setup_template_variables(context, {'id': id},
                                        package_type=package_type)
 
-        return render('package/edit_person.html',
+        return render('package/edit_party.html',
                           extra_vars={'dataset_type': package_type, 'newPerson': newPerson})
 
 

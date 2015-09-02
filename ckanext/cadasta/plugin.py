@@ -70,9 +70,9 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.connect('relationship_history', '/project/{id}/parcel/{parcel_id}/relationship_history', controller=relationship, action='get_relationship_history')
 
           #people/parties
-        map.connect('person', '/project/{id}/person/{person_id}', controller=controller, action='read_person_details')
-        map.connect('edit_person_details', '/project/{id}/edit_person/{person_id}', controller=controller, action='edit_person_details')
-        map.connect('new_person', '/project/{id}/new/person', controller=controller, action='new_person')
+        map.connect('party', '/project/{id}/party/{party_id}', controller=controller, action='read_party_details')
+        map.connect('edit_party_details', '/project/{id}/edit_party/{party_id}', controller=controller, action='edit_party_details')
+        map.connect('new_party', '/project/{id}/new/party', controller=controller, action='new_party')
 
 
         #remapping routes from dataset to project
@@ -92,6 +92,7 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         map.redirect('/group', '/organization',
                      _redirect_code='301 Moved Permanently')
         map.redirect('/groups/{url:.*}', '/organization/{url}',
+
                      _redirect_code='301 Moved Permanently')
         map.redirect('/groups', '/organization',
                      _redirect_code='301 Moved Permanently')
@@ -99,20 +100,20 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
 
 
 
-        # package_controller = 'ckan.controllers.package:PackageController'
+        package_controller = 'ckan.controllers.package:PackageController'
 
-        with SubMapper(map, controller='package') as m:
+        with SubMapper(map, controller=package_controller) as m:
             #define what is happening at each route using the package controller and the given action
 
             m.connect('/new/project', action='new')
             # m.connect('/project/{id}', action='read')
-            m.connect('/project/{id}.{format}', action='read')
+            # m.connect('/project/{id}.{format}', action='read')
 
             m.connect('/project', action='search')
 
             m.connect('/project/edit/{id}', action='edit')
 
-            m.connect('/project/activity/{id}', action='activity')
+            # m.connect('/project/activity/{id}', action='activity')
 
             m.connect('/project/resources/{id}', action='resources')
 
@@ -121,22 +122,22 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
             m.connect('/project/{id}/resource_edit/{resource_id}', action='resource_edit')
             m.connect('/project/{id}/resource/{resource_id}/download', action='resource_download')
             m.connect('/project/{id}/resource/{resource_id}/download/{filename}', action='resource_download')
-            m.connect('/project/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer')
-            m.connect('/project/{id}/resource/{resource_id}/preview/{preview_type}', action='resource_datapreview')
+            # m.connect('/project/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer')
+            # m.connect('/project/{id}/resource/{resource_id}/preview/{preview_type}', action='resource_datapreview')
 
 
             m.connect('/project/{action}/{id}',
                       requirements=dict(action='|'.join([
                           'new_resource',
-                          'history',
+                          # 'history',
                           'read_ajax',
                           'history_ajax',
-                          'follow',
+                          # 'follow',
                           'activity',
-                          'groups',
-                          'unfollow',
-                          'delete',
-                          'api_data',
+                          # 'groups',
+                          # 'unfollow',
+                          'delete'
+                          # 'api_data',
                       ])))
 
         return map
