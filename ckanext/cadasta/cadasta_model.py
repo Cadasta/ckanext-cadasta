@@ -166,7 +166,7 @@ def list_relationships(id):
     return relationship_list
 
 
-def get_person_details(person_id):
+def get_party_details(person_id):
 
     person_json = {
       "firstname": "sarah",
