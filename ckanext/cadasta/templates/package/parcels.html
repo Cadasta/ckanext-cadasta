@@ -19,7 +19,8 @@
     <a href='/dataset/{{ pkg.name }}/new/parcel'><div class="add-project-element icon-icon_add_parcel"></div></a>
 
   <div id="project-content">
-        <div class="filter-box clearfix">
+        <!-- Use Nunjucks templates here in .js -->
+<div class="filter-box clearfix">
             <form method="get">
                 <div class="left">
                     <div class="filter-group">
@@ -51,33 +52,13 @@
 
         </div>
 
-        <table id="parcelsTable" class="tablesorter table">
-        <thead>
-            <tr>
-                <th>Parcel ID</th>
-                <th>Area</th>
-                <th>Number of Active Relationships</th>
-                <th>Date Created</th>
 
-            </tr>
-        </thead>
-        <tbody>
-        {% if parcel_list.features %}
-          {% for parcel in parcel_list.features %}
-            <tr>
-              <td><a href='parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
-              <td> {{ parcel.properties.area }} </td>
-              <td> {{ parcel.properties.num_relationships }} </td>
-              <td> {{ parcel.properties.time_created }} </td>
-            </tr>
-          {% endfor %}
 
-        {% else %}
-            <tr>
-              <td colspan="4">No parcels found.</td>
-            </tr>
-        {% endif %}
-        </tbody>
-      </table>
   </div>
+
+    {% resource 'cadasta/nunjucksmin.js' %}
+    {% resource 'cadasta/parcel_list.js' %}
+
   {% endblock %}
+
+

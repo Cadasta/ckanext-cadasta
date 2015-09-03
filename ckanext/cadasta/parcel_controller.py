@@ -34,22 +34,22 @@ class Parcel_Controller(PackageController):
         # todo this is uniocde, what format does this need to be in to push it back to db
         # geom = request.params.get('parcel_geom')
 
-        #get filter params
-        filterArg = request.params.get('filter')
-
-        #get sort params
-        sortArg = request.params.get('sort')
-
-        #if filters exist, ask API to filter parcels and respond
-        parcel_list = cadasta_model.list_parcels(id, filter=filterArg, sort=sortArg)
-
-        if parcel_list is not None and parcel_list.get("features", None) is not None:
-            for parcel in parcel_list['features']:
-
-                reformatted_date = parse(parcel['properties']['time_created'])
-                reformatted_date = reformatted_date.strftime("%m/%d/%y")
-
-                parcel['properties']['time_created'] = reformatted_date
+        # #get filter params
+        # filterArg = request.params.get('filter')
+        #
+        # #get sort params
+        # sortArg = request.params.get('sort')
+        #
+        # #if filters exist, ask API to filter parcels and respond
+        # parcel_list = cadasta_model.list_parcels(id, filter=filterArg, sort=sortArg)
+        #
+        # if parcel_list is not None and parcel_list.get("features", None) is not None:
+        #     for parcel in parcel_list['features']:
+        #
+        #         reformatted_date = parse(parcel['properties']['time_created'])
+        #         reformatted_date = reformatted_date.strftime("%m/%d/%y")
+        #
+        #         parcel['properties']['time_created'] = reformatted_date
 
 
 
@@ -77,7 +77,7 @@ class Parcel_Controller(PackageController):
                                        package_type=package_type)
 
         return render('package/parcels.html',
-                      extra_vars={'dataset_type': package_type, 'parcel_list': parcel_list, 'filter': request.params.get('filter'), 'sort': request.params.get('sort')})
+                      extra_vars={'dataset_type': package_type})
 
 
     def new_parcel(self, id):
