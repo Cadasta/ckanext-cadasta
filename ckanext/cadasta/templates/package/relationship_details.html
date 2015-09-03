@@ -2,10 +2,13 @@
 
 {% set logged_in = true if c.userobj else false %}
 
-{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content_selected %}{% endblock %}
 {% block breadcrumb_content %}
   {{ super() }}
-  <a href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship_id}}"> / {{ c.parcel_id }} / {{ c.relationship_id}} </a>
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}"> {{ c.parcel_id }}</a>
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a class="active" href="/dataset/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{c.relationship_id}}"> {{ c.relationship_id}} </a>
 
 {% endblock %}
 
@@ -19,7 +22,7 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-<table id="personDetailsTable" class="tablesorter">
+<table id="personDetailsTable" class="table">
         <thead>
             <tr>
                 <th>Field</th>

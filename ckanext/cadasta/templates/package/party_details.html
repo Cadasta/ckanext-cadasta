@@ -1,11 +1,12 @@
-{% extends "package/read.html" %}
+{% extends "package/read_base.html" %}
 
 {% set logged_in = true if c.userobj else false %}
 
-{% block breadcrumb_content_selected %} class="active" {% endblock %}
+{% block breadcrumb_content_selected %} {% endblock %}
 {% block breadcrumb_content %}
   {{ super() }}
-  <a href="/dataset/{{c.id}}/person/{{ c.person_id }}"> / {{ c.person_id }}</a>
+  <li><div class="icon-lnr-chevron-right"></div></li>
+  <a class="active" href="/dataset/{{c.id}}/party/{{ c.party_id }}"> {{ c.party_id }}</a>
 {% endblock %}
 
 {% block content_action %}
@@ -15,11 +16,11 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-  <a href='/project/{{c.id}}/edit_person/{{ c.person_id }}' >Edit Person Details</a>
+  <a href='/project/{{c.id}}/edit_party/{{ c.party_id }}' >Edit Party Details</a>
 
   <br>
 
-    <table id="personDetailsTable" class="tablesorter">
+    <table id="partyDetailsTable" class="tablesorter table">
         <thead>
             <tr>
                 <th>Field</th>
@@ -29,35 +30,35 @@
         <tbody>
             <tr>
               <td>First Name: </td>
-              <td> {{person.firstname}} </td>
+              <td> {{party.firstname}} </td>
             </tr>
             <tr>
               <td>Last Name: </td>
-              <td> {{person.lastname}} </td>
+              <td> {{party.lastname}} </td>
             </tr>
             <tr>
               <td>City: </td>
-              <td> {{person.city}} </td>
+              <td> {{party.city}} </td>
             </tr>
             <tr>
               <td>State: </td>
-              <td> {{person.state}} </td>
+              <td> {{party.state}} </td>
             </tr>
             <tr>
               <td>Zipcode: </td>
-              <td> {{person.zip}} </td>
+              <td> {{party.zip}} </td>
             </tr>
             <tr>
               <td>Email: </td>
-              <td>{{person.email}} </td>
+              <td>{{party.email}} </td>
             </tr>
             <tr>
               <td>Marital Status: </td>
-              <td> {{person.marital_status}} </td>
+              <td> {{party.marital_status}} </td>
             </tr>
             <tr>
               <td>Education Level: </td>
-              <td> {{person.education_level}} </td>
+              <td> {{party.education_level}} </td>
             </tr>
         </tbody>
       </table>
