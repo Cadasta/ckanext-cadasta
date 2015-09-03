@@ -111,7 +111,6 @@ table {
 .span9 {
     margin-left: 0;
     width: 100%;
-    background-color: white;
     padding: 0;
 }
 
@@ -882,4 +881,8 @@ display: inline-block;
     border: 1px solid #dcdfe1;
     background-color: white;
     padding: 20px;
+}
+
+.header-primary {
+    background-color:white;
 }

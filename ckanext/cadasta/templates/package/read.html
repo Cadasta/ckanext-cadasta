@@ -27,22 +27,25 @@
         <div class='project-block' id="project-activity-summary">
           <span class="small-heading">LATEST ACTIVITY</span>
 
-          <ul id="activity-list">
-            {% for activity in activity_list.features %}
+            <!-- Use Nunjucks templates here in .js -->
+                <div id="nunjuck-activity-list"></div>
 
-                {% if activity.properties.activity_type == 'parcel' %}
-                   <li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+          <!--<ul id="activity-list">-->
+            <!--{% for activity in activity_list.features %}-->
 
-               {% elif activity.properties.activity_type == 'party' %}
-                   <li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+                <!--{% if activity.properties.activity_type == 'parcel' %}-->
+                   <!--<li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
 
-                {% elif activity.properties.activity_type == 'relationship' %}
-                   <li class="activity-block block">Relationship between <span class="bold"> {{ activity.properties.name }}</span> and <span class="bold"> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>
+               <!--{% elif activity.properties.activity_type == 'party' %}-->
+                   <!--<li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
 
-                {% endif %}
+                <!--{% elif activity.properties.activity_type == 'relationship' %}-->
+                   <!--<li class="activity-block block">Relationship between <span class="bold"> {{ activity.properties.name }}</span> and <span class="bold"> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
 
-            {% endfor %}
-          </ul>
+                <!--{% endif %}-->
+
+            <!--{% endfor %}-->
+          <!--</ul>-->
         </div>
 
         <div class='project-block' id="project-resource-summary">
@@ -51,6 +54,8 @@
         </div>
     </div>
 
+      {% resource 'cadasta/nunjucksmin.js' %}
+      {% resource 'cadasta/nunjucks_js/activity_list.js' %}
       {% resource 'cadasta/map.js' %}
 
 {% endblock %}

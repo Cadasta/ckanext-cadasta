@@ -19,8 +19,7 @@
     <a href='/dataset/{{ pkg.name }}/new/parcel'><div class="add-project-element icon-icon_add_parcel"></div></a>
 
   <div id="project-content">
-        <!-- Use Nunjucks templates here in .js -->
-<div class="filter-box clearfix">
+        <div class="filter-box clearfix">
             <form method="get">
                 <div class="left">
                     <div class="filter-group">
@@ -51,13 +50,12 @@
             </form>
 
         </div>
-
-
-
+      <!-- Use Nunjucks templates here in .js -->
+      <div id="nunjuck-parcel-list"></div>
   </div>
 
     {% resource 'cadasta/nunjucksmin.js' %}
-    {% resource 'cadasta/parcel_list.js' %}
+    {% resource 'cadasta/nunjucks_js/parcel_list.js' %}
 
   {% endblock %}
 
