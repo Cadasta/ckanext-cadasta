@@ -191,6 +191,17 @@ def get_parcel_details(parcel_id):
     return parcel_details.json()
 
 
+def get_parcel_geom_details(parcel_id):
+
+    api ='http://54.69.121.180:3000/custom/get_parcel_details/' + parcel_id
+
+    parcel_details = requests.get(api)
+
+
+    return parcel_details.text
+
+
+
 def get_relationship_details(relationship_id):
 
   relationship_json = {

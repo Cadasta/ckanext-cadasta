@@ -114,7 +114,7 @@ class Parcel_Controller(PackageController):
 
     def read_parcel_details(self, id, parcel_id):
 
-        parcel_geom = cadasta_model.get_parcel_geom(id)
+        parcel_geom = cadasta_model.get_parcel_geom_details(parcel_id)
         relationship_list = cadasta_model.list_relationships(id)
         parcel_details = cadasta_model.get_parcel_details(parcel_id)
 
@@ -135,6 +135,19 @@ class Parcel_Controller(PackageController):
                 reformatted_date = parse(relationship['time_updated'])
                 reformatted_date = reformatted_date.strftime("%m/%d/%y")
                 relationship['time_updated'] = reformatted_date
+
+            for parcel in parcel_details['features'][0]['properties']['parcel_history']:
+                reformatted_date = parse(parcel['time_created'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+                parcel['time_created'] = reformatted_date
+
+                reformatted_date = parse(parcel['time_updated'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+                parcel['time_updated'] = reformatted_date
+
+                reformatted_date = parse(parcel['date_modified'])
+                reformatted_date = reformatted_date.strftime("%m/%d/%y")
+                parcel['date_modified'] = reformatted_date
 
 
 
