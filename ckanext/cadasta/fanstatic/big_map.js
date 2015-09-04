@@ -2,10 +2,6 @@
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2JpbmRtYW4iLCJhIjoiaENWQnlrVSJ9.0DQyCLWgA0j8yBpmvt3bGA';
 
 
-
-
-
-
 $(document).ready(function() {
 
     var map = L.mapbox.map('big_map', 'mapbox.streets');
@@ -54,37 +50,31 @@ $(document).ready(function() {
     }
 
 
-    function displayParcels(map) {
-        //converts string data into a geojson object that can be mapped
+    function displayParcels (map) {
 
-        var parcelCollection = $('#data').data();
-        var popupURL = $('#popup_url').data().obj;
+     var url = "http://54.69.121.180:3000/parcels?returnGeometry=true";
 
-        //parcelCollection is already an object.  Just pull out the obj property.
-        //var parcel_string = JSON.stringify(parcelCollection);
-        //parcel_string = parcel_string.replace('{"obj":', '');
-        //parcel_string = parcel_string.replace('}}]}}', '}}]}');
-        //
-        //var parcel_geoJSON = JSON.parse(parcel_string);
+        $.ajax(url).done(function (response) {
 
-        parcel_layer = L.geoJson(parcelCollection.obj, {
-            style: function (feature) {
-                return {color: 'green'};
-            },
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup("<a href=" + popupURL + layer.feature.name + ">See Parcel Details</a>");
-            }
-        });
+            parcel_layer = L.geoJson(response, {
+                style: function (feature) {
+                return {color: 'black'};
+                },
+                onEachFeature: function (feature, layer) {
 
-        parcel_layer.on("click", function (e) {
-            e.layer.options.color = "black";
-            e.layer.options.fill = "black";
-        });
 
-        parcel_layer.addTo(parcelsFeatureGroup);
-        map.fitBounds(parcelsFeatureGroup.getBounds());
+                    layer.bindPopup("<a href="+ layer.feature.properties.id + ">See Parcel Details</a>");
+                }
+            });
 
+            parcel_layer.addTo(parcelsFeatureGroup);
+            map.fitBounds(parcelsFeatureGroup.getBounds());
+        })
     }
+
+//move this to the jquery, on document load run this function
+displayParcels (map);
+
 
 })
 
