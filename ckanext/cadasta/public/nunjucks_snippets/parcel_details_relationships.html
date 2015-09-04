@@ -1,0 +1,35 @@
+
+        <div class="parcel-details-content right">
+             <a href="{{ c.parcel_id }}/relationship_history">Parcel Relationship History</a> ||
+            <a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> New Relationship </a>
+
+         <table class="parcel-details-table tablesorter">
+            <thead>
+                <tr>
+                    <th>Relationship ID</th>
+                    <th>Relationship Type</th>
+                    <th>Party ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Time Created</th>
+                    <th>Time Updated</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for relationship in relationships %}
+                <tr>
+                  <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
+                  <td> {{ relationship.relationship_type }} </td>
+                  <td><a href='/project/{{c.id}}/party/{{ relationship.party_id }}' > {{ relationship.party_id }} </a></td>
+                  <td> {{ relationship.first_name }} </td>
+                  <td> {{ relationship.last_name }} </td>
+                  <td> {{ relationship.time_created }} </td>
+                  <td> {{ relationship.time_updated }} </td>
+                  <td> {{ relationship.active }} </td>
+
+                </tr>
+              {% endfor %}
+            </tbody>
+         </table>
+        </div>
