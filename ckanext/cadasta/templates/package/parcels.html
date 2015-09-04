@@ -21,16 +21,16 @@
   <div id="project-content">
         <!-- Use Nunjucks templates here in .js -->
 <div class="filter-box clearfix">
-            <form method="get">
+            <form id="FilterForm" method="get" action=".">
                 <div class="left">
                     <div class="filter-group">
                          <label for="filter">Tenure Type</label>
-                         <select name="filter" class="sort-box" onchange="this.form.submit()">
-                              <option value="" {% if filter=='None' %} selected="selected"{% endif %}>All Types</option>
-                              <option value="lease" {% if filter=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
-                              <option value="own" {% if filter=='own' %} selected="selected"{% endif %}>Owned Parcels</option>
-                              <option value="occupy" {% if filter=='occupy' %} selected="selected"{% endif %}>Occupied Parcels</option>
-                              <option value="informal occupy" {% if filter=='informal occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
+                         <select id="tenure_type" name="tenure_type" class="sort-box" onchange="$('#FilterForm').submit()">
+                              <option value="" {% if tenure_type=='None' %} selected="selected"{% endif %}>All Types</option>
+                              <option value="lease" {% if tenure_type=='lease' %} selected="selected"{% endif %}>Leased Parcels</option>
+                              <option value="own" {% if tenure_type=='own' %} selected="selected"{% endif %}>Owned Parcels</option>
+                              <option value="occupy" {% if tenure_type=='occupy' %} selected="selected"{% endif %}>Occupied Parcels</option>
+                              <option value="informal occupy" {% if tenure_type=='informal occupy' %} selected="selected"{% endif %}>Informally Occupied Parcels</option>
                          </select>
                     </div>
                     <div class="filter-group">
@@ -57,6 +57,8 @@
   </div>
 
     {% resource 'cadasta/nunjucksmin.js' %}
+    {% resource 'cadasta/jquery-router.js' %}
+    {% resource 'cadasta/getQueryString.js' %}
     {% resource 'cadasta/parcel_list.js' %}
 
   {% endblock %}
