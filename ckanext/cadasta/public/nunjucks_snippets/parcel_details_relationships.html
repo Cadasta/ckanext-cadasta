@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-             {% for relationship in relationships %}
+             {% for relationship in parcel_relationships %}
                 <tr>
                   <td><a href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/relationship/{{relationship.relationship_id}}' > {{ relationship.relationship_id }} </a></td>
                   <td> {{ relationship.relationship_type }} </td>
