@@ -7,15 +7,15 @@
 
       <div id='project-desc' class="project-block">
          <span class="small-heading">DESCRIPTION</span>
-                {{ c.pkg_notes_formatted }}
+                <!--{{ c.pkg_notes_formatted }}-->
 
       </div>
 
       <div id="project-extent">
 
         <div id='small_map'></div>
-        <meta id="small_map_data" data-obj="{{all_parcels}}">
-        <meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">
+        <!--<meta id="small_map_data" data-obj="{{all_parcels}}">-->
+        <!--<meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">-->
 
 
 
@@ -27,35 +27,18 @@
         <div class='project-block' id="project-activity-summary">
           <span class="small-heading">LATEST ACTIVITY</span>
 
-            <!-- Use Nunjucks templates here in .js -->
                 <div id="nunjuck-activity-list"></div>
 
-          <!--<ul id="activity-list">-->
-            <!--{% for activity in activity_list.features %}-->
-
-                <!--{% if activity.properties.activity_type == 'parcel' %}-->
-                   <!--<li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-
-               <!--{% elif activity.properties.activity_type == 'party' %}-->
-                   <!--<li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-
-                <!--{% elif activity.properties.activity_type == 'relationship' %}-->
-                   <!--<li class="activity-block block">Relationship between <span class="bold"> {{ activity.properties.name }}</span> and <span class="bold"> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-
-                <!--{% endif %}-->
-
-            <!--{% endfor %}-->
-          <!--</ul>-->
         </div>
 
         <div class='project-block' id="project-resource-summary">
-              <span class="small-heading">{{ _('PROJECT RESOURCES') }}</span>
-          {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+              <!--<span class="small-heading">{{ _('PROJECT RESOURCES') }}</span>-->
+          <!--{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}-->
         </div>
     </div>
 
-      {% resource 'cadasta/nunjucksmin.js' %}
-      {% resource 'cadasta/nunjucks_js/activity_list.js' %}
+      <!--{% resource 'cadasta/nunjucksmin.js' %}-->
+      <!--{% resource 'cadasta/nunjucks_js/activity_list.js' %}-->
       {% resource 'cadasta/map.js' %}
 
 {% endblock %}

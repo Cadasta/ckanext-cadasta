@@ -1,43 +1,41 @@
 {% ckan_extends %}
 
 
-  {% block content_action %}
-  {% endblock %}
-
-  {% block content_primary_nav %}
-
-  <div id='project-title'>
-     <span class="project-title">{{ pkg.title }} </span>
-     <span class="project-control-buttons-right">
-      <div class="icon-icon_edit"></div>
-      <div class="icon-icon_export"></div>
-      <!--{% if h.check_access('package_update', {'id':pkg.id }) %}-->
-            <!--{% link_for _(''), controller='package', action='edit', id=pkg.name, class_='button', icon='wrench' %}-->
-      <!--{% endif %}-->
-      <a href="/project/{{ pkg.name }}/form_data_upload"><div class="icon-icon_add"></div></a>
-     </span>
-
-    <div id="project-nav-bar">
-
-    {% block primary_nav_tabs %}
-        <li class="active-nav">OVERVIEW</li>
-        <li><a  href='{{ pkg.name }}/parcels'>PARCELS</a></li>
-        <li><a  href='{{ pkg.name }}/map'>MAP</a></li>
-        <li><a  href='{{ pkg.name }}/surveys'>SURVEYS</a></li>
-        <li><a  href='{{ pkg.name }}/resources'>RESOURCES</a></li>
-        <li><a  href='{{ pkg.name }}/activity_stream'>ACTIVITY STREAM</a></li>
-    {% endblock %}
-    </div>
-
-  </div>
-  {% endblock %}
-
-  {% block primary_content_inner %}
-  {% endblock %}
-
-  {% block secondary_content %}
-  {% endblock %}
 
 
-  {% block links %}
-  {% endblock %}
+
+{% block main_content %}
+
+Test space
+
+<html ng-app="myApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    {% resource 'cadasta/app.js' %}
+    <script>
+        var myApp = angular.module('myApp', ['ui.router']);
+        // For Component users, it should look like this:
+        // var myApp = angular.module('myApp', [require('angular-ui-router')]);
+        myApp.config(function($stateProvider, $urlRouterProvider) {
+            //
+            // For any unmatched url, redirect to /state1
+            $urlRouterProvider.otherwise("/state1");
+            //
+            // Now set up the states
+            $stateProvider
+                    .state('state1', {
+                        url: "/state1",
+                        templateUrl: "/partials/read.html"
+                    });
+        });
+    </script>
+    ...
+</head>
+<body>
+    <div ui-view></div>
+</body>
+</html>
+
+
+{% endblock %}
