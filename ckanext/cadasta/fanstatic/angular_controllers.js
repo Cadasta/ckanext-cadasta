@@ -20,7 +20,12 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             url: "/parcels",
             controller:'ProjectParcels',
             templateUrl: "/partials/parcels.html"
-        });;
+        })
+        .state('big_map', {
+            url: "/map",
+            controller:'ProjectBigMap',
+            templateUrl: "/partials/big_map.html"
+        });
 });
 
 myApp.controller('ProjectOverview', [ '$scope', '$http', function ($scope, $http) {
@@ -51,22 +56,22 @@ myApp.controller('ProjectOverview', [ '$scope', '$http', function ($scope, $http
         var date_object_formatted = month + "/" + day + "/" + year;
 
         return date_object_formatted;
-    }
+    };
 
     var getDescription = function() {
         var description = $('#ckan-project-description').data().obj;
         return description;
-    }
+    };
 
     var getTitle = function() {
         var title = $('#ckan-project-title').data().obj;
         return title;
-    }
+    };
 
     var getName = function() {
         var name = $('#ckan-project-name').data().obj;
         return name;
-    }
+    };
 
     $scope.projectDescription = getDescription();
     $scope.projectTitle = getTitle();
@@ -92,7 +97,7 @@ myApp.controller('ProjectParcels', [ '$scope', '$http', function ($scope, $http)
             parcel.properties.time_created = format_date(parcel.properties.time_created);
         });
 
-        $scope.response = response;
+        $scope.parcels = response;
 
     });
 
@@ -104,26 +109,37 @@ myApp.controller('ProjectParcels', [ '$scope', '$http', function ($scope, $http)
         var date_object_formatted = month + "/" + day + "/" + year;
 
         return date_object_formatted;
-    }
+    };
 
     var getDescription = function() {
         var description = $('#ckan-project-description').data().obj;
         return description;
-    }
+    };
 
     var getTitle = function() {
         var title = $('#ckan-project-title').data().obj;
         return title;
-    }
+    };
 
     var getName = function() {
         var name = $('#ckan-project-name').data().obj;
         return name;
-    }
+    };
 
     $scope.projectDescription = getDescription();
     $scope.projectTitle = getTitle();
     $scope.projectName = getName();
 
+
+}]);
+
+myApp.controller('ProjectBigMap', [ '$scope', '$http', function ($scope, $http) {
+
+    var getTitle = function() {
+        var title = $('#ckan-project-title').data().obj;
+        return title;
+    };
+
+    $scope.projectTitle = getTitle();
 
 }]);

@@ -1,47 +1,47 @@
-{% extends "package/read_base.html" %}
+<!--{% extends "package/read_base.html" %}-->
 
-{% set pkg = c.pkg_dict %}
+<!--{% set pkg = c.pkg_dict %}-->
 
-  {% block primary_content_inner %}
-  <div id="project-header">
+  <!--{% block primary_content_inner %}-->
+  <!--<div id="project-header">-->
 
-      <div id='project-desc' class="project-block">
-         <span class="small-heading">DESCRIPTION</span>
-                <!--{{ c.pkg_notes_formatted }}-->
+      <!--<div id='project-desc' class="project-block">-->
+         <!--<span class="small-heading">DESCRIPTION</span>-->
+                <!--&lt;!&ndash;{{ c.pkg_notes_formatted }}&ndash;&gt;-->
 
-      </div>
+      <!--</div>-->
 
-      <div id="project-extent">
+      <!--<div id="project-extent">-->
 
-        <div id='small_map'></div>
-        <!--<meta id="small_map_data" data-obj="{{all_parcels}}">-->
-        <!--<meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">-->
-
-
-
-  {% endblock %}
+        <!--<div id='small_map'></div>-->
+        <!--&lt;!&ndash;<meta id="small_map_data" data-obj="{{all_parcels}}">&ndash;&gt;-->
+        <!--&lt;!&ndash;<meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">&ndash;&gt;-->
 
 
-{% block secondary_content %}
-    <div id="project-content">
-        <div class='project-block' id="project-activity-summary">
-          <span class="small-heading">LATEST ACTIVITY</span>
 
-                <div id="nunjuck-activity-list"></div>
+  <!--{% endblock %}-->
 
-        </div>
 
-        <div class='project-block' id="project-resource-summary">
-              <!--<span class="small-heading">{{ _('PROJECT RESOURCES') }}</span>-->
-          <!--{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}-->
-        </div>
-    </div>
+<!--{% block secondary_content %}-->
+    <!--<div id="project-content">-->
+        <!--<div class='project-block' id="project-activity-summary">-->
+          <!--<span class="small-heading">LATEST ACTIVITY</span>-->
 
-      <!--{% resource 'cadasta/nunjucksmin.js' %}-->
-      <!--{% resource 'cadasta/nunjucks_js/activity_list.js' %}-->
-      {% resource 'cadasta/map.js' %}
+                <!--<div id="nunjuck-activity-list"></div>-->
 
-{% endblock %}
+        <!--</div>-->
+
+        <!--<div class='project-block' id="project-resource-summary">-->
+              <!--&lt;!&ndash;<span class="small-heading">{{ _('PROJECT RESOURCES') }}</span>&ndash;&gt;-->
+          <!--&lt;!&ndash;{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+
+      <!--&lt;!&ndash;{% resource 'cadasta/nunjucksmin.js' %}&ndash;&gt;-->
+      <!--&lt;!&ndash;{% resource 'cadasta/nunjucks_js/activity_list.js' %}&ndash;&gt;-->
+      <!--{% resource 'cadasta/map.js' %}-->
+
+<!--{% endblock %}-->
 
 
 

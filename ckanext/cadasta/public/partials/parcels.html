@@ -53,7 +53,7 @@
                 </div>
             </form>
 
-            <table id="parcelsTable" class="tablesorter table">
+            <table id="parcelsTable" class="tablesorter table" ng-if="parcels">
                 <thead>
                 <tr>
                     <th>Parcel ID</th>
@@ -64,28 +64,18 @@
                 </tr>
                 </thead>
                 <tbody>
-
-
-                {% if features %}
-                {% for parcel in features %}
-                <tr>
-                    <td><a href='parcel/{{ parcel.properties.id }}'>{{ parcel.properties.id }}</a></td>
-                    <td> {{ parcel.properties.area if parcel.properties.area else "N/A"  }} </td>
-                    <td> {{ parcel.properties.num_relationships }} </td>
-                    <td> {{ parcel.properties.time_created }} </td>
+                <tr ng-repeat="parcel in parcels.features">
+                    <td><a href='parcel/[{ parcel.properties.id }]'>[{ parcel.properties.id }]</a></td>
+                    <td> [{ parcel.properties.area  }] </td>
+                    <td> [{ parcel.properties.num_relationships }] </td>
+                    <td> [{ parcel.properties.time_created }] </td>
                 </tr>
-                {% endfor %}
 
-                {% else %}
-                <tr>
+                <tr ng-if="!parcels">
                     <td colspan="4">No parcels found.</td>
                 </tr>
-                {% endif %}
+
                 </tbody>
             </table>
-            No newline at end of file
-
-
         </div>
-
 </div>
