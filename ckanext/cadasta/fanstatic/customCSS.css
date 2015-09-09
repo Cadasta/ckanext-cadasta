@@ -199,6 +199,7 @@ subtab {
 
 #project-title {
     border: 1px solid #dcdfe1;
+    background-color: white;
 }
 
 .span3 {
@@ -349,6 +350,7 @@ footer {
 #project-header {
     border: 1px solid #dcdfe1;
     height:315px;
+    background-color: white;
 }
 
 #project-nav-bar li {

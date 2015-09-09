@@ -1,56 +1,61 @@
-<div id="project-header">
+<!--{% block content_primary_nav %}-->
 
-    <div id='project-desc' class="project-block">
-        <span class="small-heading">DESCRIPTION</span>
-        <!--{{ c.pkg_notes_formatted }}-->
+<div id='project-title'>
+    <span class="project-title">[{ projectTitle }]</span>
+     <span class="project-control-buttons-right">
+      <div class="icon-icon_edit"></div>
+      <div class="icon-icon_export"></div>
 
+      <a href="/project/[{ projectName }]/form_data_upload"><div class="icon-icon_add"></div></a>
+     </span>
+
+    <div id="project-nav-bar">
+        <li class="active-nav">OVERVIEW</li>
+        <li><a  href='[{ projectName }]/parcels'>PARCELS</a></li>
+        <li><a  href='[{ projectName }]/map'>MAP</a></li>
+        <li><a  href='[{ projectName }]/surveys'>SURVEYS</a></li>
+        <li><a  href='[{ projectName }]/resources'>RESOURCES</a></li>
+        <li><a  href='[{ projectName }]/activity_stream'>ACTIVITY STREAM</a></li>
     </div>
 
-    <div id="project-extent">
-
-        <div id='small_map'></div>
-        <!--<meta id="small_map_data" data-obj="{{all_parcels}}">-->
-        <!--<meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">-->
+</div>
 
 
-        <div id="project-content">
-            <div class='project-block' id="project-activity-summary">
-                <span class="small-heading">LATEST ACTIVITY</span>
 
-                [{ response }]
-                [{ test }]
+<div class="span3">
+    <div id="project-header">
 
-                <ul id="activity-list">
-                    LIST OF ACTIVITIES
-                    <!--[{ if response }]-->
-                    <!--[{ for activity in response.features }]-->
-
-                    <!--[{ if activity.properties.activity_type == 'parcel' }]-->
-                    <!--<li class="activity-block block"><span class="bold">Parcel {{ activity.properties.id }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-
-                    <!--{% elif activity.properties.activity_type == 'party' %}-->
-                    <!--<li class="activity-block block"><span class="bold">Party {{ activity.properties.name }}</span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-
-                    <!--{% elif activity.properties.activity_type == 'relationship' %}-->
-                    <!--<li class="activity-block block">Relationship between <span class="bold"> {{ activity.properties.name }}</span> and <span class="bold"> parcel {{ activity.properties.id }} </span> was created at <span class="link">{{ activity.properties.time_created }}</span> </li>-->
-                    <!--{% endif %}-->
-                    <!--{% endfor %}-->
-                    <!--{% endif %}-->
-                </ul>
-
-
-            </div>
-
-            <div class='project-block' id="project-resource-summary">
-                <span class="small-heading">PROJECT RESOURCES</span>
-                <!--{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}-->
-            </div>
+        <div id='project-desc' class="project-block">
+            <span class="small-heading">DESCRIPTION</span>
+            <div >[{ projectDescription }]</div>
         </div>
 
-        <!--{% resource 'cadasta/nunjucksmin.js' %}-->
-        <!--{% resource 'cadasta/nunjucks_js/activity_list.js' %}-->
-        <!--{% resource 'cadasta/map.js' %}-->
+        <div id="project-extent">
 
+            <div id='small_map'></div>
 
+        </div>
+    </div>
 
+    <div id="project-content">
+        <div class='project-block' id="project-activity-summary">
+            <span class="small-heading">LATEST ACTIVITY</span>
 
+            <ul id="activity-list" ng-if="response" ng-repeat="activity in response.features">
+
+                <li ng-if="activity.properties.activity_type == 'parcel'" class="activity-block block"><span class="bold">Parcel [{ activity.properties.id }]</span> was created at <span class="link">[{ activity.properties.time_created }]</span> </li>
+
+                <li ng-if="activity.properties.activity_type == 'party'" class="activity-block block"><span class="bold">Party [{ activity.properties.name }]</span> was created at <span class="link">[{ activity.properties.time_created }]</span> </li>
+
+                <li ng-if="activity.properties.activity_type == 'relationship'" class="activity-block block">Relationship between <span class="bold"> [{ activity.properties.name }]</span> and <span class="bold"> parcel [{ activity.properties.id }]</span> was created at <span class="link">[{ activity.properties.time_created }]</span> </li>
+            </ul>
+        </div>
+
+        <div class='project-block' id="project-resource-summary">
+            <span class="small-heading">PROJECT RESOURCES</span>
+            <!--{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}-->
+        </div>
+    </div>
+    <script src="../js/small_map.js"></script>
+
+</div>
