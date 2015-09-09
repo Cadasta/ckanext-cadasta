@@ -1,8 +1,8 @@
 $(document).ready(function () {
-	$('#sub-nav').hide();
-	$("#parcelsTable").tablesorter();
-	$("#surveysTable").tablesorter();
-	$("#projectTable").tablesorter();
+	//$('#sub-nav').hide();
+	//$("#parcelsTable").tablesorter();
+	//$("#surveysTable").tablesorter();
+	//$("#projectTable").tablesorter();
 })
 
 
