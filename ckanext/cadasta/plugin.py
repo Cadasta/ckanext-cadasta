@@ -85,6 +85,8 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
                      _redirect_code='301 Moved Permanently')
         map.redirect('/datasets', '/project',
                      _redirect_code='301 Moved Permanently')
+        map.redirect('/projects', '/project',
+                      _redirect_code='301 Moved Permanently')
 
 
         map.redirect('/group/{url:.*}', '/organization/{url}',
@@ -101,7 +103,7 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
         with SubMapper(map, controller='package') as m:
             #define what is happening at each route using the package controller and the given action
 
-            m.connect('/new/project', action='new')
+            m.connect('/project/new', action='new')
             m.connect('/project/{id}', action='read')
             m.connect('/project/{id}.{format}', action='read')
 
@@ -125,15 +127,10 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
             m.connect('/project/{action}/{id}',
                       requirements=dict(action='|'.join([
                           'new_resource',
-                          # 'history',
                           'read_ajax',
                           'history_ajax',
-                          # 'follow',
                           'activity',
-                          # 'groups',
-                          # 'unfollow',
                           'delete'
-                          # 'api_data',
                       ])))
 
         return map

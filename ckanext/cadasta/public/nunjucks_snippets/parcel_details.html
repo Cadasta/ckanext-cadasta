@@ -1,5 +1,44 @@
+<div id ="parcel-details-overview">
+
+<div class="id-title">
+  {{parcel_details.id}}
+</div>
+
+
 <table>
-    {% if parcel_details.id %}
+
+
+  {% for row in parcel_details.relationships %}
+  <tr>
+  <td class="owner">{{ row.first_name }} {{ row.last_name }}</td>
+  </tr>
+  <tr>
+    <th>Tenure Type:</th>
+  <td> {{ row.relationship_type }}</td>
+  </tr>
+  <tr>
+    <th>Date Created:</th>
+  <td> {{ row.time_created }}</td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+
+    {% if row.active %}
+    <td> Active </td>
+    {% else %}
+    <td> Inactive </td>
+    {% endif %}
+    </tr>
+
+
+  {% endfor %}
+
+{#
+  {% if parcel_details.id %}
+  <tr>
+    <th>Owner</th>
+    <td> {{ parcel_details.relationships[0].first_name }}  {{ parcel_details.relationships[0].last_name }}</td>
+  </tr>
   <tr>
     <th>Parcel ID</th>
     <td> {{ parcel_details.id }} </td>
@@ -41,8 +80,10 @@
     <td> {{ parcel_details.active }} </td>
   </tr>
     {% endif %}
+
+  #}
 </table>
 
 
-
+</div>
 

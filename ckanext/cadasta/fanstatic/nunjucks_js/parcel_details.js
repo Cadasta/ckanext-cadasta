@@ -24,6 +24,13 @@ $(document).ready(function() {
             parcel_details.time_created = format_date(parcel_details.time_created);
             parcel_details.time_updated = format_date(parcel_details.time_updated);
 
+            parcel_details.relationships.forEach(function(v){
+                v.time_created = format_date(v.time_created)
+                if(v.active == "true"){
+                    v.active = ""
+                }
+            });
+
 
             var res = nunjucks.render('parcel_details.html', {parcel_details:parcel_details});
              $("#nunjuck-parcel-details-list").html(res);

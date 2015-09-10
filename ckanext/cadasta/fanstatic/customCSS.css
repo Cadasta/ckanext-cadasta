@@ -924,3 +924,19 @@ display: inline-block;
 .parcel-details-content .small-heading {
     margin: 20px 0 0 20px;
 }
+
+#parcel-details-overview{
+    height: 150px;
+}
+
+#parcel-details-overview table{
+    margin:20px;
+}
+
+#parcel-details-overview .id-title {
+    font-size: 40px;
+}
+
+#parcel-details-overview .owner {
+    font-size: 20px;
+}
