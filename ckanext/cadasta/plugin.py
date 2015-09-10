@@ -98,16 +98,12 @@ class CadastaPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm, Default
                      _redirect_code='301 Moved Permanently')
 
 
-
-
-        package_controller = 'ckan.controllers.package:PackageController'
-
-        with SubMapper(map, controller=package_controller) as m:
+        with SubMapper(map, controller='package') as m:
             #define what is happening at each route using the package controller and the given action
 
             m.connect('/new/project', action='new')
-            # m.connect('/project/{id}', action='read')
-            # m.connect('/project/{id}.{format}', action='read')
+            m.connect('/project/{id}', action='read')
+            m.connect('/project/{id}.{format}', action='read')
 
             m.connect('/project', action='search')
 
