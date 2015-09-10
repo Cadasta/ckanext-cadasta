@@ -53,6 +53,22 @@ $(document).ready(function() {
 
             var res_parcel_history = nunjucks.render('parcel_details_history.html', {parcel_history_details:parcel_history_details});
              $("#nunjuck-parcel-details-history").html(res_parcel_history);
+
+
+        //parcel resources
+        // todo this needs to be updated
+        var parcel_history_details = response.features[0].properties.parcel_history;
+        //
+        //
+        //parcel_history_details.forEach(function(parcel) {
+        //    parcel.date_modified = format_date(parcel.date_modified);
+        //    parcel.time_created = format_date(parcel.time_created);
+        //    parcel.time_updated = format_date(parcel.time_updated);
+        //})
+        //
+        //
+        var res_parcel_history = nunjucks.render('parcel_details_resources.html', {parcel_history_details:parcel_history_details});
+        $("#nunjuck-parcel-details-resources").html(res_parcel_history);
     })
     .fail(function () {
         //err

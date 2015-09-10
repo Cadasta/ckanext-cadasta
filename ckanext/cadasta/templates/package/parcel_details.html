@@ -45,6 +45,7 @@
 
   <div id='project-desc' class="project-block">
          <span class="small-heading">PARCEL DETAILS</span>
+      <a class='right' href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >...</a>
 
       <div id="nunjuck-parcel-details-list"></div>
 
@@ -59,7 +60,7 @@
     <meta id="small_popup_url" data-obj="http://50.112.108.132:5000/dataset/{{ pkg.name }}/parcel/">
   </div>
 
-  <a href='/project/{{c.id}}/edit_parcel/{{ c.parcel_id }}' >Edit Parcel</a>
+
 
 
 {% endblock %}
@@ -70,6 +71,8 @@
         <div id="nunjuck-parcel-details-history"></div>
 
         <div id="nunjuck-parcel-details-relationships"></div>
+
+        <div id="nunjuck-parcel-details-resources"></div>
 
 
     </div>

@@ -198,7 +198,7 @@ subtab {
 }
 
 #project-title {
-    border: 1px solid #dcdfe1;
+    border-bottom: 1px solid #dcdfe1;
 }
 
 .span3 {
@@ -310,9 +310,33 @@ li {
 
 
 #project-desc {
-    margin-top:35px;
-    margin-left:25px;
-    width: 450px;
+    margin-top: 12px;
+    margin-left: 25px;
+    width: 517px;
+    display: inline-block;
+    height: 292px;
+    border: 1px solid #dcdfe1;
+}
+
+#project-desc .small-heading {
+    margin: 20px 0 20px 20px;
+}
+
+#project-desc table {
+    text-align: center;
+    text-align: left;
+    margin-left: 20px;
+    width:40%;
+    border:none;
+
+}
+
+#project-desc table td {
+    text-align: center;
+    text-align: left;
+    margin-left: 20px;
+    width: 100px;
+
 }
 
 /* RW - removed fixed height so activity feed will push down without an internal scrollbar */
@@ -347,7 +371,6 @@ footer {
 }
 
 #project-header {
-    border: 1px solid #dcdfe1;
     height:315px;
 }
 
@@ -356,7 +379,7 @@ footer {
     margin-right: 40px;
 }
 
-.section site-search simple-input {
+.section .site-search .simple-input {
     display: inline;
 }
 
@@ -605,8 +628,6 @@ dataset-list {
 }
 
 .filter-box {
-    border: 1px solid #dcdfe1;
-    background-color: white;
     background-color: white;
     padding: 20px;
 }
@@ -841,40 +862,50 @@ input[type="text"].register-input :focus {
 
 }
 
-.parcel-details-table th {
-    color: white;
-    background-color:#51617A;
-    font-wieght:400;
-
-}
-
 .parcel-details-table {
     border:none;
-    width:100%;
+    margin:0 20px 20px 20px;
     background-color:white;
 }
 
-.parcel-details-table tr {
-    border: 1px solid #dcdfe1;
+
+.parcel-details-table th {
+    color: #444444;
+    background-color: white;
+    border-bottom: 1px solid #dcdfe1;
+    text-align: left;
 }
+
+
+.parcel-details-table td {
+    color: #444444;
+    background-color: white;
+    border-bottom: 1px solid #dcdfe1;
+    text-align: left;
+    line-height: 35px;
+
+}
+
+
 
 
 .parcel-details-content {
 display: inline-block;
     text-align: left;
     font-size: 10px;
-    border: none;
+    border: 1px solid #dcdfe1;
     text-align: top;
     vertical-align: top;
     margin-top: 20px;
     margin-bottom: 20px;
     float: left;
-    width: 49%;
     background-color:white;
+    width:100%;
 }
 
 .right {
     float: right;
+    margin-right:20px;
 }
 
 .project-primary-block{
@@ -885,4 +916,11 @@ display: inline-block;
 
 .header-primary {
     background-color:white;
+    height: 439px;
+    border: 1px solid #dcdfe1;
+}
+
+
+.parcel-details-content .small-heading {
+    margin: 20px 0 0 20px;
 }

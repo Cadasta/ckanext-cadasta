@@ -1,16 +1,17 @@
        <div class="parcel-details-content">
-            Parcel History
+           <span class="small-heading">PARCEL HISTORY</span>
+           <a class='right' href='/project/{{c.id}}/parcel/{{ c.parcel_id }}/new/relationship'> ... </a>
 
-          <table class="parcel-details-table">
+           <table class="parcel-details-table">
             <thead>
                 <tr>
-                    <th>Origin ID</th>
-                    <th>Parent ID</th>
-                    <th>Description</th>
-                    <th>Date Modified</th>
-                    <th>Date Created</th>
-                    <th>Date Updated</th>
-                    <th>Status</th>
+                    <th>PARCEL ID</th>
+                    <th>PARENT ID</th>
+                    <th>EVENT</th>
+                    <th>DATE MODIFIED</th>
+                    <th>DATE CREATED</th>
+                    <th>DATE UPDATED</th>
+                    <th>IMAGE</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +26,7 @@
                   <td> {{ parcel.date_modified }} </td>
                   <td> {{ parcel.time_created }} </td>
                   <td> {{ parcel.time_updated }} </td>
-                  <td> {{ parcel.active }} </td>
+                  <td> View Map </td>
 
                 </tr>
               {% endfor %}
