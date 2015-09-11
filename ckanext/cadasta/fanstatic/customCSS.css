@@ -340,6 +340,10 @@ li {
 
 }
 
+#project-desc .description {
+    margin-left: 20px;
+}
+
 /* RW - removed fixed height so activity feed will push down without an internal scrollbar */
 #project-activity-summary {
     width:510px;
