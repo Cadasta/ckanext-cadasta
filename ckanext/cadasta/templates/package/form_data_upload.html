@@ -55,7 +55,7 @@
     <div>
         <span>S3 Test</span>
         <form id="S3_Form" action="." method="POST" enctype="multipart/form-data">
-            <input type="file" name="file_upload">
+            <input type="file" name="filedata">
             <button type="submit" class="btn">Submit</button>
         </form>
     </div>
@@ -66,6 +66,8 @@
 
 
             $('#CSV_Form').submit(function (e) {
+                var data = new FormData(this);
+
                 $.ajax({
                     url: 'http://54.69.121.180:3000/providers/csv/load',
                     type: 'POST',
@@ -104,26 +106,27 @@
             });
 
             $('#S3_Form').submit(function (e) {
+                var data = new FormData(this);
+
                 $.ajax({
-                    url: 'http://54.69.121.180:3000/providers/ona/load',
+                    url: 'http://54.69.121.180:3000/resources/1/parcel/3',
                     type: 'POST',
                     data: new FormData(this),
                     processData: false,
                     contentType: false,
-                    success: handlePOSTResult
+                    success: handlePOSTResult,
+                    error:function(err){
+                        console.log(err)
+                    }
                 });
                 e.preventDefault();
             });
-
-
         });
-
-
-
+        
         function handlePOSTResult(data) {
 
-            if (data && data.status) {
-                if (data.status == 'Data Loaded.') {
+            if (data && (data.status || data.message)) {
+                if (data.status == 'Data Loaded.' || data.message == "Thanks for the upload.") {
                     //Show message
                     showStatusMessage("Data upload successful.", "success");
 
