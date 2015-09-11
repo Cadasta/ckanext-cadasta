@@ -1,48 +1,89 @@
-<table>
+<!--<div>PARCEL DETAILS</div>-->
+
+<div id="parcel-details-overview">
+
+    <div class="id-title">
+        Parcel ID: {{parcel_details.id}}
+    </div>
+
+    <div class="details">
+        {% for row in parcel_details.relationships %}
+
+        <div class="owner">{{ row.first_name }} {{ row.last_name }}</div>
+
+        <div class="inline-details">
+            <div class="details-title">Tenure Type:</div>
+            <div class="details-data"> {{ row.relationship_type }}</div>
+        </div>
+
+        <div class="inline-details">
+            <div class="details-title">Date Created:</div>
+            <div class="details-data"> {{ row.time_created }}</div>
+        </div>
+
+        <div class="inline-details">
+            <div class="details-title">Status:</div>
+
+            {% if row.active %}
+            <div class="details-data"> Active</div>
+            {% else %}
+            <div class="details-data"> Inactive</div>
+            {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {#
     {% if parcel_details.id %}
-  <tr>
-    <th>Parcel ID</th>
-    <td> {{ parcel_details.id }} </td>
-  </tr>
+
+    <div>Owner</div>
+    <div> {{ parcel_details.relationships[0].first_name }} {{ parcel_details.relationships[0].last_name }}</div>
+
+
+    <div>Parcel ID</div>
+    <div> {{ parcel_details.id }}</div>
+
     {% endif %}
     {% if parcel_details.area %}
-  <tr>
-    <th> Area </th>
-    <td> {{ parcel_details.area }} </td>
-  </tr>
+
+    <div> Area</div>
+    <div> {{ parcel_details.area }}</div>
+
     {% endif %}
     {% if parcel_details.land_use %}
-  <tr>
-    <th> Landuse </th>
-    <td> {{ parcel_details.land_use }} </td>
-  </tr>
+
+    <div> Landuse</div>
+    <div> {{ parcel_details.land_use }}</div>
+
     {% endif %}
     {% if parcel_details.gov_pin %}
-  <tr>
-    <th> Government ID </th>
-    <td> {{ parcel_details.gov_pin }} </td>
-  </tr>
+
+    <div> Government ID</div>
+    <div> {{ parcel_details.gov_pin }}</div>
+
     {% endif %}
     {% if parcel_details.time_created %}
-  <tr>
-    <th>Date Created</th>
-    <td> {{ parcel_details.time_created }} </td>
-  </tr>
+
+    <div>Date Created</div>
+    <div> {{ parcel_details.time_created }}</div>
+
     {% endif %}
     {% if parcel_details.time_updated %}
-  <tr>
-    <th>Date Updated</th>
-    <td> {{ parcel_details.time_updated }} </td>
-  </tr>
+
+    <div>Date Updated</div>
+    <div> {{ parcel_details.time_updated }}</div>
+
     {% endif %}
     {% if parcel_details.active %}
-  <tr>
-    <th>Status</th>
-    <td> {{ parcel_details.active }} </td>
-  </tr>
+
+    <div>Status</div>
+    <div> {{ parcel_details.active }}</div>
+
     {% endif %}
-</table>
+
+    #}
 
 
-
+</div>
 
