@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     //Hit API and get back response
-    var url = "http://54.69.121.180:3000/show_activity";
+    var url = "http://54.69.121.180:3000/resources";
 
     var format_date = function(date) {
         var date_object = new Date(date);
@@ -17,8 +17,8 @@ $(document).ready(function() {
         //success
         nunjucks.configure('/nunjucks_snippets', {autoescape: true});
 
-        response.features.forEach(function(activity) {
-            activity.properties.time_created = format_date(activity.properties.time_created);
+        response.features.forEach(function(resource) {
+            resource.properties.time_created = format_date(resource.properties.time_created);
         })
 
         var res = nunjucks.render('resource_list.html', response);

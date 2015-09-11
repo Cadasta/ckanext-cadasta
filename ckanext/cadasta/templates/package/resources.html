@@ -21,8 +21,10 @@
 
 <div id="project-content">
     <div class="project-primary-block">
-        {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources %}
+        <div id="nunjuck-resource-list"></div>
     </div>
+    {% resource 'cadasta/nunjucksmin.js' %}
+    {% resource 'cadasta/nunjucks_js/resource_list.js' %}
 
 </div>
 {% endblock %}
