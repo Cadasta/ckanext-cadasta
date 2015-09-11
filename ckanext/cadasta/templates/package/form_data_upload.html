@@ -16,48 +16,51 @@
 {% endblock %}
 
   {% block primary_content_inner %}
-  <!-- Empty so the description and map does not come up on this page-->
-  {% endblock %}
+<div id="form_upload_content">
 
-{% block secondary_content %}
-<div class="project_content_inner_wrapper">
-
-<div class="small-heading">
-   Test Upload Form
-</div>
-<div>
-   Use the forms below to upload test CSV, GeoJSON and ONA files to the API Ingestion endpoints.<br>
-   * Note: Only files with specific column names will work.<br>
-  Working on getting these sample files posted and linked to from here.
-</div>
+    <div class="small-heading">
+        Test Upload Form
+    </div>
+    <div>
+        Use the forms below to upload test CSV, GeoJSON and ONA files to the API Ingestion endpoints.<br>
+        * Note: Only files with specific column names will work.<br>
+    </div>
 
 
-<div>
-    <span>CSV Test</span>
-    <form id="CSV_Form" action="." method="POST" enctype="multipart/form-data">
-        <input type="file" name="file_upload">
-        <button type="submit" class="btn">Submit</button>
-    </form>
+    <div>
+        <span>CSV Test</span>
+        <form id="CSV_Form" action="." method="POST" enctype="multipart/form-data">
+            <input type="file" name="file_upload">
+            <button type="submit" class="btn">Submit</button>
+        </form>
 
-</div>
+    </div>
 
-<div>
-    <span>GeoJSON Test</span>
-    <form id="GEOJSON_Form" action="." method="POST" enctype="multipart/form-data">
-        <input type="file" name="file_upload">
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
+    <div>
+        <span>GeoJSON Test</span>
+        <form id="GEOJSON_Form" action="." method="POST" enctype="multipart/form-data">
+            <input type="file" name="file_upload">
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
 
-<div>
-    <span>ONA Test</span>
-    <form id="ONA_Form" action="." method="POST" enctype="multipart/form-data">
-        <input type="file" name="file_upload">
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
+    <div>
+        <span>ONA Test</span>
+        <form id="ONA_Form" action="." method="POST" enctype="multipart/form-data">
+            <input type="file" name="file_upload">
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
 
-<script type="text/javascript">
+    <div>
+        <span>S3 Test</span>
+        <form id="S3_Form" action="." method="POST" enctype="multipart/form-data">
+            <input type="file" name="file_upload">
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
 
         $(document).ready(function () {
 
@@ -100,6 +103,19 @@
                 e.preventDefault();
             });
 
+            $('#S3_Form').submit(function (e) {
+                $.ajax({
+                    url: 'http://54.69.121.180:3000/providers/ona/load',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: handlePOSTResult
+                });
+                e.preventDefault();
+            });
+
+
         });
 
 
@@ -135,10 +151,10 @@
         }
 
 
-
-
-</script>
+    </script>
 
 </div>
+  {% endblock %}
 
+{% block secondary_content %}
 {% endblock %}
