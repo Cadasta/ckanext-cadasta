@@ -1,4 +1,35 @@
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2JpbmRtYW4iLCJhIjoiaENWQnlrVSJ9.0DQyCLWgA0j8yBpmvt3bGA';
+
+
 $(document).ready(function() {
+
+    var map = L.mapbox.map('parcel_map', 'mapbox.streets');
+
+    var featureGroup = L.featureGroup().addTo(map);
+    var parcelsFeatureGroup = L.featureGroup().addTo(map);
+
+    var drawControl = new L.Control.Draw({
+        edit: {
+            featureGroup: featureGroup
+        },
+        draw: {
+            polyline: false,
+            circle: false, // Turns off this drawing tool
+            rectangle: false,
+            marker: false
+        }
+    }).addTo(map);
+
+    map.on('draw:created', function(e) {
+        var layer = e.layer;
+        //make sure there is only one geometry
+        if(featureGroup && featureGroup.getLayers().length!==0){
+            featureGroup.clearLayers();
+        }
+
+        featureGroup.addLayer(layer);
+        addParcel();
+    });
 
     var format_date = function(date) {
         var date_object = new Date(date);
@@ -10,8 +41,10 @@ $(document).ready(function() {
         return date_object_formatted;
     }
 
+
+    var parcel_id_url = parseInt(document.URL.split('/')[document.URL.split('/').length-1]);
     //Hit API and get back response
-    var url = "http://54.69.121.180:3000/parcels/1/details";
+    var url = "http://54.69.121.180:3000/parcels/" + parcel_id_url + "/details";
     //TODO do we need to get the dynamic parcel number from the url?
 
     $.ajax(url).done(function (response) {
@@ -30,6 +63,20 @@ $(document).ready(function() {
                     v.active = ""
                 }
             });
+
+        var parcel_layer = L.geoJson(response, {
+            style: function (feature) {
+                return {color: 'black'};
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup("<a href="+ layer.feature.properties.id + ">See Parcel Details</a>");
+            }
+        });
+
+        parcel_layer.addTo(parcelsFeatureGroup);
+        map.fitBounds(parcelsFeatureGroup.getBounds());
+
+
 
 
             var res = nunjucks.render('parcel_details.html', {parcel_details:parcel_details});

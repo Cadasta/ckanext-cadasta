@@ -131,9 +131,6 @@ subtab {
 
 
 #project-extent {
-    margin-top:12px;
-    margin-right:12px;
-    margin-bottom: 12px;
     border: 1px solid #dcdfe1;
     width:291px;
     height:291px;
@@ -142,6 +139,12 @@ subtab {
 }
 
 #small_map {
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+#parcel_map {
     position:relative;
     width:100%;
     height:100%;
@@ -310,8 +313,6 @@ li {
 
 
 #project-desc {
-    margin-top: 12px;
-    margin-left: 25px;
     width: 517px;
     display: inline-block;
     height: 292px;
@@ -916,7 +917,7 @@ display: inline-block;
 
 .header-primary {
     background-color:white;
-    height: 439px;
+    height: 500px;
     border: 1px solid #dcdfe1;
 }
 
@@ -927,6 +928,24 @@ display: inline-block;
 
 #parcel-details-overview{
     height: 150px;
+    margin: 15px;
+    color: rgb(93, 93, 93);
+}
+
+#parcel-details-overview .details-title {
+    font-weight: bold;
+}
+
+#parcel-details-overview .details-data {
+    margin: 0px 0px 0px 10px;
+}
+
+#parcel-details-overview .details{
+    margin: 15px 0px;
+}
+
+#parcel-details-overview .inline-details {
+    display: flex;
 }
 
 #parcel-details-overview table{
@@ -934,9 +953,22 @@ display: inline-block;
 }
 
 #parcel-details-overview .id-title {
-    font-size: 40px;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: rgb(108,112,116);
+
 }
 
 #parcel-details-overview .owner {
-    font-size: 20px;
+    font-size: 16px;
+    padding: 0px 0px 10px 0px;
+}
+
+#overview-background {
+    margin: 40px 12px 0px 12px;
+}
+
+#overview-background .parcel-details-return {
+    margin: -20px 0px 20px 10px;
+    font-weight: bold;
 }
