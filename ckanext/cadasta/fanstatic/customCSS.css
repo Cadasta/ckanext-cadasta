@@ -542,6 +542,7 @@ input[type="text"] {
 
 .table {
     margin:auto;
+    margin-bottom: 20px;
 }
 
 
@@ -924,7 +925,8 @@ display: inline-block;
 
 .header-primary {
     background-color:white;
-    height: 500px;
+    height: auto;
+    min-height: 500px;
     border: 1px solid #dcdfe1;
 }
 
